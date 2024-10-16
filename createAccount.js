@@ -7,14 +7,14 @@ if (matchEmail(email)) {
 	if (matchPassword(password))
 		console.log("Success! Welcome to Clima Closet!);
 	else
-		console.log("Error! Password does not match);
+		console.log("Error! Password does not match");
 }
 else
 	console.log("Account does not exist");
 
 // check to see if email matches stored email
 function matchEmail(emailToMatch) { 
-	//loop through all stored emais
+	//loop through all stored emails
 	if (emailToMatch === stored email)
 		return true; // an email was matched
 	else
@@ -23,7 +23,7 @@ function matchEmail(emailToMatch) {
 
 // check to see if password matches stored password
 function matchPassword(passwordToMatch) {
-	String storedPassword = password stored with input email
+	let storedPassword = password stored with input email
 	if (passwordToMatch === storedPassword)
 		return true;
 	else
