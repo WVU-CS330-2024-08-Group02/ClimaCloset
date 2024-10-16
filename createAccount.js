@@ -1,5 +1,6 @@
 //Account Backend Java Script
 //main function for button click
+
 // login
 let email = prompt("What is your emaiL?");
 if (matchEmail(email)) {
@@ -33,3 +34,16 @@ function matchPassword(passwordToMatch) {
 
 
 //signin function
+void signUp(string email){
+  
+if (matchEmail(email) == false)
+{
+  printf("Please input password:");
+  //button call
+  storeAccount(email, password);
+}
+else{
+  printf("Account already exists, please log in");
+}
+  
+}
