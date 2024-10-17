@@ -3,10 +3,15 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <h1>Log in or sign up</h1>
+        <h1>Login/Sign-up Page</h1>
     </head>
-    <body>
-        
-    </body>
+    <div>
+        <label for="signUp"><b>Don't have an account?</b></label>
+        <button id="signUp">Sign-up</button>
+    </div>
+    <div>
+        <label for="logIn"><b>Already have an account?</b></label>
+        <button id="logIn">Login</button>
+    </div>
 
 </html>
