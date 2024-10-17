@@ -1,3 +1,12 @@
-<!DOCTYPE html>
-
 // This is code for the login UI we are implementing in our first sprint
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <h1>Log in or sign up</h1>
+    </head>
+    <body>
+        
+    </body>
+
+</html>
