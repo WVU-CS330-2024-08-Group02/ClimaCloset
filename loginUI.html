@@ -4,17 +4,28 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login/Sign-up Page</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center; /*center horizontally*/
+                align-items: center verticaly;
+                border: none;
+            }
+
+            .buttonArea {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+        </style>
     </head>
     <body>
-        <div>
+        <div class="buttonArea">
             <label for="signUp"><b>Don't have an account?</b></label>
             <button id="signUp" onclick="onClick(event)">Sign-up</button>
-        </div>
-        <div>
             <label for="logIn"><b>Already have an account?</b></label>
             <button id="logIn" onclick="onClick(event)">Login</button>
-        </div>
-        <div>
             <a href="#" id="forgotPassword" onclick="onClick(event)">Forgot password?</a>
         </div> 
         <script> 
