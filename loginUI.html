@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login/Sign-up Page</title>
+    </head>
+    <body>
+        <div>
+            <label for="signUp"><b>Don't have an account?</b></label>
+            <button id="signUp" onclick="onClick(event)">Sign-up</button>
+        </div>
+        <div>
+            <label for="logIn"><b>Already have an account?</b></label>
+            <button id="logIn" onclick="onClick(event)">Login</button>
+        </div>
+        <div>
+            <a href="#" id="forgotPassword" onclick="onClick(event)">Forgot password?</a>
+        </div> 
+        <script> 
+            // Javascript placehoder function to handle onClick (remove when handling is implemented in backend)
+            function onClick(event) {
+                var elementId = event.target.id; // get id from button
+
+                // Handle button clicks differently depending on button id
+                if (elementId === "signUp")
+                {
+                    alert("Sign-up button click detected!");
+                } 
+                else if (elementId === "logIn")
+                {
+                    alert("Login button click detected!");
+                }
+                else if (elementId === "forgotPassword")
+                {
+                    alert("Forgot password button click detected!");
+                }
+            }
+        </script>
+    </body>
+</html>
