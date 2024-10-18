@@ -6,20 +6,20 @@ function userClick (){
 	if (#logIn) {//prompt to start logIn function} 
 	if (#forgetPassword) { //prompt forgot password}
 };
-//login function
-=======
 
 // login
-let email = prompt("What is your emaiL?");
-if (matchEmail(email)) {
-	let password = prompt("What is your password"?);
-	if (matchPassword(password))
-		console.log("Success! Welcome to Clima Closet!);
+function login() {
+	let email = prompt("What is your emaiL?");
+	if (matchEmail(email)) {
+		let password = prompt("What is your password"?);
+		if (matchPassword(password))
+			console.log("Success! Welcome to Clima Closet!);
+		else
+			console.log("Error! Password does not match");
+	}
 	else
-		console.log("Error! Password does not match");
+		console.log("Account does not exist");
 }
-else
-	console.log("Account does not exist");
 
 // check to see if email matches stored email
 function matchEmail(emailToMatch) { 
