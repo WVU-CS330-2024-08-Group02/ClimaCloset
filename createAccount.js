@@ -2,13 +2,9 @@
 //main function for button click
 
 function userClick (){
-  if (#signupClick) {
-    //prompt to start signUp function
-  } else if (#logInClick) {
-    //prompt to start logIn function
-  } else {
-    //prompt forgot password
-  }
+	if (#signUp) { //prompt to start signUp function } 
+	if (#logIn) {//prompt to start logIn function} 
+	if (#forgetPassword) { //prompt forgot password}
 };
 //login function
 =======
