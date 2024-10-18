@@ -1,0 +1,97 @@
+body {
+    background-color: white;
+    display: flex;
+    justify-content: center; /* Align center horizontally */
+    align-items: center; /* Align center vertically */
+    flex-direction: column; /* Stack items vertically */
+    height: 100vh; /* Full height of the viewport */
+    margin: 0; /* Remove default margin */
+    font-family: Arial, sans-serif; /* Set a default font */
+}
+
+/* Large title at the top */
+h1 {
+    text-align: center;
+    font-family: Georgia;
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: -100px;
+    margin-bottom: 150px;
+}
+
+/* Container that mimics a mobile device */
+.center-container {
+    width: 375px; /* Width to mimic mobile device/UI diagram */
+    height: 90vh; /* 90% of the viewport height */
+    background-color: lightblue;
+    display: flex; /* Enable flexbox */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a shadow for better visibility */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    padding: 20px; /* Padding around container */
+    position: relative; /* For positioning the grass at the bottom */
+    overflow: hidden; /* Hide overflowing content */
+}
+
+/* Style for the button */
+button {
+    font-family: Helvetica;
+    padding: 15px 30px; /* Increase size of button */
+    font-size: 16px; /* Size of font inside button */
+    margin: 10px; /* Space between buttons */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    border: none;
+    border-radius: 20px; /* Rounded corners */
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text color */
+    transition: background-color 0.5s; /* Smooth transition for hover effect */
+    box-shadow: 0px 0px 5px black;
+}
+
+/* Change button color on hover */
+button:hover {
+    background-color: #45a049; /* Subtly darker green on hover */
+}
+
+/* Area surrounding buttons */
+.button-area {
+    background: none;
+}
+
+/* Style for link */
+a {
+    color: #4CAF50; /* Green color for the link */
+    text-decoration: underline;
+    font-family: Helvetica;
+    font-size: 16px; /* Same font size as buttons */
+}
+/* Change color of link when active */
+a:active {
+    color: rgb(216, 112, 193);
+}
+
+/* Style for the label */
+label {
+    display: block; /* Stack labels above buttons */
+    margin-bottom: 5px; /* Space between label and button */
+}
+
+/* Grass-like section at the bottom of the container with diagonal stripes */
+.grass {
+    width: 100%; /* Full width of parent center-container */
+    height: 80px; /* Height of the grass inside the container */
+    background-color: #4CAF50; /* Solid green background */
+    background-image: repeating-linear-gradient(
+        60deg,         /* Angle of the diagonal lines */
+        transparent,   /* Start with transparent */
+        transparent 10px,  /* Transparent for 10px */
+        #3e8e41 20px,  /* Darker green line */
+        #3e8e41 40px   /* Darker green line every 20px */
+    );
+    position: absolute; /* Position at the bottom of the center-container */
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
