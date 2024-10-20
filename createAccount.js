@@ -24,19 +24,25 @@ function login() {
 // check to see if email matches stored email
 function matchEmail(emailToMatch) { 
 	//loop through all stored emails
-	if (emailToMatch === stored email)
-		return true; // an email was matched
-	else
-		return false;
+	let email;
+	/*for (email: storedEmails) {
+		if (email === emailToMatch)
+			return true; // an email was matched
+	}(this will be worked on in another sprint)*/ 
+	return false;
+	// Hard code for now
+	console.log("No emails are stored currently");
 }
 
 // check to see if password matches stored password
 function matchPassword(passwordToMatch) {
-	let storedPassword = password stored with input email
+	// let storedPassword = password stored with input email (this will be worked on in next sprint)
 	if (passwordToMatch === storedPassword)
 		return true;
 	else
 		return false;
+	// Hard code for now
+	console.log("No passwords are stored currently");
 }
 
 //signin function
