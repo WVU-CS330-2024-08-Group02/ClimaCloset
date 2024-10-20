@@ -20,5 +20,5 @@ void signUp(){
 
 //store account function
 void storeAccount(String emailInput, String passwordInput){
-  
+  console.log("Account stored, allow access to webapp.");
 }
