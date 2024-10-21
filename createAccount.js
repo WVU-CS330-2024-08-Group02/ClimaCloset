@@ -14,8 +14,9 @@ function login() {
 		let password = prompt("What is your password"?);
 		if (matchPassword(password))
 			console.log("Success! Welcome to Clima Closet!);
-		else
+		else {
 			console.log("Error! Password does not match");
+		}
 	}
 	else
 		console.log("Account does not exist");
