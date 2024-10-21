@@ -4,7 +4,7 @@
 function userClick (){
 	if (#signUp) {signUp();} 
 	if (#logIn) {login();} 
-	if (#forgetPassword) { //prompt forgot password}
+	if (#forgetPassword) {forgotPassword();}
 };
 
 // login
