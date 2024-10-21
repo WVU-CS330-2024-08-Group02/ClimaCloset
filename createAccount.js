@@ -1,11 +1,11 @@
 //Account Backend Java Script
 //main function for button click
 
-function userClick (){
-	if (#signUp) {signUp();} 
-	if (#logIn) {login();} 
-	if (#forgetPassword) {forgotPassword();}
-};
+//function userClick (){
+	//if (#signUp) {signUp();} 
+	//if (#logIn) {login();} 
+	//if (#forgetPassword) {forgotPassword();}
+//};
 
 // login
 function login() {
