@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="createAccount.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,13 +17,13 @@
     <!-- <form action="undetermined" method="post"> , will be used when we know where to send data--> 
 
             <label for="username"><b>Enter username</b></label>
-            <input type="text" id="username" placeholder="username">
+            <input type="text" id="newusername" placeholder="username">
             <label for="password"><b>Enter password</b></label>
-            <input type="text" id="password" placeholder="password">
+            <input type="text" id="newpassword" placeholder="password">
             <label for="repassword"><b>Re-enter password</b></label>
             <input type="text" id="repassword" placeholder="password">
     
-            <button type="submit">Submit</button>
+            <button id="signupBtn">Submit</button>
         
     <!-- </form> to close form later -->
      
@@ -33,5 +32,7 @@
 
     <div class ="grass"></div>
 </div>
+
+<script src="testcreateAccount.js"></script>
 </body>
 </html>
