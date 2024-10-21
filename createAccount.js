@@ -2,8 +2,8 @@
 //main function for button click
 
 function userClick (){
-	if (#signUp) { //prompt to start signUp function } 
-	if (#logIn) {//prompt to start logIn function} 
+	if (#signUp) {signUp();} 
+	if (#logIn) {login();} 
 	if (#forgetPassword) { //prompt forgot password}
 };
 
@@ -52,4 +52,23 @@ else{
   printf("Account already exists, please log in");
 }
   
+}
+
+//forgotPassword function 
+function forgotPassword () {
+	let email=prompt("What is the email associated with your account?"); 
+	if (matchEmail(email) === true) { 
+		let newPassword=prompt("What is your new password");
+		if(matchPassword(password) === true) { 
+			alert("Please reuse another password.");
+		}
+		else {
+			let storedPassword = password;
+			alert("Password reset. Please return to log in.");
+		}
+	}
+	else {
+		alert("Email not found. Please try again or sign up.");
+	}
+	
 }
