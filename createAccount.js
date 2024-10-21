@@ -13,7 +13,7 @@ function login() {
 	if (matchEmail(email)) {
 		let password = prompt("What is your password?");
 		if (matchPassword(password)) {
-			console.log("Success! Welcome to Clima Closet!);
+			console.log("Success! Welcome to Clima Closet!");
 		} else {
 			console.log("Error! Password does not match.");
 		}
