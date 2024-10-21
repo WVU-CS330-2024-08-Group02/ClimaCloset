@@ -47,7 +47,7 @@ function matchPassword(passwordToMatch) {
 }
 
 //signUp function
-void signUp(){
+function signUp(){
   let email = prompt("What is your email?");
 
   //checks to see if account is preexisting
@@ -63,7 +63,7 @@ void signUp(){
 }
 
 //store account function
-void storeAccount(String emailInput, String passwordInput){
+function storeAccount(emailInput, passwordInput){
   console.log("Account stored, allow access to webapp.");
 }
 
