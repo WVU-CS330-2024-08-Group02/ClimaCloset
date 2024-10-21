@@ -11,7 +11,7 @@ function userClick (){
 function login() {
 	let email = prompt("What is your emaiL?");
 	if (matchEmail(email)) {
-		let password = prompt("What is your password"?);
+		let password = prompt("What is your password?");
 		if (matchPassword(password)) {
 			console.log("Success! Welcome to Clima Closet!);
 		} else {
