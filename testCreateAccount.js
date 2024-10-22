@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (rePassword == password) {
                 localStorage.setItem('email',email);
                 localStorage.setItem('password',password);
-                console.log("login successful");
+                console.log("Account creation successful");
             }
     });
 });
