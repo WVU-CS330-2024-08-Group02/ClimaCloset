@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 localStorage.setItem('email',email);
                 localStorage.setItem('password',password);
                 console.log("Account creation successful");
+                // Add home page link
             }
     });
 });

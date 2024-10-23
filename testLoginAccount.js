@@ -15,7 +15,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
             // check if values match
             if ((email == savedEmail) && (password == savedPass)) {
-                console.log("login successful")
+                console.log("login successful");
+                // Add homepage link here
             } else {
                 console.log("Invalid credentials");
             }
