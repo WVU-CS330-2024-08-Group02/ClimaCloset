@@ -1,163 +1,146 @@
-body {
-    background-color: white;
+body{
     display: flex;
-    justify-content: center; /* Align center horizontally */
-    align-items: center; /* Align center vertically */
-    flex-direction: column; /* Stack items vertically */
-    height: 100vh; /* Full height of the viewport */
-    margin: 0; /* Remove default margin */
-    font-family: Arial, sans-serif; /* Set a default font */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
-
-/* Large title at the top */
-h1 {
+h1{
     text-align: center;
-    font-family: Georgia;
-    font-size: 48px;
-    font-weight: bold;
-    margin-top: -100px;
-    margin-bottom: 125px;
+    font-size: 80px;
+    margin: 10px 0;
 }
-
-.title-container {
-    position: absolute; /* Lock to top of center-container*/
-    display: flex; /* Enable flexbox */
-    top: 20vh; /* 20% down from top on center-container */
-    width: 100%; /* Full width to match the container */
+p{
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
 }
-
-/* Container that mimics a mobile device */
-.center-container {
-    width: 375px; /* Width to mimic mobile device/UI diagram */
-    height: 90vh; /* 90% of the viewport height */
-    background-color: lightblue;
-    display: flex; /* Enable flexbox */
-    flex-direction: column; /* Stack items vertically */
-    justify-content: center; /* Center items vertically */
-    align-items: center; /* Center items horizontally */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a shadow for better visibility */
-    border-radius: 10px; /* Add rounded corners */
-    padding: 20px; /* Padding around container */
-    position: relative; /* For positioning the grass at the bottom */
-    overflow: hidden; /* Hide overflowing content */
+.dash {
+    position: relative;
+    top: -165px;
+    font-size: 30px
 }
-
-/* Invisible container to store buttons/inputs, locked to the middle of the center-container */
-.middle-container {
-    display: flex; /* Center content inside this container as well */
-    justify-content: center; /* Center content horizontally */
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center content vertically */
-    width: 100vh; 
-    height: 50vh;
-}
-
-/* Style for the button */
-button {
-    font-family: Helvetica;
-    padding: 15px 30px; /* Increase size of button */
-    font-size: 16px; /* Size of font inside button */
-    margin: 10px; /* Space between buttons */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    border: none;
-    border-radius: 20px; /* Rounded corners */
-    background-color: #4CAF50; /* Green background */
-    color: white; /* White text color */
-    transition: background-color 0.5s; /* Smooth transition for hover effect */
-    box-shadow: 0px 0px 5px black;
-}
-
-/* Change button color on hover */
-button:hover {
-    background-color: #45a049; /* Subtly darker green on hover */
-}
-
-/* Area surrounding login inputs */
-.signup-area {
-    background: whitesmoke;
-    border-radius: 20px;
-    height: 40vh; /* Make 30% of viewport height */
-    display: flex; /* Enable flexbox */
-    flex-direction: column; /* Stack items vertically */
-    justify-content: center; /* Center items vertically */
-    align-items: center; /* Center items horizontally */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a shadow for better visibility */
-    margin: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-    overflow: hidden;
-}
-
-/* Area surrounding login inputs */
-.login-area {
-    background: whitesmoke;
-    border-radius: 20px;
-    height: 30vh; /* Make 30% of viewport height */
-    display: flex; /* Enable flexbox */
-    flex-direction: column; /* Stack items vertically */
-    justify-content: center; /* Center items vertically */
-    align-items: center; /* Center items horizontally */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a shadow for better visibility */
-    margin: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-    overflow: hidden;
+.aspect-ratio-box {
+    width: 500px;
+    height: 1000px;
+    background-color:#4795e2;
+    padding: 20px;
+    box-sizing: border-box;
     position: relative;
 }
-
-/* Container for text inputs */
-.input-container {
-    align-items: flex-start; /* Center items left */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-
-/* Style for textbox */
-input[type=text] {
-    font-family: Helvetica;
-    padding: 10px 20px; /* Increase size of textfield */
-    font-size: 16px; /* Size of font inside textfield */
-    margin: 10px; /* Space between fields */
-    cursor: text; /* Change cursor to text on hover */
-    border: none;
-    border-radius: 20px; /* Rounded corners */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a shadow for better visibility */
+.rectangle {
+    width: 440px;
+    height: 400px;
+    background-color:#D5E8D4;
+    margin: 10px auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
 }
-
-/* Style for link */
-a {
-    color: #4CAF50; /* Green color for the link */
-    text-decoration: underline;
-    font-family: Helvetica;
-    font-size: 16px; /* Same font size as buttons */
+.circle{
+    width: 200px;
+    height: 200px;
+    background-color:#FAD9D5;
+    border: 5px solid #f79b90;
+    text-align: center;
+    font-size: 22px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
 }
-/* Change color of link when active */
-a:active {
-    color: rgb(216, 112, 193);
+.closetDetails, .weatherDetails{
+    width: 140px;
+    height: 80px;
+    background-color:#FAD9D5;
+    border: 5px solid #f79b90;
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 85%;
+    transform: translate(-50%,-50%);
+    z-index: 2;
 }
-
-/* Style for the label */
-label {
-    display: block; /* Stack labels above buttons */
-    margin-bottom: 5px; /* Space between label and button */
+.closetDetails{
+    left: 21%;
 }
-/* Label descendants of input-container */
-.input-container label {
-    color: rgb(100, 100, 100); /* A lighter color */
+.weatherDetails{
+    left: 79%;
 }
-
-/* Grass-like section at the bottom of the container with diagonal stripes */
-.grass {
-    width: 100%; /* Full width of parent center-container */
-    height: 80px; /* Height of the grass inside the container */
-    background-color: #4CAF50; /* Solid green background */
-    background-image: repeating-linear-gradient(
-        60deg,         /* Angle of the diagonal lines */
-        transparent,   /* Start with transparent */
-        transparent 10px,  /* Transparent for 10px */
-        #3e8e41 20px,  /* Darker green line */
-        #3e8e41 40px   /* Darker green line every 20px */
-    );
-    position: absolute; /* Position at the bottom of the center-container */
-    bottom: 0;
-    left: 0;
-    right: 0;
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.info-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 5px;
+}
+.closet-capacity {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 20px;
+    padding: 0 20px; 
+}
+.closet-text, .weather-text {
+    flex: 0.8; 
+    text-align: center;
+}
+.location-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 18px;
+    padding: 5px 10px; 
+}
+.closet-items, .location {
+    flex: 1;
+    text-align: center;
+}
+.details-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 18px;
+    padding: 5px 10px; 
+}
+.item-count, .weather-status {
+    flex: 0.8;
+    text-align: center;
+}
+.image-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding-top: 20px;
+}
+.image-container img {
+    max-width: 125px; 
+    height: auto; 
+}
+.image-container img:first-child {
+    margin-left: 65px; 
+}
+.image-container img:last-child {
+    margin-right: 40px; 
 }
