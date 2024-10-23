@@ -122,6 +122,16 @@ input[type=text] {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a shadow for better visibility */
 }
 
+input[type=password] {
+    font-family: Helvetica;
+    padding: 10px 20px; /* Increase size of textfield */
+    font-size: 16px; /* Size of font inside textfield */
+    margin: 10px; /* Space between fields */
+    cursor: text; /* Change cursor to text on hover */
+    border: none;
+    border-radius: 20px; /* Rounded corners */
+}
+
 /* Style for link */
 a {
     color: #4CAF50; /* Green color for the link */
