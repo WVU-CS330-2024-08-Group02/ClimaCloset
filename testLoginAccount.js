@@ -16,9 +16,10 @@ document.addEventListener("DOMContentLoaded", function() {
             // check if values match
             if ((email == savedEmail) && (password == savedPass)) {
                 console.log("login successful");
-                // Add homepage link here
+                window.location.href="HomePage.html"; // Send user to homepage
             } else {
                 console.log("Invalid credentials");
+                alert("Invalid credentials. Please try again.");
             }
     });
 });
