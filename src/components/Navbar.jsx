@@ -8,7 +8,7 @@ export function Navbar() {
                 <button className="navbutton">Home</button>
             </Link>
             <Link to="Closet">
-                <button className="navbutton">Closet</button>
+                <button className="navbutton">Settings/Preferences</button>
             </Link>
             <Link to="/Weather">
                 <button className="navbutton">Weather</button>
