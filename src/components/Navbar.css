@@ -6,6 +6,7 @@
     transform: translateX(-50%);
     position: fixed;
     justify-content: space-between;
+    align-items: center;
     display: flex;
     padding: 20px;
     background-color: var(--fern-green);
@@ -27,7 +28,6 @@
 .navbutton {
     background-color: var(--rasin-black);
     color: var(--lavender-blush);
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 5px;
     transform: none;
 }
