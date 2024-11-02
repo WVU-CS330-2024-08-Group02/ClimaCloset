@@ -32,7 +32,7 @@ export function Accessories() {
                     <label htmlFor={`checkbox-${index}`}>{option}</label>
                 </div>
             ))}
-            <button type="submit">Submit Accessories</button>
+            <button style={{backgroundColor: '#14b0db'}} type="submit">Submit Accessories</button>
         </form>
     );
 }

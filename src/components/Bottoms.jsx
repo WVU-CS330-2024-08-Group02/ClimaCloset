@@ -18,7 +18,7 @@ export function Bottoms() {
     };
 
     return (
-        <form onSubmit={handleChoice}>
+        <form className="bottoms" onSubmit={handleChoice}>
             <h3>Select All Types of Bottoms you Own</h3>
             {bottoms.map((option, index) => (
                 <div key={index}>
@@ -32,7 +32,7 @@ export function Bottoms() {
                     <label htmlFor={`checkbox-${index}`}>{option}</label>
                 </div>
             ))}
-            <button type="submit">Submit Bottoms</button>
+            <button style={{backgroundColor: '#14b0db'}} type="submit">Submit Bottoms</button>
         </form>
     );
 }

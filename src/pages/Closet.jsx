@@ -11,11 +11,13 @@ export function Closet() {
   
     return (
     <>
-        <WeatherPreferences />
-        <Tops />
-        <Bottoms />
-        <Shoes />
-        <Accessories />
+        <div style={{backgroundColor: '#ab7c0d', minHeight: '100vh', margin: 0, padding: '20px'}}>
+            <WeatherPreferences />
+            <Tops />
+            <Bottoms />
+            <Shoes />
+            <Accessories />
+        </div>
     </>
     )
 }
