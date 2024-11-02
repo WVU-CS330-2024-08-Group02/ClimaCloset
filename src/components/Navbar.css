@@ -19,4 +19,5 @@
     color: var(--lavender-blush);
     margin-left: 5px;
     margin-right: 5px;
+    transform: none;
 }

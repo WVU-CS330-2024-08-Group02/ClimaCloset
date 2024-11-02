@@ -1,18 +1,19 @@
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
+import Nav from 'react-bootstrap/Nav'
 import "./navbar.css"
 
 export function Navbar() {
     return (
-        <div className="navbar">
-            <Link to="/">
+        <Nav className="navbar">
+            <NavLink to="/">
                 <button className="navbutton">Home</button>
-            </Link>
-            <Link to="Closet">
+            </NavLink>
+            <NavLink to="/Closet">
                 <button className="navbutton">Settings/Preferences</button>
-            </Link>
-            <Link to="/Weather">
+            </NavLink>
+            <NavLink to="/Weather">
                 <button className="navbutton">Weather</button>
-            </Link>
-        </div>
+            </NavLink>
+        </Nav>
     )
 }
