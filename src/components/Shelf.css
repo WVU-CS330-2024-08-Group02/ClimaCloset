@@ -1,0 +1,14 @@
+.shelf {
+    padding: 2rem;
+}
+
+.product-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.product {
+    border: 1px solid #ccc;
+    padding: 1rem;
+}
