@@ -1,4 +1,4 @@
-
+/* Test code: can be deleted if no use is found */
 
 export function StoreItem({item}) {
 

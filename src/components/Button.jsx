@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react"
+/* Test code: can be deleted if no use is found */
 
 export function Button({show, setShow, color}) {
-
-    
 
     return (
         <>
