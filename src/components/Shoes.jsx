@@ -32,7 +32,7 @@ export function Shoes() {
                     <label htmlFor={`checkbox-${index}`}>{option}</label>
                 </div>
             ))}
-            <button style={{backgroundColor: '#14db4b'}} type="submit">Submit Shoes</button>
+            <button style={{backgroundColor: '#14b0db'}} type="submit">Submit Shoes</button>
         </form>
     );
 }

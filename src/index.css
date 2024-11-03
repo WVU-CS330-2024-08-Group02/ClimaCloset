@@ -16,7 +16,7 @@
   --outer-space: #464E47;
 
   --lavender-blush: #F3E8EE;
-  --ash-gray: #BACDB0;
+  
   --cambridge-blue: #729B79;
   --paynes-gray: #475B63;
   --rasin-black: #2E2C2F;
@@ -48,7 +48,7 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  color: var(--rasin-black)
+  color: var(--rasin-black);
 }
 
 button {
