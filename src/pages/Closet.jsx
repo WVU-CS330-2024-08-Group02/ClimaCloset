@@ -11,7 +11,7 @@ export function Closet() {
   
     return (
     <>
-        <div style={{backgroundColor: '#ab7c0d', minHeight: '100vh', margin: 0, padding: '20px'}}>
+        <div style={{backgroundColor: '#ab7c0d', height: '100vh', width: '100%', margin: 0}}>
             <WeatherPreferences />
             <Tops />
             <Bottoms />
