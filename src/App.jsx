@@ -4,6 +4,7 @@ import { Layout } from './components/Layout'
 import { Home } from './pages/Home'
 import { Closet } from './pages/Closet'
 import { Weather } from './pages/Weather'
+import { Profile } from './pages/Profile'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/Closet" element={<Closet/>}/>
             <Route path="/Weather" element={<Weather/>}/>
+            <Route path="/Profile" element={<Profile/>}/>
           </Route>
         </Routes>
       </Router>
