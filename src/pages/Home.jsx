@@ -64,8 +64,7 @@ export function Home() {
                 <Shelf />
 
                 <label htmlFor="activity-select" style={dropdownLabel}>
-                    Choose an activity for the day:
-                </label>
+                    Choose an activity for the day:  </label>
                 <select id="activity-select" value={activity} onChange={handleActivityChange} style={dropdownStyle}>
                     <option value="business">Business Professional</option>
                     <option value="active">Outdoor Activity</option>
