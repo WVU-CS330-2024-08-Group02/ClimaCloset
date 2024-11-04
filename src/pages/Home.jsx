@@ -86,7 +86,7 @@ export function Home() {
             </div>
 
             <div>
-                <h1>The Weather Today</h1>
+                <h1 style={ {marginTop: '150px' }}>The Weather Today</h1>
                 <div style={circleStyle}>
                     <span>70&deg; F</span>
                 </div>
