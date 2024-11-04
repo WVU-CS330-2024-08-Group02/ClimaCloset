@@ -60,7 +60,7 @@ export function Home() {
     return (
         <>
             <div>
-                <h1>This is the home page</h1>
+                <h1>Hi Kaylea, welcome to your home page!</h1>
                 <Shelf />
 
                 <label htmlFor="activity-select" style={dropdownLabel}>
