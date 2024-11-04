@@ -33,7 +33,7 @@ export function Home() {
     const circleStyle = {
         width: '300px',
         height: '300px',
-        backgroundColor: 'lightblue',
+        backgroundColor: 'lightgrey',
         borderRadius: '50%',
         margin: '20px auto',
         display: 'flex',
@@ -73,7 +73,7 @@ export function Home() {
                 </select>
 
                 <div style={{ marginTop: '10px' }}>
-                <button onClick={generateOutfit} style={{ marginTop: '10px', fontSize: '20px' }}>
+                <button onClick={generateOutfit} style={{ marginTop: '10px', fontSize: '20px', backgroundColor: '#14b0db' }}>
                     Generate Outfit
                 </button>
                 </div>
