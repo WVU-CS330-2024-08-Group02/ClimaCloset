@@ -180,12 +180,10 @@ export function Weather() {
                 </div>
             </div>
 
-            {/* Button to toggle the containers */}
             <button onClick={toggleContainer} style={{ display: 'block', margin: '10px auto', padding: '10px', backgroundColor: 'transparent', fontWeight: 'bold', fontSize: '30px'}}>
                 {isFirstContainerVisible ? 'Show 7 day Forcast' : 'Show 12 hour Forcast'}
             </button>
 
-            {/* Map container */}
             <div style={mapContainerStyle}>
                 <MapContainer center={position} zoom={6} style={{ height: '500px', width: '700px' }}>
                     <TileLayer

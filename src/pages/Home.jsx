@@ -33,7 +33,7 @@ export function Home() {
     const circleStyle = {
         width: '300px',
         height: '300px',
-        backgroundColor: 'lightgrey',
+        backgroundColor: 'var(--lavender-blush)',
         borderRadius: '50%',
         margin: '20px auto',
         display: 'flex',
