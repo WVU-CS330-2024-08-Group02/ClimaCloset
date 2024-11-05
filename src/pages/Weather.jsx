@@ -2,7 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 
 export function Weather() {
-    const position = [51.505, -0.09]
+    const position = [39.629524, -79.955894]
     return (
         <>
             <h1>Weather Map</h1>
