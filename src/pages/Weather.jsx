@@ -6,7 +6,7 @@ export function Weather() {
     return (
         <>
             <h1>Weather Map</h1>
-            <MapContainer center={position} zoom={6} style={{ height: '600px', width: '1000px' }}>
+            <MapContainer center={position} zoom={6} style={{ height: '600px', width: '1000px', zIndex: '1'}}>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" 
                     attribution='&copy;  <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'

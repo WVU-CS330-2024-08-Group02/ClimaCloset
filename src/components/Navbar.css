@@ -12,10 +12,10 @@
     background-color: var(--fern-green);
     width: 100%; /* Fill entire width of screen */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for fade */
+    z-index: 100;
 }
 .navbar-middle {
     justify-content: center;
-    overflow: hidden;
 }
 .navbar-left {
     margin-left: 3vw;
