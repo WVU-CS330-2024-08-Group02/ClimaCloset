@@ -4,11 +4,11 @@ export function Tops() {
   const [chosenOption, setChosenOption] = useState([]);
   const [hoveredOption, setHoveredOption] = useState(null); // State to track the hovered shirt
   const tops = [
-    { name: "Short Sleeve", description: "A light and breathable top for warm weather." },
-    { name: "Long Sleeve", description: "Perfect for cooler temperatures, provides more coverage." },
-    { name: "Flannel", description: "A cozy and warm shirt, often made of cotton or wool." },
+    { name: "Short Sleeve", description: "Any top with sleeves covering your shoulders." },
+    { name: "Long Sleeve", description: "Sleeves cover your entire arm till your wrist." },
+    { name: "Flannel", description: "A button up top with a collar typically in a plaid pattern." },
     { name: "Tank Top", description: "A sleeveless shirt ideal for hot weather or layering." },
-    { name: "Sweater", description: "A knitted top, typically worn for warmth." },
+    { name: "Sweater", description: "A knitted love sleeve top, typically worn for warmth." },
     { name: "Sweatshirt", description: "A casual, long-sleeve shirt made from soft, warm fabric." },
     { name: "Jacket", description: "A lightweight or heavy outerwear garment for layering." },
     { name: "Coat", description: "A thick outer garment worn to protect against cold weather." },
@@ -30,8 +30,8 @@ export function Tops() {
   return (
     <form className="tops" onSubmit={handleChoice}>
       <h3>Select All Types of Tops You Own</h3>
-      <fieldset>
-        <legend>Types of Tops</legend>
+      
+       
         {tops.map((option, index) => (
           <div key={index}
             onMouseEnter={() => setHoveredOption(option.name)} // Set hovered option
@@ -69,7 +69,7 @@ export function Tops() {
             )}
           </div>
         ))}
-      </fieldset>
+     
       <button style={{ backgroundColor: "#14b0db" }} type="submit">
         Submit Tops
       </button>
