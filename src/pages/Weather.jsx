@@ -61,6 +61,11 @@ const textStyle = {
     fontWeight: 'bold',
 };
 
+const tempStyle = {
+    ...textStyle,
+    marginTop: '-20px',
+}
+
 const mapContainerStyle = {
     display: 'flex',
     justifyContent: 'center',
@@ -119,29 +124,29 @@ export function Weather() {
     };
 
     const firstContainerData = [
-        { time: 'Now', temp: '70&deg;', imgSrc: 'src/assets/Sun.jpg' },
-        { time: '3 pm', temp: '68&deg;', imgSrc: 'placeholder1' },
-        { time: '4 pm', temp: '67&deg;', imgSrc: 'placeholder1' },
-        { time: '5 pm', temp: '70&deg;', imgSrc: 'placeholder1' },
-        { time: '6 pm', temp: '68&deg;', imgSrc: 'placeholder1' },
-        { time: '7 pm', temp: '67&deg;', imgSrc: 'placeholder1' },
-        { time: '8 pm', temp: '70&deg;', imgSrc: 'placeholder1' },
-        { time: '9 pm', temp: '68&deg;', imgSrc: 'placeholder1' },
-        { time: '10 pm', temp: '67&deg;', imgSrc: 'placeholder1' },
-        { time: '11 pm', temp: '70&deg;', imgSrc: 'placeholder1' },
-        { time: '12 am', temp: '68&deg;', imgSrc: 'placeholder1' },
-        { time: '1 am', temp: '67&deg;', imgSrc: 'placeholder1' },
-        { time: '2 am', temp: '70&deg;', imgSrc: 'placeholder1' },
+        { time: 'Now', temp: '70&deg;', imgSrc: 'src/assets/Sun.png' },
+        { time: '3 pm', temp: '68&deg;', imgSrc: 'src/assets/Sun.png' },
+        { time: '4 pm', temp: '67&deg;', imgSrc: 'src/assets/Sun.png' },
+        { time: '5 pm', temp: '65&deg;', imgSrc: 'src/assets/Sun.png' },
+        { time: '6 pm', temp: '63&deg;', imgSrc: 'src/assets/Sun.png' },
+        { time: '7 pm', temp: '60&deg;', imgSrc: 'src/assets/cloud.png' },
+        { time: '8 pm', temp: '57&deg;', imgSrc: 'src/assets/cloud.png' },
+        { time: '9 pm', temp: '57&deg;', imgSrc: 'src/assets/cloud.png' },
+        { time: '10 pm', temp: '56&deg;', imgSrc: 'src/assets/cloud.png' },
+        { time: '11 pm', temp: '55&deg;', imgSrc: 'src/assets/cloud.png' },
+        { time: '12 am', temp: '55&deg;', imgSrc: 'src/assets/cloud.png' },
+        { time: '1 am', temp: '56&deg;', imgSrc: 'src/assets/cloud.png' },
+        { time: '2 am', temp: '56&deg;', imgSrc: 'src/assets/cloud.png' },
     ];
 
     const secondContainerData = [
-        { time: 'Today', temp: '70&deg;', imgSrc: 'placeholder2' },
-        { time: 'Sat', temp: '68&deg;', imgSrc: 'placeholder2' },
-        { time: 'Sun', temp: '67&deg;', imgSrc: 'placeholder2' },
-        { time: 'Mon', temp: '70&deg;', imgSrc: 'placeholder2' },
-        { time: 'Tue', temp: '68&deg;', imgSrc: 'placeholder2' },
-        { time: 'Wed', temp: '67&deg;', imgSrc: 'placeholder2' },
-        { time: 'Thu', temp: '67&deg;', imgSrc: 'placeholder2' },
+        { time: 'Today', temp: '55&deg-75&deg;', imgSrc: 'src/assets/sun.png' },
+        { time: 'Sat', temp: '48&deg-67&deg;', imgSrc: 'src/assets/cloud.png' },
+        { time: 'Sun', temp: '41&deg-64&deg;', imgSrc: 'src/assets/sun.png' },
+        { time: 'Mon', temp: '38&deg-61&deg;', imgSrc: 'src/assets/sun_and_cloud.png' },
+        { time: 'Tue', temp: '45&deg-62&deg;', imgSrc: 'src/assets/sun.png' },
+        { time: 'Wed', temp: '51&deg-63&deg;', imgSrc: 'src/assets/sun_and_cloud.png.png' },
+        { time: 'Thu', temp: '44&deg-59&deg;', imgSrc: 'src/assets/sun_and_cloud.png.png' },
     ];
 
     return (
@@ -173,7 +178,7 @@ export function Weather() {
                             <div key={index} style={roundedRectangleStyle}>
                                 <span style={textStyle}>{data.time}</span>
                                 <img src={data.imgSrc} style={imgStyle} />
-                                <span style={textStyle} dangerouslySetInnerHTML={{ __html: data.temp }} />
+                                <span style={tempStyle} dangerouslySetInnerHTML={{ __html: data.temp }} />
                             </div>
                         ))
                     )}
