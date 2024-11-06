@@ -22,7 +22,7 @@ const roundedRectangleStyle = {
     width: '160px',
     height: '250px',
     borderRadius: '200px',
-    backgroundColor: 'transparent',
+    backgroundColor: '#00000030',
     border: '10px solid black',
     display: 'flex',
     flexDirection: 'column',
@@ -180,7 +180,7 @@ export function Weather() {
                 </div>
             </div>
 
-            <button onClick={toggleContainer} style={{ display: 'block', margin: '10px auto', padding: '10px', backgroundColor: 'transparent', fontWeight: 'bold', fontSize: '30px'}}>
+            <button onClick={toggleContainer} style={{ display: 'block', margin: '10px auto', padding: '10px', backgroundColor: 'transparent', border: '3px solid black', fontWeight: 'bold', fontSize: '30px'}}>
                 {isFirstContainerVisible ? 'Show 7 day Forcast' : 'Show 12 hour Forcast'}
             </button>
 
