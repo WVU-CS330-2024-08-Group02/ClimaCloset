@@ -13,16 +13,16 @@ export function Home() {
         let suggestion;
         switch (activity) {
             case 'business':
-                suggestion = "Dress shirt, blazer, and dress pants.";
+                suggestion = "Dress shirt, blazer, and dress pants. Polo and kahkis.";
                 break;
             case 'active':
-                suggestion = "Athletic shirt and shorts, with sneakers.";
+                suggestion = "Athletic shirt and shorts, with sneakers. Leggings and an athletic shirt.";
                 break;
             case 'indoor':
                 suggestion = "Comfortable loungewear or pajamas.";
                 break;
             case 'casual':
-                suggestion = "T-shirt and jeans.";
+                suggestion = "T-shirt and jeans. Shorts and a long sleeve.";
                 break;
             default:
                 suggestion = "Choose an activity to get an outfit suggestion.";
