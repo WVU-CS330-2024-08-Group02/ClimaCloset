@@ -119,7 +119,7 @@ export function Weather() {
     };
 
     const firstContainerData = [
-        { time: 'Now', temp: '70&deg;', imgSrc: 'placeholder1' },
+        { time: 'Now', temp: '70&deg;', imgSrc: 'src/assets/Sun.jpg' },
         { time: '3 pm', temp: '68&deg;', imgSrc: 'placeholder1' },
         { time: '4 pm', temp: '67&deg;', imgSrc: 'placeholder1' },
         { time: '5 pm', temp: '70&deg;', imgSrc: 'placeholder1' },
