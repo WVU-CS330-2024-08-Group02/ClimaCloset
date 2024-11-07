@@ -145,8 +145,8 @@ export function Weather() {
         { time: 'Sun', temp: '41&deg-64&deg;', imgSrc: 'src/assets/sun.png' },
         { time: 'Mon', temp: '38&deg-61&deg;', imgSrc: 'src/assets/sun_and_cloud.png' },
         { time: 'Tue', temp: '45&deg-62&deg;', imgSrc: 'src/assets/sun.png' },
-        { time: 'Wed', temp: '51&deg-63&deg;', imgSrc: 'src/assets/sun_and_cloud.png.png' },
-        { time: 'Thu', temp: '44&deg-59&deg;', imgSrc: 'src/assets/sun_and_cloud.png.png' },
+        { time: 'Wed', temp: '51&deg-63&deg;', imgSrc: 'src/assets/sun_and_cloud.png' },
+        { time: 'Thu', temp: '44&deg-59&deg;', imgSrc: 'src/assets/sun_and_cloud.png' },
     ];
 
     return (
