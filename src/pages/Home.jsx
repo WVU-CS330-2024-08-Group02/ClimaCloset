@@ -42,6 +42,7 @@ export function Home() {
         color: 'black',
         fontWeight: 'bold',
         fontSize: '60px',
+        flexDirection: 'column'
     };
 
     const dropdownStyle = {
@@ -88,7 +89,10 @@ export function Home() {
             <div>
                 <h1 style={ {marginTop: '150px' }}>The Weather Today</h1>
                 <div style={circleStyle}>
-                    <span>70&deg; F</span>
+                    <img style={{height: '120px', width: '120px'}} src="src/assets/sun.png"></img>
+                    <span style={{marginTop: '-20px'}}>
+                        70&deg; F
+                    </span>
                 </div>
                 <p>in Morgantown, WV</p>
             </div>
