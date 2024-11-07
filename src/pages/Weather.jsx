@@ -115,7 +115,7 @@ function ProgressBar({ value, min, max }) {
 }
 
 export function Weather() {
-    const position = [39.629524, -79.955894];
+    const position = [39.64591951232883, -79.97339559170358];
     
     const [isFirstContainerVisible, setIsFirstContainerVisible] = useState(true);
 
@@ -197,7 +197,7 @@ export function Weather() {
                     />
                     <Marker position={position}>
                         <Popup>
-                            A pretty CSS3 popup. <br /> Easily customizable.
+                            Your current location. <br /> Say Hi!
                         </Popup>
                     </Marker>
                 </MapContainer>
