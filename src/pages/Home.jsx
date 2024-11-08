@@ -46,7 +46,7 @@ export function Home() {
     };
 
     const dropdownStyle = {
-        width: '200px',
+        width: '12em',
         height: '50px',
         fontSize: '20px',
         padding: '5px',
