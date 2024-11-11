@@ -5,6 +5,7 @@ import { Home } from './pages/Home'
 import { Closet } from './pages/Closet'
 import { Weather } from './pages/Weather'
 import { Profile } from './pages/Profile'
+import { About } from './pages/About'
 import { Login } from './pages/Login'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="/Weather" element={<Weather/>}/>
             <Route path="/Login" element={<Login/>}/>
             <Route path="/Profile" element={<Profile/>}/>
+            <Route path="/About" element={<About/>}/>
           </Route>
         </Routes>
       </Router>

@@ -7,6 +7,7 @@ import './Closet.css';
 
 
 export function Closet() {
+    // Call all of the components necessary for the cloest page
     return (
     <>
         <div className="closet-area">
