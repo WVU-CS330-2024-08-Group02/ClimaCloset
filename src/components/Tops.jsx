@@ -14,6 +14,7 @@ export function Tops() {
     { name: "Coat", description: "A thick outer garment worn to protect against cold weather." },
   ];
 
+  // Handle the event when checkbox(es) are clicked by the user
   const handleCheckboxes = (option) => {
     setChosenOption((prevCheckedOptions) =>
       prevCheckedOptions.includes(option)
@@ -22,11 +23,13 @@ export function Tops() {
     );
   };
 
+  // Handle displaying the choices that the user checked
   const handleChoice = (event) => {
     event.preventDefault();
     alert(`You selected: ${chosenOption.join(", ")}`);
   };
 
+  // Create a form that has checkboxes where the user can "choose all the apply"
   return (
     <form className="tops" onSubmit={handleChoice}>
       <h3>Select All Types of Tops You Own</h3>
