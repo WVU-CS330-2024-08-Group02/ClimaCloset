@@ -22,6 +22,9 @@ export function Navbar() {
                 </NavLink>
             </Nav>
             <Nav className="navbar-right">
+                <NavLink to="/Login">
+                    <button className="loginbutton">Login</button>
+                </NavLink>
                 <NavLink to="/Profile">
                     <img alt="profile" src="src/assets/ProfileIcon.ico" className="image-button"></img>
                 </NavLink>
