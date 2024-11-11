@@ -24,12 +24,12 @@ export function Accessories() {
                 <div key={index}>
                     <input 
                         type="checkbox"
-                        id={`checkbox-${index}`}
+                        id={`checkbox4-${index}`}
                         value={option}
                         checked={chosenOption.includes(option)}
                         onChange={() => handleCheckboxes(option)}
                     />
-                    <label htmlFor={`checkbox-${index}`}>{option}</label>
+                    <label htmlFor={`checkbox4-${index}`}>{option}</label>
                 </div>
             ))}
             <button style={{backgroundColor: '#14b0db'}} type="submit">Submit Accessories</button>

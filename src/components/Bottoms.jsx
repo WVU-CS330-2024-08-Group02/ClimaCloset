@@ -35,13 +35,13 @@ export function Bottoms() {
         >
           <input
             type="checkbox"
-            id={`checkbox-${index}`}
+            id={`checkbox2-${index}`}
             value={option.name}
             checked={chosenOption.includes(option.name)}
             onChange={() => handleCheckboxes(option.name)}
             aria-label={`Select ${option.name}`}
           />
-          <label htmlFor={`checkbox-${index}`}>{option.name}</label>
+          <label htmlFor={`checkbox2-${index}`}>{option.name}</label>
 
           {/* Show description when hovered */}
           {hoveredOption === option.name && (

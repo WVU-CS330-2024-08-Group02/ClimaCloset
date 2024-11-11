@@ -35,13 +35,13 @@ export function Shoes() {
         >
           <input
             type="checkbox"
-            id={`checkbox-${index}`}
+            id={`checkbox3-${index}`}
             value={option.name}
             checked={chosenOption.includes(option.name)}
             onChange={() => handleCheckboxes(option.name)}
             aria-label={`Select ${option.name}`}
           />
-          <label htmlFor={`checkbox-${index}`}>{option.name}</label>
+          <label htmlFor={`checkbox3-${index}`}>{option.name}</label>
 
           {/* Show description when hovered */}
           {hoveredOption === option.name && (
