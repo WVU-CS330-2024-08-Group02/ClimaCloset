@@ -7,7 +7,6 @@ import './Closet.css';
 
 
 export function Closet() {
-  
     return (
     <>
         <div className="closet-area">

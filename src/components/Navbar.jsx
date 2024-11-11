@@ -12,13 +12,13 @@ export function Navbar() {
             </Nav>
             <Nav className="navbar-middle">
                 <NavLink to="/">
-                    <button className="navbutton">Home</button>
+                    <a className="navbutton">Home</a>
                 </NavLink>
                 <NavLink to="/Closet">
-                    <button className="navbutton">Settings/Preferences</button>
+                    <a className="navbutton">Settings/Preferences</a>
                 </NavLink>
                 <NavLink to="/Weather">
-                    <button className="navbutton">Weather</button>
+                    <a className="navbutton">Weather</a>
                 </NavLink>
             </Nav>
             <Nav className="navbar-right">

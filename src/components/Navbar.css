@@ -26,10 +26,16 @@
 }
 
 .navbutton {
-    background-color: var(--rasin-black);
+    /* background-color: var(--rasin-black); */
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    background-color: transparent;
     color: var(--lavender-blush);
     margin: 5px;
+    transition: none;
     transform: none;
+    font-size: 15pt;
+    font-weight: 700;
 }
 
 .image-button {
