@@ -6,9 +6,9 @@ export function Navbar() {
     return (
         <Nav className="navbar">
             <Nav className="navbar-left">
-                <a href="https://example.com" target="_blank">
+                <NavLink to="/About">
                     <img alt="Logo" src="src/assets/ClosetIcon.ico" className="image-button"></img>
-                </a>
+                </NavLink>
             </Nav>
             <Nav className="navbar-middle">
                 <NavLink to="/">
