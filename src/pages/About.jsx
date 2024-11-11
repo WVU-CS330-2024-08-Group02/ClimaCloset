@@ -23,7 +23,7 @@ export function About() {
         },
         {
             name: 'Cameron Hannay',
-            pic: 'path/to/pic.jpg',
+            pic: 'src/assets/CamProfile.png',
         },
         {
             name: 'Kaylea Lantz',
@@ -48,7 +48,7 @@ export function About() {
             <div className="group-members">
                 {teamInfo.map((member, index) => (
                     <div key={index} className="group-member">
-                        <img src={member.photo} alt={`${member.name}'s Profile`} className="profile-pic" />
+                        <img src={member.pic} alt={`${member.name}'s Profile`} className="profile-pic" />
                         <h2>{member.name}</h2>
                     </div>
                 ))}
