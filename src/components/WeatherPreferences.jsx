@@ -4,10 +4,12 @@ export function WeatherPreferences() {
     const [temp, setTemp] = useState(50);
     const [showModal, setShowModal] = useState(false);
 
+    // Handle the even when user selects a value on the slider
     const handleChoice = (event) => {
         setTemp(event.target.value)
     }
 
+    // Handle the event when the user lifts their mouse off of the slider
     const handleMouseUp = () => {
         alert(`Temperature Selected Is: ${temp}°F`)
     }
