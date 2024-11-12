@@ -1,0 +1,10 @@
+/* Profile CSS */
+
+
+.profile-image-style {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  display: block;
+  margin: 20px auto;
+}
