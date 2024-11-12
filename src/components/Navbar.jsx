@@ -26,7 +26,7 @@ export function Navbar() {
                     <button className="loginbutton">Login</button>
                 </NavLink>
                 <NavLink to="/Profile">
-                    <img alt="profile" src="src/assets/ProfileIcon.ico" className="image-button"></img>
+                    <img alt="profile" src="src/assets/CamProfile.png" className="image-button"></img>
                 </NavLink>
             </Nav>
         </Nav>
