@@ -3,80 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../pages/Weather.css';
 
-const circleStyle = {
-    width: '300px',
-    height: '300px',
-    borderRadius: '50%',
-    backgroundColor: 'transparent',
-    border: '15px solid black',
-    margin: '20px auto',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: '120px',
-};
-
-const roundedRectangleStyle = {
-    width: '160px',
-    height: '250px',
-    borderRadius: '200px',
-    backgroundColor: '#00000030',
-    border: '10px solid black',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'white',
-    fontWeight: 'bold',
-    fontSize: '40px',
-    textAlign: 'center',
-    marginRight: '20px',
-    flex: '0 0 auto',
-};
-
-const containerWrapperStyle = {
-    display: 'flex',
-    overflowX: 'auto',
-    whiteSpace: 'nowrap',
-    alignItems: 'center',
-    width: '100%',
-    maxWidth: '900px',
-    height: 'auto',
-    margin: '0 auto',
-    paddingBottom: '0 10px',
-};
-
-const imgStyle = {
-    width: '100px',
-    height: '100px',
-    objectFit: 'cover',
-    marginBottom: '10px',
-};
-
-const textStyle = {
-    fontSize: '40px',
-    color: 'white',
-    fontWeight: 'bold',
-};
-
-const tempStyle = {
-    ...textStyle,
-    marginTop: '-20px',
-}
-
-const mapContainerStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-    maxWidth: '1000px',
-    height: '500px',
-    margin: '20px auto',
-};
-
+// Function to determine the color of the progress bar based on temperature value
 function getColor(value) {
     if (value <= 40) {
         return 'lightblue';
@@ -89,41 +16,37 @@ function getColor(value) {
     }
 }
 
+// Progress bar component that takes current, minimum, and maximum temperature values
 function ProgressBar({ value, min, max }) {
+    // Calculate progress percentage based on temperature range
     const progress = ((value - min) / (max - min)) * 100;
 
-    const containerStyle = {
-        width: '600px',
-        height: '20px',
-        backgroundColor: '#e0e0e0',
-        borderRadius: '10px',
-        overflow: 'hidden',
-    };
-
-    const progressStyle = {
-        width: `${Math.min(Math.max(progress, 0), 100)}%`,
-        height: '100%',
-        backgroundColor: getColor(value),
-        borderRadius: '10px 0 0 10px',
-        transition: 'width 0.3s ease, background-color 0.3s ease',
-    };
-
     return (
-        <div style={containerStyle}>
-            <div style={progressStyle}></div>
+        <div className="progress-bar-container">
+            {/* Style progress bar width and color based on temperature value */}
+            <div
+                className="progress-bar"
+                style={{ width: `${Math.min(Math.max(progress, 0), 100)}%`, backgroundColor: getColor(value) }}
+            ></div>
         </div>
     );
 }
 
+// Main component for displaying weather information
 export function Weather() {
+    
+    // Coordinates for the current user location 
     const position = [39.64591951232883, -79.97339559170358];
     
+    // State to toggle between showing the 12-hour and 7-day forecast containers 
     const [isFirstContainerVisible, setIsFirstContainerVisible] = useState(true);
 
+    // Function to toggle between the 12-hour and 7-day forecast view
     const toggleContainer = () => {
         setIsFirstContainerVisible(!isFirstContainerVisible);
     };
 
+    // Data for the 12-hour forecast (time, temperature, and icon) 
     const firstContainerData = [
         { time: 'Now', temp: '70&deg;', imgSrc: 'src/assets/Sun.png' },
         { time: '3 pm', temp: '68&deg;', imgSrc: 'src/assets/Sun.png' },
@@ -140,6 +63,7 @@ export function Weather() {
         { time: '2 am', temp: '56&deg;', imgSrc: 'src/assets/cloud.png' },
     ];
 
+    // Data for the 7-day forecast (day, temperature range, and icon) 
     const secondContainerData = [
         { time: 'Today', temp: '55&deg-75&deg;', imgSrc: 'src/assets/sun.png' },
         { time: 'Sat', temp: '48&deg-67&deg;', imgSrc: 'src/assets/cloud.png' },
@@ -147,50 +71,62 @@ export function Weather() {
         { time: 'Mon', temp: '38&deg-61&deg;', imgSrc: 'src/assets/sun_and_cloud.png' },
         { time: 'Tue', temp: '45&deg-62&deg;', imgSrc: 'src/assets/sun.png' },
         { time: 'Wed', temp: '51&deg-63&deg;', imgSrc: 'src/assets/sun_and_cloud.png' },
-        { time: 'Thu', temp: '44&deg-59&deg;', imgSrc: 'src/assets/sun_and_cloud.png' },
+        { time: 'Thu', temp: '88&deg-88&deg;', imgSrc: 'src/assets/sun_and_cloud.png' },
     ];
 
     return (
         <>
+            {/* Display the title */}
             <h1>Current Location</h1>
-            <div style={circleStyle}>
+            
+            {/* Circle displaying current weather and temperature */}
+            <div className="circle-style">
                 <span style={{ fontSize: '30px', marginTop: '20px' }}>Sunny</span>
                 <span style={{ marginTop: '-50px' }}>70&deg;</span>
             </div>
+
+            {/* Centered progress bar displaying temperature range */}
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                 <ProgressBar value={70} min={55} max={75} />
             </div>
+
+            {/* Display the temperature range text */}
             <div>
-                <span style={textStyle}>Low of 55&deg; High of 75&deg;</span>
+                <span className="text-style">Low of 55&deg; High of 75&deg;</span>
             </div>
 
+            {/* Container for displaying either the 12-hour or 7-day forecast */}
             <div style={{marginTop: '20px'}}>
-                <div style={containerWrapperStyle}>
+                <div className="container-wrapper-style">
                     {isFirstContainerVisible ? (
+                        // Render 12-hour forecast data
                         firstContainerData.map((data, index) => (
-                            <div key={index} style={roundedRectangleStyle}>
-                                <span style={textStyle}>{data.time}</span>
-                                <img src={data.imgSrc} style={imgStyle} />
-                                <span style={textStyle} dangerouslySetInnerHTML={{ __html: data.temp }} />
+                            <div key={index} className="rounded-rectangle-style">
+                                <span className="text-style">{data.time}</span>
+                                <img src={data.imgSrc} className="img-style" alt="Weather icon" />
+                                <span className="temp-style" dangerouslySetInnerHTML={{ __html: data.temp }} />
                             </div>
                         ))
                     ) : (
+                        // Render 7-day forecast data
                         secondContainerData.map((data, index) => (
-                            <div key={index} style={roundedRectangleStyle}>
-                                <span style={textStyle}>{data.time}</span>
-                                <img src={data.imgSrc} style={imgStyle} />
-                                <span style={tempStyle} dangerouslySetInnerHTML={{ __html: data.temp }} />
+                            <div key={index} className="rounded-rectangle-style">
+                                <span className="text-style">{data.time}</span>
+                                <img src={data.imgSrc} className="img-style" alt="Weather icon" />
+                                <span className="temp-style" dangerouslySetInnerHTML={{ __html: data.temp }} />
                             </div>
                         ))
                     )}
                 </div>
             </div>
 
-            <button onClick={toggleContainer} style={{ display: 'block', margin: '10px auto', padding: '10px', backgroundColor: 'transparent', border: '3px solid black', fontWeight: 'bold', fontSize: '30px'}}>
-                {isFirstContainerVisible ? 'Show 7 day Forcast' : 'Show 12 hour Forcast'}
+            {/* Toggle button to switch between the 12-hour and 7-day forecast */}
+            <button onClick={toggleContainer} className="toggle-button">
+                {isFirstContainerVisible ? 'Show 7 day Forecast' : 'Show 12 hour Forecast'}
             </button>
 
-            <div style={mapContainerStyle}>
+            {/* Map container showing the user's current location */}
+            <div className="map-container-style">
                 <MapContainer center={position} zoom={6} style={{ height: '500px', width: '700px' }}>
                     <TileLayer
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" 
