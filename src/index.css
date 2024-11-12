@@ -10,18 +10,18 @@
 
   /* Custon colors for scheme*/
   --mint-cream: #F1FFFA;
-  --tea-green: #CCFCCB;
-  --ash-gray: #BACDB0;
+  --ash-gray: #BACDB0; /* Color of background */
   --celadon: #96E6B3;
-  --fern-green: #568259;
+  --fern-green: #568259; /* Color of navbar */
   --outer-space: #464E47;
-
   --lavender-blush: #F3E8EE;
+  --action-color: #14b0db; /* Color for interactable items */
   
+  --tea-green: #CCFCCB;
   --cambridge-blue: #729B79;
   --paynes-gray: #475B63;
   --rasin-black: #2E2C2F;
-
+  
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -35,7 +35,11 @@ a {
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--action-color);
+}
+
+input {
+  accent-color: var(--action-color);
 }
 
 body {

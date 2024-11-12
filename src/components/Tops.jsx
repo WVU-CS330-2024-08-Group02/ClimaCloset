@@ -3,6 +3,7 @@ import { useState } from "react";
 export function Tops() {
   const [chosenOption, setChosenOption] = useState([]);
   const [hoveredOption, setHoveredOption] = useState(null); // State to track the hovered shirt
+  // Store the types of tops and their respective desecriptions in an array
   const tops = [
     { name: "Short Sleeve", description: "Any top with sleeves covering your shoulders." },
     { name: "Long Sleeve", description: "Sleeves cover your entire arm till your wrist." },
@@ -29,27 +30,27 @@ export function Tops() {
     alert(`You selected: ${chosenOption.join(", ")}`);
   };
 
-  // Create a form that has checkboxes where the user can "choose all the apply"
+  // Create a form that has checkboxes where the user can "choose all that apply"
   return (
     <form className="tops" onSubmit={handleChoice}>
       <h3>Select All Types of Tops You Own</h3>
       
        
         {tops.map((option, index) => (
-          <div key={index}
+          <div key={index} 
             onMouseEnter={() => setHoveredOption(option.name)} // Set hovered option
             onMouseLeave={() => setHoveredOption(null)} // Reset hovered option
             style={{ position: "relative" }}
           >
             <input
               type="checkbox"
-              id={`checkbox-${index}`}
+              id={`checkbox1-${index}`}
               value={option.name}
               checked={chosenOption.includes(option.name)}
               onChange={() => handleCheckboxes(option.name)}
               aria-label={`Select ${option.name}`}
             />
-            <label htmlFor={`checkbox-${index}`}>{option.name}</label>
+            <label htmlFor={`checkbox1-${index}`}>{option.name}</label>
 
             {/* Show description when hovered */}
             {hoveredOption === option.name && (
@@ -73,7 +74,7 @@ export function Tops() {
           </div>
         ))}
      
-      <button style={{ backgroundColor: "#14b0db" }} type="submit">
+      <button style={{ backgroundColor: "#14b0db" }} type="submit"> 
         Submit Tops
       </button>
     </form>
