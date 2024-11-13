@@ -1,4 +1,5 @@
 import { useState } from "react"
+import '../components/WeatherPreferences.css'
 
 export function WeatherPreferences() {
   const [temp, setTemp] = useState(50);
@@ -26,7 +27,7 @@ export function WeatherPreferences() {
           <label>Select Ideal Temperature:<div className="question-icon" onClick={handleClickQuestionMark}>?</div>  <div></div>{temp}°F</label>
           <input type="range" min="0" max="100" value={temp} onChange={handleChoice} onMouseUp={handleMouseUp}/>
         
-      {/* Modal Box */}
+    {/* Modal Box, this is a pop up on click to show ideal temp info */}
     {showModal && (
       <div className="modal">
         <div className="modal-content">
@@ -38,71 +39,7 @@ export function WeatherPreferences() {
         </div>
       </div>
     )}
-        
-      <style jsx>{`
-      label {
-        position: relative;
-        font-size: 18px;
-        cursor: pointer;
-      }
 
-      input[type="range"] {
-        margin-top: 10px;
-      }
-
-      .question-icon {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        width: 20px;
-        height: 20px;
-        background-color: grey;
-        color: white;
-        border-radius: 50%;
-        font-size: 12px;
-        margin-left: 10px;
-        cursor: pointer;
-        font-weight: bold;
-      }
-
-      .modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 100;
-      }
-
-      .modal-content {
-        background-color: white;
-        padding: 20px;
-        border-radius: 5px;
-        max-width: 500px;
-        width: 80%;
-        text-align: center;
-      }
-
-      .modal button {
-        margin-top: 20px;
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #007BFF;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-
-      .modal button:hover {
-        background-color: #0056b3;
-      }
-      `}
-    </style>
     </div>  
   )
 }
