@@ -1,4 +1,5 @@
 import { useState } from "react";
+import '../components/Tops.css'
 
 export function Tops() {
   const [chosenOption, setChosenOption] = useState([]);
@@ -40,7 +41,6 @@ export function Tops() {
           <div key={index} 
             onMouseEnter={() => setHoveredOption(option.name)} // Set hovered option
             onMouseLeave={() => setHoveredOption(null)} // Reset hovered option
-            style={{ position: "relative" }}
           >
             <input
               type="checkbox"
@@ -54,27 +54,14 @@ export function Tops() {
 
             {/* Show description when hovered */}
             {hoveredOption === option.name && (
-              <div
-                style={{
-                  position: "absolute",
-                  top: "30px",
-                  left: "0",
-                  backgroundColor: "#fff",
-                  padding: "10px",
-                  border: "1px solid #ddd",
-                  borderRadius: "5px",
-                  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                  zIndex: "100",
-                  width: "200px",
-                }}
-              >
+              <div className = "description-tooltip">
                 {option.description}
               </div>
             )}
           </div>
         ))}
      
-      <button style={{ backgroundColor: "#14b0db" }} type="submit"> 
+      <button type="submit"> 
         Submit Tops
       </button>
     </form>
