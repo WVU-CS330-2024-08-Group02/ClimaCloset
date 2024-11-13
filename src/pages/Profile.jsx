@@ -1,5 +1,5 @@
 import React from 'react';
-import '../pages/Profile.css'; // Ensure you have a linked CSS file
+import '../pages/Profile.css';
 
 export function Profile() {
   return (
@@ -17,7 +17,7 @@ export function Profile() {
         </div>
       </div>
 
-      {/* Footer */}
+      {/* Edit Button */}
       <div className="profile-footer">
         <button className="edit-button">Edit Profile</button>
       </div>
