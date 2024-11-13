@@ -3,6 +3,7 @@
 import React from 'react';
 import '../components/Shelf.css';
 
+/* this makes the ids for each of the thing in the closet */
 export function Shelf() {
     const products = [
         { id: 1, name: "Tops", description: "Displayed here will be the current tops you have in your closet." },
@@ -11,6 +12,7 @@ export function Shelf() {
         { id: 3, name: "Accessories", description: "Your current accessories." },
     ];
 
+    /* This goes through the map of items and places them in the shelf*/
     return (
         <div className="shelf">
             <h2>Your Clothes</h2>
