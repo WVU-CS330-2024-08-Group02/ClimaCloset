@@ -19,25 +19,29 @@
   text-align: center;
 }
 
+/* Profile Image */
 .profile-image {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
   margin-right: 20px;
-  border: 4px solid #4CAF50; /* Green border around the profile image */
+  border: 4px solid #4CAF50;
 }
 
+/* Profile Info */
 .profile-info {
   flex-grow: 1;
 }
 
+/* Profile Username */
 .profile-username {
   font-size: 24px;
   font-weight: bold;
   color: #333;
 }
 
+/* Profile Name */
 .profile-name {
   font-size: 18px;
   color: #777;
@@ -49,6 +53,7 @@
   text-align: center;
 }
 
+/* Edit Button Style */
 .edit-button {
   background-color: #4CAF50;
   color: #fff;
@@ -60,6 +65,7 @@
   transition: background-color 0.3s ease;
 }
 
+/* Edit Button On Hover */
 .edit-button:hover {
   background-color: #45a049;
 }
