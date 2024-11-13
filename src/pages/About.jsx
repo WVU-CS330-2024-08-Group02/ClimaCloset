@@ -19,7 +19,7 @@ export function About() {
         },
         {
             name: 'Kevin Agazie',
-            pic: 'src/assests/KevinProfile.jpg',
+            pic: 'src/assests/KevinProfile.png',
         },
         {
             name: 'Cameron Hannay',
