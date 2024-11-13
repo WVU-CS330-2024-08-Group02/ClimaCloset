@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom"
 import Nav from 'react-bootstrap/Nav'
-import "./navbar.css"
+import "./navbar.css" // Styles for navbar elements
 
 export function Navbar() {
     return (
@@ -12,18 +12,18 @@ export function Navbar() {
             </Nav>
             <Nav className="navbar-middle">
                 <NavLink to="/">
-                    <a className="navbutton">Home</a>
+                    <a className="nav-button">Home</a>
                 </NavLink>
                 <NavLink to="/Closet">
-                    <a className="navbutton">Preferences</a>
+                    <a className="nav-button">Preferences</a>
                 </NavLink>
                 <NavLink to="/Weather">
-                    <a className="navbutton">Weather</a>
+                    <a className="nav-button">Weather</a>
                 </NavLink>
             </Nav>
             <Nav className="navbar-right">
                 <NavLink to="/Login">
-                    <button className="loginbutton">Login</button>
+                    <button className="login-button">Login</button>
                 </NavLink>
                 <NavLink to="/Profile">
                     <img alt="profile" src="src/assets/CamProfile.png" className="profile-button"></img>

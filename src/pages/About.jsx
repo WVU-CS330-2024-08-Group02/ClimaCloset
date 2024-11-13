@@ -31,7 +31,7 @@ export function About() {
         },
         {
             name: 'Mason Phillips',
-            pic: 'path/to/pic.jpg',
+            pic: 'src/assets/MasonProfile.png',
         },
     ]
 
