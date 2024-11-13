@@ -15,16 +15,19 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for fade */
     z-index: 100000;
 }
+
 /* Middle portion on navbar, houses names of pages */
 .navbar-middle {
     justify-content: center;
     position: center;
 }
+
 /* Left side of navbar, houses the logo */
 .navbar-left {
     position: absolute;
     left: 3vw;
 }
+
 /* Right side of navbar, houses login button and profile image */
 .navbar-right {
     position: absolute;
@@ -32,6 +35,7 @@
     display: flex;
     align-items: center;
 }
+
 /* Button for page selection */
 .nav-button {
     padding-left: 0.75em;
@@ -41,17 +45,26 @@
     font-size: 17.5pt;
     font-weight: 700;
 }
+.nav-button:hover {
+    color: #c2c2c2;
+}
+.nav-button:active {
+    color: #9b9b9b;
+}
+
 /* Login button */
 .login-button {
     background-color: var(--action-color);
     color: black;
     margin-right: 40px;
 }
+
 /* Button style for logo image */
 .image-button {
     width: 40px;
     height: 40px;
 }
+
 /* Button style for profile button */
 .profile-button {
     width: 40px;
