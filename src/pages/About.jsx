@@ -3,7 +3,7 @@ export function About() {
     const teamInfo = [
         {
             name: 'Wesam Almubarak',
-            pic: 'path/to/pic.jpg',
+            pic: 'src/assets/wesamPfp.jpg',
         },
         {
             name: 'Eammon Anderson',
@@ -11,7 +11,7 @@ export function About() {
         },
         {
             name: 'Gracie Anderson',
-            pic: 'path/to/pic.jpg',
+            pic: 'src/assets/GracieProfile.png',
         },
         {
             name: 'Blake Casto',
@@ -19,7 +19,7 @@ export function About() {
         },
         {
             name: 'Kevin Agazie',
-            pic: 'path/to/pic.jpg',
+            pic: 'src/assets/KevinProfile.png',
         },
         {
             name: 'Cameron Hannay',
@@ -48,8 +48,10 @@ export function About() {
             <div className="group-members">
                 {teamInfo.map((member, index) => (
                     <div key={index} className="group-member">
-                        <img src={member.pic} alt={`${member.name}'s Profile`} className="profile-pic" />
                         <h2>{member.name}</h2>
+                        <div className="circle">
+                            <img src={member.pic} alt={`${member.name}'s Profile`} className="profile-pic" />
+                        </div>
                     </div>
                 ))}
             </div>
