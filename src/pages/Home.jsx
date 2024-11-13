@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Shelf } from "../components/Shelf";
+import './Home.css';  // Import the CSS file
 
 export function Home() {
     const [activity, setActivity] = useState('casual'); // Default activity
@@ -9,6 +10,7 @@ export function Home() {
         setActivity(event.target.value); // Update activity based on selection
     };
 
+    {/* outfit suggestions */}
     const generateOutfit = () => {
         let suggestion;
         switch (activity) {
@@ -30,67 +32,48 @@ export function Home() {
         setOutfitSuggestion(suggestion);
     };
 
-    const circleStyle = {
-        width: '300px',
-        height: '300px',
-        backgroundColor: 'var(--lavender-blush)',
-        borderRadius: '50%',
-        margin: '20px auto',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: 'black',
-        fontWeight: 'bold',
-        fontSize: '60px',
-        flexDirection: 'column'
-    };
-
-    const dropdownStyle = {
-        width: '12em',
-        height: '50px',
-        fontSize: '20px',
-        padding: '5px',
-    };
-
-    const dropdownLabel = {
-        fontSize: '24px',
-        fontWeight: 'bold',
-        marginBottom: '10px',
-    };
-
     return (
         <>
             <div>
                 <h1>Hi Kaylea, welcome to your home page!</h1>
+                {/* insert shelf component */}
                 <Shelf />
 
-                <label htmlFor="activity-select" style={dropdownLabel}>
-                    Choose an activity for the day:  </label>
-                <select id="activity-select" value={activity} onChange={handleActivityChange} style={dropdownStyle}>
+                {/* button for the generate outfit */}
+                <label htmlFor="activity-select" className="dropdown-label">
+                    Choose an activity for the day:
+                </label>
+                <select
+                    id="activity-select"
+                    value={activity}
+                    onChange={handleActivityChange}
+                    className="dropdown"
+                >
                     <option value="business">Business Professional</option>
                     <option value="active">Outdoor Activity</option>
                     <option value="indoor">Indoor Lounging</option>
                     <option value="casual">Casual/Low Activity</option>
                 </select>
 
-                <div style={{ marginTop: '10px' }}>
-                <button onClick={generateOutfit} style={{ marginTop: '10px', fontSize: '20px', backgroundColor: '#14b0db' }}>
-                    Generate Outfit
-                </button>
+                <div className="button-container">
+                    <button onClick={generateOutfit} className="button">
+                        Generate Outfit
+                    </button>
                 </div>
 
                 {outfitSuggestion && (
-                    <p style={{ marginTop: '20px', fontSize: '18px', fontWeight: 'bold' }}>
+                    <p className="outfit-suggestion">
                         Suggested Outfit: {outfitSuggestion}
                     </p>
                 )}
             </div>
-
+        
+        {/* container for thw weather on home page */}
             <div>
-                <h1 style={ {marginTop: '150px' }}>The Weather Today</h1>
-                <div style={circleStyle}>
-                    <img style={{height: '120px', width: '120px'}} src="src/assets/sun.png"></img>
-                    <span style={{marginTop: '-20px'}}>
+                <h1 className="weather-title">The Weather Today</h1>
+                <div className="circle">
+                    <img className="weather-img" src="src/assets/sun.png" alt="weather-icon" />
+                    <span className="weather-temp">
                         70&deg; F
                     </span>
                 </div>
