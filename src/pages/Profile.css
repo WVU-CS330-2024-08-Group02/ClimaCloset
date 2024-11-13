@@ -2,18 +2,19 @@
 
 /* Profile Container */
 .profile-container {
-  width: 100%;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 40px auto;
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
 }
 
-/* Profile Header */
-.profile-header {
+/* Profile Image and Username Container */
+.profile-image-and-username {
   display: flex;
+  width: 50vw;
+  height: 250px;
+  min-width: 300px;
   align-items: center;
   margin-bottom: 20px;
   text-align: center;
@@ -21,42 +22,25 @@
 
 /* Profile Image */
 .profile-image {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
   margin-right: 20px;
-  border: 4px solid #4CAF50;
+  border: 4px solid #568259;
 }
 
-/* Profile Info */
-.profile-info {
-  flex-grow: 1;
-}
-
-/* Profile Username */
+/* Profile Username Text */
 .profile-username {
-  font-size: 24px;
+  flex-grow: 1;
+  font-size: 30px;
   font-weight: bold;
-  color: #333;
-}
-
-/* Profile Name */
-.profile-name {
-  font-size: 18px;
-  color: #777;
-  margin-top: 5px;
-}
-
-/* Edit Button */
-.profile-footer {
-  text-align: center;
 }
 
 /* Edit Button Style */
 .edit-button {
-  background-color: #4CAF50;
-  color: #fff;
+  background-color: #568259;
+  color: white;
   font-size: 16px;
   padding: 10px 20px;
   border: none;
