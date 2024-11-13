@@ -3,7 +3,7 @@ export function About() {
     const teamInfo = [
         {
             name: 'Wesam Almubarak',
-            pic: 'path/to/pic.jpg',
+            pic: 'src/assets/wesamPfp.jpg',
         },
         {
             name: 'Eammon Anderson',
@@ -49,7 +49,9 @@ export function About() {
                 {teamInfo.map((member, index) => (
                     <div key={index} className="group-member">
                         <h2>{member.name}</h2>
-                        <img src={member.pic} alt={`${member.name}'s Profile`} className="profile-pic" />
+                        <div className="circle">
+                            <img src={member.pic} alt={`${member.name}'s Profile`} className="profile-pic" />
+                        </div>
                     </div>
                 ))}
             </div>
