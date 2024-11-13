@@ -1,0 +1,39 @@
+
+/* Style the form container */
+.shoes {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto; /* Center the form on the page */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Horizontally center content inside the form */
+  }
+
+  /* Style for the checkbox options */
+  .shoes div {
+    position: relative;
+    display: flex; /* Use flex to align the checkbox and label on the same line */
+    align-items: center; /* Vertically align items in the center */
+  }
+  
+  /* Style for the description that appears when hovering */
+  .shoes .description-tooltip {
+    position: absolute;
+    top: 0px;
+    left: -250px;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    width: 200px;
+  }
+
+  /* Style for button */
+  button{
+    background-Color: #14b0db;
+    color: #fff;
+    }
+
