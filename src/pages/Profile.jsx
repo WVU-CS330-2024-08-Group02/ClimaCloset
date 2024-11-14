@@ -1,7 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../pages/Profile.css';
 
 export function Profile() {
+  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+
+  const dropdown = () => {
+    setIsDropdownVisible(!isDropdownVisible);
+  };
+
   return (
     <div className="profile-container">
       {/* Image and Username */}
@@ -14,7 +20,19 @@ export function Profile() {
 
       {/* Edit Button */}
       <div>
-        <button className="edit-button">Edit Profile</button>
+        <button className="edit-button" onClick={dropdown}>Edit Profile</button>
+
+        {/* Dropdown */}
+        {isDropdownVisible && (
+          <div className="dropdown">
+            <ul>
+              <li>Edit Username</li>
+              <li>Change Password</li>
+              <li>Update Email</li>
+              <li>Log Out</li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
