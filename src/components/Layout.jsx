@@ -6,7 +6,7 @@ export function Layout() {
     return (
         <>
             <Navbar/>
-            <main style={{marginTop: "5em"}}> 
+            <main style={{marginTop: "3em"}}> 
                 <Outlet />
             </main>
         </>
