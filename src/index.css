@@ -74,7 +74,7 @@ body::after {
 .header {
   width: 100%;
   height: 50vh; /* Adjust this value to control how much of the page the image takes up */
-  background: url('./assets/cloudy.HEIC') no-repeat center center;
+  background: url('./assets/cloudy.jpg') no-repeat center center;
   background-size: cover; /* Ensures the image covers the area */
   /*background-attachment: fixed;  Keeps the image fixed in place while scrolling */
 }
