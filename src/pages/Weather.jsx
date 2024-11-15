@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { CenterContainer } from '../components/CenterContainer';
 import 'leaflet/dist/leaflet.css';
 import '../pages/Weather.css';
 
@@ -75,7 +76,7 @@ export function Weather() {
     ];
 
     return (
-        <div className="center-container">
+        <CenterContainer>
             {/* Display the title */}
             <div className='top-section'>
                 <div className='left-box'>
@@ -145,6 +146,6 @@ export function Weather() {
                     {isFirstContainerVisible ? 'Show 7 day Forecast' : 'Show 12 hour Forecast'}
                 </button>
             </div>
-        </div>
+        </CenterContainer>
     );
 }

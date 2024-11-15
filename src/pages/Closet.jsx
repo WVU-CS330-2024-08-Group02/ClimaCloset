@@ -4,6 +4,7 @@ import { Tops } from "../components/Tops";
 import { Bottoms } from "../components/Bottoms";
 import { Shoes } from "../components/Shoes";
 import { Accessories } from "../components/Accessories";
+import { CenterContainer } from '../components/CenterContainer';
 import './Closet.css';
 
 export function Closet() {
@@ -45,13 +46,13 @@ export function Closet() {
 
     return (
         <>
-            <div className="closet-area">
+            <CenterContainer>
                 <WeatherPreferences />
                 <Tops onSelect={(top) => toggleSelection(top, setSelectedTops, selectedTops)} selected={selectedTops} />
                 <Bottoms onSelect={(bottom) => toggleSelection(bottom, setSelectedBottoms, selectedBottoms)} selected={selectedBottoms} />
                 <Shoes onSelect={(shoes) => toggleSelection(shoes, setSelectedShoes, selectedShoes)} selected={selectedShoes} />
                 <Accessories onSelect={(accessory) => toggleSelection(accessory, setSelectedAccessories, selectedAccessories)} selected={selectedAccessories} />
-            </div>
+            </CenterContainer>
         </>
     );
 }
