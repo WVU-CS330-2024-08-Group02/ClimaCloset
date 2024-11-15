@@ -4,8 +4,13 @@
  * sensitive data
  */
 
-require('dotenv').config();
+const test = require('dotenv').config();
+console.log(test);
 console.log(process.env.DB_USER);
+console.log(process.env.DB_USER);
+console.log(process.env.DB_PASSWORD);
+console.log(process.env.DB_DATABASE);
+console.log(process.env.DB_SERVER);
 const sql = require('mssql');
 
 // Database configuration object using enviorment variables for security
