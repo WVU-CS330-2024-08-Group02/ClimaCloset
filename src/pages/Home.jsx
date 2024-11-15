@@ -34,8 +34,10 @@ export function Home() {
 
     return (
         <>
-            <div>
+           
+                <div className="header">
                 <h1>Hi Kaylea, welcome to your home page!</h1>
+                </div>
                 {/* insert shelf component */}
                 <Shelf />
 
@@ -66,7 +68,7 @@ export function Home() {
                         Suggested Outfit: {outfitSuggestion}
                     </p>
                 )}
-            </div>
+            
         
         {/* container for thw weather on home page */}
             <div>
