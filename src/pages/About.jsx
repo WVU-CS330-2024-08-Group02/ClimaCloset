@@ -35,7 +35,7 @@ export function About() {
         },
         {
             name: 'Kaylea Lantz',
-            pic: 'src/assets/KayleaProfile.jpeg',
+            pic: 'src/assets/Kaylea Profile Pic.jpg',
             bio: 'Dev Team: Frontend',
         },
         {
