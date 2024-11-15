@@ -30,7 +30,7 @@ export function About() {
         },
         {
             name: 'Cameron Hannay',
-            pic: 'src/assets/CamProfile.png',
+            pic: 'src/assets/CamProfile.jpg',
             bio: 'Dev Team: Frontend',
         },
         {
