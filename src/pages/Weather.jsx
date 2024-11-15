@@ -75,70 +75,80 @@ export function Weather() {
     ];
 
     return (
-        <>
+        <div className="center-container">
             {/* Display the title */}
-            <h1>Current Location</h1>
-            
-            {/* Circle displaying current weather and temperature */}
-            <div className="circle-style">
-                <span style={{ fontSize: '30px', marginTop: '20px' }}>Sunny</span>
-                <span style={{ marginTop: '-50px' }}>70&deg;</span>
-            </div>
+            <div className='top-section'>
+                <div className='left-box'>
+                    
+                    {/* Map container showing the user's current location */}
+                    <div className="map-container-style">
+                        <MapContainer center={position} zoom={6} style={{ height: '500px', width: '1000px' }}>
+                            <TileLayer
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" 
+                                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                            />
+                            <Marker position={position}>
+                                <Popup>
+                                    Your current location. <br /> Say Hi!
+                                </Popup>
+                            </Marker>
+                        </MapContainer>
+                    </div>
+                </div>
 
-            {/* Centered progress bar displaying temperature range */}
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-                <ProgressBar value={70} min={55} max={75} />
-            </div>
+                <div className="right-box">
+                {/* Circle displaying current weather and temperature */}
+                <div className="circle-style">
+                    <span style={{ fontSize: '30px', marginTop: '20px' }}>Sunny</span>
+                    <span style={{ marginTop: '-50px' }}>70&deg;</span>
+                </div>
 
-            {/* Display the temperature range text */}
-            <div>
-                <span className="text-style">Low of 55&deg; High of 75&deg;</span>
-            </div>
+                {/* Centered progress bar displaying temperature range */}
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                    <ProgressBar value={70} min={55} max={75} />
+                </div>
 
-            {/* Container for displaying either the 12-hour or 7-day forecast */}
-            <div style={{marginTop: '20px'}}>
-                <div className="container-wrapper-style">
-                    {isFirstContainerVisible ? (
-                        // Render 12-hour forecast data
-                        firstContainerData.map((data, index) => (
-                            <div key={index} className="rounded-rectangle-style">
-                                <span className="text-style">{data.time}</span>
-                                <img src={data.imgSrc} className="img-style" alt="Weather icon" />
-                                <span className="temp-style" dangerouslySetInnerHTML={{ __html: data.temp }} />
-                            </div>
-                        ))
-                    ) : (
-                        // Render 7-day forecast data
-                        secondContainerData.map((data, index) => (
-                            <div key={index} className="rounded-rectangle-style">
-                                <span className="text-style">{data.time}</span>
-                                <img src={data.imgSrc} className="img-style" alt="Weather icon" />
-                                <span className="temp-style" dangerouslySetInnerHTML={{ __html: data.temp }} />
-                            </div>
-                        ))
-                    )}
+                {/* Display the temperature range text */}
+                <div>
+                    <span className="text-style">Low of 55&deg; High of 75&deg;</span>
                 </div>
             </div>
-
-            {/* Toggle button to switch between the 12-hour and 7-day forecast */}
-            <button onClick={toggleContainer} className="toggle-button">
-                {isFirstContainerVisible ? 'Show 7 day Forecast' : 'Show 12 hour Forecast'}
-            </button>
-
-            {/* Map container showing the user's current location */}
-            <div className="map-container-style">
-                <MapContainer center={position} zoom={6} style={{ height: '500px', width: '700px' }}>
-                    <TileLayer
-                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" 
-                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                    />
-                    <Marker position={position}>
-                        <Popup>
-                            Your current location. <br /> Say Hi!
-                        </Popup>
-                    </Marker>
-                </MapContainer>
             </div>
-        </>
+
+            
+            <div className='bottom-bar'>
+                
+
+                {/* Container for displaying either the 12-hour or 7-day forecast */}
+                <div style={{marginTop: '20px'}}>
+                    <div className="container-wrapper-style">
+                        {isFirstContainerVisible ? (
+                            // Render 12-hour forecast data
+                            firstContainerData.map((data, index) => (
+                                <div key={index} className="rounded-rectangle-style">
+                                    <span className="text-style">{data.time}</span>
+                                    <img src={data.imgSrc} className="img-style" alt="Weather icon" />
+                                    <span className="temp-style" dangerouslySetInnerHTML={{ __html: data.temp }} />
+                                </div>
+                            ))
+                        ) : (
+                            // Render 7-day forecast data
+                            secondContainerData.map((data, index) => (
+                                <div key={index} className="rounded-rectangle-style">
+                                    <span className="text-style">{data.time}</span>
+                                    <img src={data.imgSrc} className="img-style" alt="Weather icon" />
+                                    <span className="temp-style" dangerouslySetInnerHTML={{ __html: data.temp }} />
+                                </div>
+                            ))
+                        )}
+                    </div>
+                </div>
+
+                {/* Toggle button to switch between the 12-hour and 7-day forecast */}
+                <button onClick={toggleContainer} className="toggle-button">
+                    {isFirstContainerVisible ? 'Show 7 day Forecast' : 'Show 12 hour Forecast'}
+                </button>
+            </div>
+        </div>
     );
 }

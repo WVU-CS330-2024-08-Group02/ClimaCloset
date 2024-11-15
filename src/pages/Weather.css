@@ -43,8 +43,11 @@
     white-space: nowrap;
     align-items: center;
     width: 100%;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
+
+    /* For debugging */
+    border: 5px solid blue;
 }
 
 /* Style for images in the forcast */
@@ -52,7 +55,11 @@
     width: 100px;
     height: 100px;
     object-fit: cover;
+    margin: 0 auto;
     margin-bottom: 10px;
+
+    /* For debugging */
+    border: 5px solid red;
 }
 
 /* Text style for time and day in forcast */
@@ -60,6 +67,9 @@
     font-size: 40px;
     color: white;
     font-weight: bold;
+    
+    /* For debugging */
+    border: 5px solid red;
 }
 
 /* Text style for temp in forcast */
@@ -68,6 +78,9 @@
     color: white;
     font-weight: bold;
     margin-top: -20px;
+
+    /* For debugging */
+    border: 5px solid red;
 }
 
 /* Container for the map */
@@ -76,9 +89,12 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1500px;
     height: 500px;
-    margin: 20px auto;
+    margin: 0;
+
+    /* For debugging */
+    border: 5px solid red;
 }
 
 /* Progress bar sizing and coloring */
@@ -88,6 +104,9 @@
     background-color: #e0e0e0;
     border-radius: 10px;
     overflow: hidden;
+
+    /* For debugging */
+    border: 5px solid red;
 }
 
 /* Progress bar style for smoother resizing */
@@ -95,6 +114,9 @@
     height: 100%;
     border-radius: 10px 0 0 10px;
     transition: width 0.3s ease, background-color 0.3s ease;
+
+    /* For debugging */
+    border: 5px solid red;
 }
 
 /* Style for button to toggle 7 day forcast/12 hour forcast */
@@ -106,4 +128,44 @@
     border: 3px solid black;
     font-weight: bold;
     font-size: 30px;
+
+    /* For debugging */
+    border: 5px solid red;
 }
+
+.center-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: gray;
+    
+    /* For debugging */
+    border: 5px solid red;
+}
+
+.top-section {
+    display: flex;
+    flex: 1;
+}
+
+/* Left and right boxes in the top section */
+.left-box,
+.right-box {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 50%;
+  border: 5px solid black;
+  flex-wrap: wrap;
+}
+
+/* Bottom bar filling the rest of the area */
+.bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }

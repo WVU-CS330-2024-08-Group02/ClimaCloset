@@ -11,7 +11,7 @@
     padding: 20px;
     background-color: var(--fern-green);
     width: 100%; /* Fill entire width of screen */
-    height: 50px;
+    height: 30px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for fade */
     z-index: 100000;
 }
