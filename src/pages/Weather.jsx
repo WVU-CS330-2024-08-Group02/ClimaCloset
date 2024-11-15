@@ -79,7 +79,6 @@ export function Weather() {
             {/* Display the title */}
             <div className='top-section'>
                 <div className='left-box'>
-                    
                     {/* Map container showing the user's current location */}
                     <div className="map-container-style">
                         <MapContainer center={position} zoom={6} style={{ height: '500px', width: '1000px' }}>
@@ -95,27 +94,24 @@ export function Weather() {
                         </MapContainer>
                     </div>
                 </div>
-
                 <div className="right-box">
-                {/* Circle displaying current weather and temperature */}
-                <div className="circle-style">
-                    <span style={{ fontSize: '30px', marginTop: '20px' }}>Sunny</span>
-                    <span style={{ marginTop: '-50px' }}>70&deg;</span>
-                </div>
+                    {/* Circle displaying current weather and temperature */}
+                    <div className="circle-style">
+                        <span style={{ fontSize: '30px', marginTop: '20px' }}>Sunny</span>
+                        <span style={{ marginTop: '-50px' }}>70&deg;</span>
+                    </div>
 
-                {/* Centered progress bar displaying temperature range */}
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-                    <ProgressBar value={70} min={55} max={75} />
-                </div>
+                    {/* Centered progress bar displaying temperature range */}
+                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+                        <ProgressBar value={70} min={55} max={75} />
+                    </div>
 
-                {/* Display the temperature range text */}
-                <div>
-                    <span className="text-style">Low of 55&deg; High of 75&deg;</span>
+                    {/* Display the temperature range text */}
+                    <div>
+                        <span className="text-style">Low of  55&deg; High of 75&deg;</span>
+                    </div>
                 </div>
             </div>
-            </div>
-
-            
             <div className='bottom-bar'>
                 
 
