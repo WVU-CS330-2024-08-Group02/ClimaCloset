@@ -35,7 +35,7 @@ export function Home() {
     return (
         <>
            
-                <div className="header">
+                <div>
                 <h1>Hi Kaylea, welcome to your home page!</h1>
                 </div>
                 {/* insert shelf component */}
