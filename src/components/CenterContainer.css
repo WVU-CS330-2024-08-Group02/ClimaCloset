@@ -2,11 +2,12 @@
 .center-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
     min-width: 100%;
     gap: 20px;
     min-height: 100%;
     
     /* For debugging */
-    border: red solid 5px;
+    /* border: red solid 5px; */
 }

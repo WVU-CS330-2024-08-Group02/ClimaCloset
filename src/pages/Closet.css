@@ -3,4 +3,26 @@
     margin: 0;
 }
 
-/* Add containers for formatting */
+.preferences-center-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    max-width: 100px;
+}
+
+/* Applies to all direct child elements of preferences-center-container */
+.preferences-center-container > * {
+    flex: 1 1 1;
+    width: 600px;
+    height: 400px;
+    box-sizing: border-box;
+    color: lightgray;
+}
+
+.ideal-temp {
+    flex: 100%;
+    max-width: 96.4%;
+    height: 200px;
+}

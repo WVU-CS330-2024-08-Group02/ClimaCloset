@@ -1,10 +1,10 @@
 import '../components/CenterContainer.css'
 
 /* Component to contain webpage content */
-export function CenterContainer({ children }) {
+export function CenterContainer({ className, children, ...props }) {
     return (
         <>
-            <div className="center-container">{children}</div>
+            <div className={`center-container ${className}`} {...props}>{children}</div>
         </>
     )
 }

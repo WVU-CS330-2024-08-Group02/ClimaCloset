@@ -16,6 +16,7 @@
 }
 
 .dropdown {
+    position: relative;
     width: 12em;
     height: 50px;
     font-size: 20px;
@@ -51,4 +52,9 @@
 
 .weather-temp {
     margin-top: -20px;
+}
+
+.shelf-box {
+    min-width: 100%;
+    width: 100%;
 }

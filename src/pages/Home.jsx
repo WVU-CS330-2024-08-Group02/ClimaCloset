@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Shelf } from "../components/Shelf";
 import './Home.css';  // Import the CSS file
+import { CenterContainer } from "../components/CenterContainer";
+import { TransparentBox } from "../components/TransparentBox";
 
 export function Home() {
     const [activity, setActivity] = useState('casual'); // Default activity
@@ -33,44 +35,46 @@ export function Home() {
     };
 
     return (
-        <>
-           
-                <div>
+        <CenterContainer>
+            <div>
                 <h1>Hi Kaylea, welcome to your home page!</h1>
-                </div>
-                {/* insert shelf component */}
+            </div>
+
+            {/* insert shelf component */}
+            <TransparentBox className='shelf-box'>
                 <Shelf />
+            </TransparentBox>
 
-                {/* button for the generate outfit */}
-                <label htmlFor="activity-select" className="dropdown-label">
-                    Choose an activity for the day:
-                </label>
-                <select
-                    id="activity-select"
-                    value={activity}
-                    onChange={handleActivityChange}
-                    className="dropdown"
-                >
-                    <option value="business">Business Professional</option>
-                    <option value="active">Outdoor Activity</option>
-                    <option value="indoor">Indoor Lounging</option>
-                    <option value="casual">Casual/Low Activity</option>
-                </select>
+            {/* button for the generate outfit */}
+            <label htmlFor="activity-select" className="dropdown-label">
+                Choose an activity for the day:
+            </label>
+            <select
+                id="activity-select"
+                value={activity}
+                onChange={handleActivityChange}
+                className="dropdown"
+                style={{position: "relative"}}
+            >
+                <option value="business">Business Professional</option>
+                <option value="active">Outdoor Activity</option>
+                <option value="indoor">Indoor Lounging</option>
+                <option value="casual">Casual/Low Activity</option>
+            </select>
 
-                <div className="button-container">
-                    <button onClick={generateOutfit} className="button">
-                        Generate Outfit
-                    </button>
-                </div>
+            <div className="button-container">
+                <button onClick={generateOutfit} className="button">
+                    Generate Outfit
+                </button>
+            </div>
 
-                {outfitSuggestion && (
-                    <p className="outfit-suggestion">
-                        Suggested Outfit: {outfitSuggestion}
-                    </p>
-                )}
+            {outfitSuggestion && (
+                <p className="outfit-suggestion">
+                    Suggested Outfit: {outfitSuggestion}
+                </p>
+            )}
             
-        
-        {/* container for thw weather on home page */}
+            {/* container for thw weather on home page */}
             <div>
                 <h1 className="weather-title">The Weather Today</h1>
                 <div className="circle">
@@ -81,6 +85,6 @@ export function Home() {
                 </div>
                 <p>in Morgantown, WV</p>
             </div>
-        </>
+        </CenterContainer>
     );
 }
