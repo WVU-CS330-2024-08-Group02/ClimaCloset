@@ -9,6 +9,9 @@
   /* color: rgba(255, 255, 255, 0.87); */
   color: #213547;
   background-image: url('./assets/cloudy.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+
 
   /* Custon colors for scheme*/
   --maybe: #e6e6e6;
