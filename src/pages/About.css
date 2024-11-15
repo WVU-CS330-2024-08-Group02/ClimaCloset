@@ -1,0 +1,29 @@
+.group-members {
+    display: flex;
+    flex-wrap: wrap; /* wrap the group-members containter to have two rows */
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.group-member {
+    text-align: center;
+    /* did research on the calc() function for css */
+    width: calc(25% - 20px); /* Adjust width to fit 4 group members per row */
+}
+
+.member-name {
+    margin-bottom: 10px;
+}
+
+/* get the profile pictures to all display in a circle */
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+p {
+    font-size: 24px;
+}

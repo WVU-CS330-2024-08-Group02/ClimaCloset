@@ -1,3 +1,5 @@
+/* index.css */
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -9,6 +11,8 @@
   background-color: white;
 
   /* Custon colors for scheme*/
+  --maybe: #e6e6e6;
+
   --mint-cream: #F1FFFA;
   --ash-gray: #BACDB0; /* Color of background */
   --celadon: #96E6B3;
