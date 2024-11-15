@@ -8,9 +8,11 @@
   color-scheme: light dark;
   /* color: rgba(255, 255, 255, 0.87); */
   color: #213547;
-  background-color: #e6e6e6;
+  background-color: var(--ash-gray);
 
   /* Custon colors for scheme*/
+  --maybe: #e6e6e6;
+
   --mint-cream: #F1FFFA;
   --ash-gray: #BACDB0; /* Color of background */
   --celadon: #96E6B3;
