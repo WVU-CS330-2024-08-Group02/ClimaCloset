@@ -158,7 +158,7 @@
   border-radius: 8px;
   padding: 30px;
   -webkit-backdrop-filter: blur(3px);
-    backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
 }
 
 /* Bottom bar filling the rest of the area */
