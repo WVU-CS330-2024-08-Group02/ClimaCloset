@@ -35,13 +35,13 @@ export function About() {
         },
         {
             name: 'Kaylea Lantz',
-            pic: 'path/to/pic.jpg',
+            pic: 'src/assets/KayleaProfile.jpeg',
             bio: 'Dev Team: Frontend',
         },
         {
             name: 'Mason Phillips',
             pic: 'src/assets/MasonProfile.png',
-            bio: 'DevTeam: Frontend',
+            bio: 'Dev Team: Frontend',
         },
     ]
 
