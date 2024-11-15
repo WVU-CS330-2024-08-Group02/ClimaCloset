@@ -49,7 +49,7 @@ export function About() {
         {
             name: 'Mason Phillips',
             pic: 'src/assets/MasonProfile.png',
-            hoverPic: 'src/assets/masonHover.jpg',
+            hoverPic: 'src/assets/MasonFunnyPic.png',
             bio: 'Dev Team: Frontend',
         },
     ]
