@@ -42,8 +42,8 @@ export function About() {
         },
         {
             name: 'Kaylea Lantz',
-            pic: 'src/assets/Kaylea Profile Pic.jpg',
-            hoverPic: 'src/assets/kayleaHover.jpg',
+            pic: 'src/assets/2024-Kaylea Lantz - EE-1436.jpg',
+            hoverPic: 'src/assets/Kaylea Profile Pic.jpg',
             bio: 'Dev Team: Frontend',
         },
         {
