@@ -3,7 +3,7 @@ import '../components/WeatherPreferences.css'
 
 export function WeatherPreferences() {
   const [temp, setTemp] = useState(50);
-  const [showModal, setShowModal] = useState(false);
+  const [hoveredOption, setHoveredOption] = useState(null); // State to track if hovered
 
   // Handle the event when user selects a value on the slider
   const handleChoice = (event) => {
@@ -15,27 +15,26 @@ export function WeatherPreferences() {
     alert(`Temperature Selected Is: ${temp}°F`)
   }
     
-  // Toggle modal visibility
-  const handleClickQuestionMark = () => {
-    setShowModal((prev) => !prev);
+  // Show tooltip on hover
+  const handleMouseEnter = () => {
+    setHoveredOption(true);
   };
+
+    // Hide tooltip when hover ends
+    const handleMouseLeave = () => {
+      setHoveredOption(false);
+    };
     
   // Use a slider that ranges from 0 to 100 to get the user's ideal temperature (in degrees Fahrenheit)
   return (
     <div>
-      <label>Select Ideal Temperature:<div className="question-icon" onClick={handleClickQuestionMark}>?</div>  <div></div>{temp}°F</label>
+      <label>Select Ideal Temperature:<div className="question-icon" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>?</div>  <div></div>{temp}°F</label>
       <input type="range" min="0" max="100" value={temp} onChange={handleChoice} onMouseUp={handleMouseUp}/>
         
-      {/* Modal Box, this is a pop up on click to show ideal temp info */}
-      {showModal && (
-        <div className="modal">
-          <div className="modal-content">
-            <h2>Ideal Temperature Info</h2>
-            <p>
-              The ideal temperature is defined as the temperature at which you would be comfortable wearing shorts and a short sleeve top.
-            </p>
-            <button onClick={handleClickQuestionMark}>Close</button>
-          </div>
+       {/* Tooltip Box, shown on hover */}
+       {hoveredOption && (
+        <div className="tooltip">
+          The ideal temperature is defined as the temperature at which you would be comfortable wearing shorts and a short sleeve top.
         </div>
       )}
 
