@@ -36,8 +36,13 @@ function ProgressBar({ value, min, max }) {
 // Main component for displaying weather information
 export function Weather() {
     
-    // Coordinates for the current user location 
-    const position = [39.64591951232883, -79.97339559170358];
+    // Initial coordinates to be shown on the map
+    const [position, setPosition]= useState([39.64591951232883, -79.97339559170358]);
+
+    // Function to handle updating a position, based on latitude and longitude
+    const updatePosition = (latitude, longitude) => {
+        setPosition([latitude, longitude])
+    }
     
     // State to toggle between showing the 12-hour and 7-day forecast containers 
     const [isFirstContainerVisible, setIsFirstContainerVisible] = useState(true);
@@ -81,6 +86,17 @@ export function Weather() {
                 {/* Display the title */}
                 <div className='top-section'>
                     <div className='left-box'>
+                        {/* Get inputs for latitude and longitude coordinates to change map location */}
+                        <div className="change-location">
+                            <label>
+                                Latitude:
+                                <input type="number" onChange={(e) => updatePosition(Number(e.target.value), position[1])} />
+                            </label>
+                            <label>
+                                Longitude:
+                                <input type="number" onChange={(e) => updatePosition(position[0], Number(e.target.value))} />
+                            </label>
+                        </div>
                         {/* Map container showing the user's current location */}
                         <div className="map-container-style">
                             <MapContainer center={position} zoom={6} style={{height: '100%', width: '100%'}}>
@@ -90,7 +106,7 @@ export function Weather() {
                                 />
                                 <Marker position={position}>
                                     <Popup>
-                                        Your current location. <br /> Say Hi!
+                                        Your Current Location: {position[0].toFixed(4)}, {position[1].toFixed(4)}
                                     </Popup>
                                 </Marker>
                             </MapContainer>
@@ -115,8 +131,6 @@ export function Weather() {
                     </div>
                 </div>
                 <div className='bottom-bar'>
-                    
-
                     {/* Container for displaying either the 12-hour or 7-day forecast */}
                     <div style={{marginTop: '20px'}}>
                         <div className="container-wrapper-style">
