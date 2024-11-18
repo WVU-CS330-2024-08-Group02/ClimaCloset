@@ -7,6 +7,7 @@ import { TransparentBox } from "../components/TransparentBox";
 export function Home() {
     const [activity, setActivity] = useState('casual'); // Default activity
     const [outfitSuggestion, setOutfitSuggestion] = useState(''); // State for outfit suggestion
+    const [showModal, setShowModal] = useState(false); // State for showing modal
 
     const handleActivityChange = (event) => {
         setActivity(event.target.value); // Update activity based on selection
@@ -15,24 +16,35 @@ export function Home() {
     {/* outfit suggestions */}
     const generateOutfit = () => {
         let suggestion;
+        let outfitImage;
         switch (activity) {
             case 'business':
                 suggestion = "Dress shirt, blazer, and dress pants. Polo and kahkis.";
+                outfitImage = "business.jpg"; // Path to your image for business attire
                 break;
             case 'active':
                 suggestion = "Athletic shirt and shorts, with sneakers. Leggings and an athletic shirt.";
+                outfitImage = "active.jpg"; // Path to your image for active attire
                 break;
             case 'indoor':
                 suggestion = "Comfortable loungewear or pajamas.";
+                outfitImage = "indoor.jpg"; // Path to your image for indoor attire
                 break;
             case 'casual':
                 suggestion = "T-shirt and jeans. Shorts and a long sleeve.";
+                outfitImage = "casual.jpg"; // Path to your image for casual attire
                 break;
             default:
                 suggestion = "Choose an activity to get an outfit suggestion.";
         }
-        setOutfitSuggestion(suggestion);
+        setOutfitSuggestion({ text: suggestion, image: outfitImage });
+        setShowModal(true); // Show the modal with the suggestion
     };
+
+        // Function to close the modal
+        const closeModal = () => {
+            setShowModal(false);
+        };
 
     return (
         <CenterContainer>
@@ -68,10 +80,21 @@ export function Home() {
                 </button>
             </div>
 
-            {outfitSuggestion && (
-                <p className="outfit-suggestion">
-                    Suggested Outfit: {outfitSuggestion}
-                </p>
+            {/* Modal for Outfit Suggestion */}
+            {showModal && (
+                <div className="modal">
+                    <div className="modal-content">
+                        {/* Close Button (X) */}
+                        <span className="close" onClick={closeModal}>&times;</span>
+                        <h2>Suggested Outfit</h2>
+                        <p>{outfitSuggestion.text}</p>
+                        <img 
+                            src={`src/assets/${outfitSuggestion.image}`} 
+                            alt="Outfit suggestion" 
+                            className="outfit-image"
+                        />
+                    </div>
+                </div>
             )}
             
             {/* container for thw weather on home page */}
