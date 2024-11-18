@@ -6,8 +6,8 @@ export function About() {
     const teamInfo = [
         {
             name: 'Wesam Almubarak',
-            pic: 'src/assets/wesamPfp.jpg',
-            hoverPic: 'src/assets/wesamHover.jpg',
+            pic: 'src/assets/WesamGrad.JPG',
+            hoverPic: 'src/assets/wesamPfp.jpg',
             bio: 'Project Owner/Manager',
         },
         {
