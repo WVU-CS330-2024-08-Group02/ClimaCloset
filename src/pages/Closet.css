@@ -1,8 +1,4 @@
-.closet-area {
-    min-height: 100vh;
-    margin: 0;
-}
-
+/* Specifcially for center container of preferenecs page */
 .preferences-center-container {
     display: flex;
     align-items: center;
@@ -23,5 +19,5 @@
 .ideal-temp {
     flex: 100%;
     max-width: 95.4%;
-    height: 200px;
+    height: 120px;
 }
