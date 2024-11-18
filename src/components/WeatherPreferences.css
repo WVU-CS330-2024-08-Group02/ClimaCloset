@@ -27,7 +27,7 @@ label {
 /* Tooltip Styling */
 .tooltip {
   position: absolute;
-  top: 40px;
+  bottom: -15px;
   left: 750px;
   background-color: #fff;
   padding: 10px;
