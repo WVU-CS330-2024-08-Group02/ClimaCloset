@@ -4,14 +4,9 @@
  * sensitive data
  */
 
-const test = require('dotenv').config();
-console.log(test);
-console.log(process.env.DB_USER);
-console.log(process.env.DB_USER);
-console.log(process.env.DB_PASSWORD);
-console.log(process.env.DB_DATABASE);
-console.log(process.env.DB_SERVER);
+require('dotenv').config();
 const sql = require('mssql');
+
 
 // Database configuration object using enviorment variables for security
 const dbConfig = {
@@ -22,6 +17,8 @@ const dbConfig = {
     options: {
       encrypt: true, // Enables encryption for Azure SQL
       enableArithAbort: true,
+      connectTimeout: 10000,  // Timeout after 10 seconds
+      requestTimeout: 15000,  // Timeout after 15 seconds
     },
   };
   
@@ -29,6 +26,7 @@ const dbConfig = {
    * Establishes a connection to the Azure SQL database.
    * Logs a success or error message depending on the connection status.
    */
+
   const connectDB = async () => {
     try {
       await sql.connect(dbConfig);
@@ -37,5 +35,7 @@ const dbConfig = {
       console.error("Database connection failed:", error);
     }
   };
-  
+
+  connectDB();
+
   module.exports = { sql, connectDB };
