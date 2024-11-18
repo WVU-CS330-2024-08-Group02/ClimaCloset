@@ -12,26 +12,26 @@ export function About() {
         },
         {
             name: 'Eammon Anderson',
-            pic: 'path/to/pic.jpg',
-            hoverPic: 'src/assets/eammonHover.jpg',
+            pic: 'src/assets/Default.PNG',
+            hoverPic: 'src/assets/defaultHover.jpeg',
             bio: 'Scrum Master',
         },
         {
             name: 'Gracie Anderson',
             pic: 'src/assets/GracieProfile.png',
-            hoverPic: 'src/assets/gracieHover.jpg',
+            hoverPic: 'src/assets/GracieHover.JPG',
             bio: 'Dev Team: Backend',
         },
         {
             name: 'Blake Casto',
-            pic: 'path/to/pic.jpg',
-            hoverPic: 'src/assets/blakeHover.jpg',
+            pic: 'src/assets/Default.PNG',
+            hoverPic: 'src/assets/defaultHover.jpeg',
             bio: 'Dev Team: Frontend',
         },
         {
             name: 'Kevin Agazie',
             pic: 'src/assets/KevinProfile.png',
-            hoverPic: 'src/assets/kevinHover.jpg',
+            hoverPic: 'src/assets/defaultHover.jpeg',
             bio: 'Dev Team: Backend',
         },
         {
