@@ -12,7 +12,7 @@ export function About() {
         },
         {
             name: 'Eammon Anderson',
-            pic: 'src/assets/Default.PNG',
+            pic: 'src/assets/EammonProfile1.png',
             hoverPic: 'src/assets/defaultHover.jpeg',
             bio: 'Scrum Master',
         },
