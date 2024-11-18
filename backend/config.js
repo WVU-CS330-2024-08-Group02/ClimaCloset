@@ -17,8 +17,6 @@ const dbConfig = {
     options: {
       encrypt: true, // Enables encryption for Azure SQL
       enableArithAbort: true,
-      connectTimeout: 10000,  // Timeout after 10 seconds
-      requestTimeout: 15000,  // Timeout after 15 seconds
     },
   };
   
@@ -35,7 +33,5 @@ const dbConfig = {
       console.error("Database connection failed:", error);
     }
   };
-
-  connectDB();
 
   module.exports = { sql, connectDB };
