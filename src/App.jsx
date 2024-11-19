@@ -7,7 +7,7 @@ import { Weather } from './pages/Weather'
 import { Profile } from './pages/Profile'
 import { About } from './pages/About'
 import { Login } from './pages/Login'
-import { Signup } from './pages/Singup'
+import { Signup } from './pages/Signup'
 
 function App() {
   return (

@@ -15,7 +15,7 @@ export function Layout() {
     return (
         <>
             <Navbar/>
-            <main style={{marginTop: "3em"}}> 
+            <main style={{marginTop: "3.5em"}}> 
                 <Outlet />
             </main>
         </>
