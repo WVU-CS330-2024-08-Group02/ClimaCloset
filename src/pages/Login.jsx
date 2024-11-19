@@ -8,16 +8,24 @@ export function Login()  {
         <>
             <h1>Login to ClimaCloset</h1>
             <CenterContainer>
-                <TransparentBox className="login-area">
-                    <div>
-                        <label for="username">Enter username</label>
-                        <input type="text" id="username" placeholder="username" />
-                    </div>
-                    <div>
-                        <label for="password">Enter password</label>
-                        <input type="password" id="password" placeholder="password" />
-                    </div>
-                    <button>Submit</button>
+                <TransparentBox>
+                    <form>
+                        <label for="username">Enter your username</label>
+                        <input 
+                            type="text" 
+                            id="username"
+                            required
+                            placeholder="username" 
+                        />
+                        <label for="password">Enter your password</label>
+                        <input 
+                            type="password"
+                            id="password"
+                            required
+                            placeholder="password"
+                        />
+                        <button type="submit">Submit</button>
+                    </form>
                     <p>Don't have an account? Click 
                     <NavLink to="/Signup">
                         <a> here </a>
