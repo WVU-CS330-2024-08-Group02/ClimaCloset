@@ -40,21 +40,21 @@ export function Login()  {
             <CenterContainer>
                 <TransparentBox>
                     <form onSubmit={handleSubmit}>
-                        <label for="username">Enter your username</label>
+                        <label for="username">Username:</label>
                         <input 
                             type="text" 
                             id="username"
                             required
-                            placeholder="username" 
+                            placeholder="Username" 
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                         />
-                        <label for="password">Enter your password</label>
+                        <label for="password">Password:</label>
                         <input 
                             type="password"
                             id="password"
                             required
-                            placeholder="password"
+                            placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />

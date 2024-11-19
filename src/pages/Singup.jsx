@@ -77,55 +77,55 @@ export function Signup() {
 
     return (
         <>
-            <h1>Sign up</h1>
+            <h1>Sign Up</h1>
             <CenterContainer>
                 <TransparentBox>
                     <form onSubmit={handleSubmit}>
-                        <label for="name">Enter your name</label>
+                        <label for="name">Name:</label>
                         <input 
                             type="text" 
                             id="name"
                             required
-                            placeholder="name"
+                            placeholder="Name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                         />
 
-                        <label for="email">Enter an email address</label>
+                        <label for="email">Email Address:</label>
                         <input 
                             type="text" 
                             id="email"
                             required
-                            placeholder="email"
+                            placeholder="Email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
 
-                        <label for="username">Enter a username</label>
+                        <label for="username">Username:</label>
                         <input 
                             type="text" 
                             id="username" 
-                            placeholder="username"
+                            placeholder="Username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                         />
 
-                        <label for="password">Enter a password</label>
+                        <label for="password">Password:</label>
                         <input 
                             type="password"
                             id="password"
                             required
-                            placeholder="password"
+                            placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
 
-                        <label for="password">Re-enter your password</label>
+                        <label for="password">Re-enter Password:</label>
                         <input 
                             type="password"
                             id="re-password"
                             required
-                            placeholder="password"
+                            placeholder="Password"
                             value={rePassword}
                             onChange={(e) => setRePassword(e.target.value)}
                         />
