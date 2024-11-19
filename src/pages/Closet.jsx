@@ -4,7 +4,9 @@ import { Tops } from "../components/Tops";
 import { Bottoms } from "../components/Bottoms";
 import { Shoes } from "../components/Shoes";
 import { Accessories } from "../components/Accessories";
+import { CenterContainer } from '../components/CenterContainer';
 import './Closet.css';
+import { TransparentBox } from '../components/TransparentBox';
 
 export function Closet() {
     // State to hold multiple selected options for each category
@@ -45,13 +47,30 @@ export function Closet() {
 
     return (
         <>
-            <div className="closet-area">
-                <WeatherPreferences />
-                <Tops onSelect={(top) => toggleSelection(top, setSelectedTops, selectedTops)} selected={selectedTops} />
-                <Bottoms onSelect={(bottom) => toggleSelection(bottom, setSelectedBottoms, selectedBottoms)} selected={selectedBottoms} />
-                <Shoes onSelect={(shoes) => toggleSelection(shoes, setSelectedShoes, selectedShoes)} selected={selectedShoes} />
-                <Accessories onSelect={(accessory) => toggleSelection(accessory, setSelectedAccessories, selectedAccessories)} selected={selectedAccessories} />
-            </div>
+            <CenterContainer className="preferences-center-container">
+
+                <TransparentBox className="ideal-temp"> 
+                    <WeatherPreferences />
+                </TransparentBox>
+                
+                <TransparentBox>
+                    <Tops onSelect={(top) => toggleSelection(top, setSelectedTops, selectedTops)} selected={selectedTops} />
+                </TransparentBox>
+                
+                <TransparentBox>
+                    <Bottoms onSelect={(bottom) => toggleSelection(bottom, setSelectedBottoms, selectedBottoms)} selected={selectedBottoms} />
+                </TransparentBox>
+                    
+                <TransparentBox>
+                    <Shoes onSelect={(shoes) => toggleSelection(shoes, setSelectedShoes, selectedShoes)} selected={selectedShoes} />
+                </TransparentBox>
+                
+
+                <TransparentBox>
+                    <Accessories onSelect={(accessory) => toggleSelection(accessory, setSelectedAccessories, selectedAccessories)} selected={selectedAccessories} />
+                </TransparentBox>
+                
+            </CenterContainer>
         </>
     );
 }

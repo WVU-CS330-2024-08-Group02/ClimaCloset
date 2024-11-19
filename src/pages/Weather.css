@@ -87,6 +87,7 @@
     margin: 0;
     overflow: hidden;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 
 /* Progress bar sizing and coloring */
@@ -123,18 +124,6 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.center-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    min-width: 100%;
-
-    gap: 20px;
-    
-    /* For debugging */
-    /*border: 5px solid red;*/
-}
-
 .top-section {
     display: flex;
     flex: 1;
@@ -156,6 +145,8 @@
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
   border-radius: 8px;
   padding: 30px;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
 }
 
 /* Bottom bar filling the rest of the area */
@@ -168,4 +159,7 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     padding: 20px;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    width: 96.5%;
   }

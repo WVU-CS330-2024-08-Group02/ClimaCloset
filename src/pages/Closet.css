@@ -1,4 +1,23 @@
-.closet-area {
-    min-height: 100vh;
-    margin: 0;
+/* Specifcially for center container of preferenecs page */
+.preferences-center-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    max-width: 100px;
+}
+
+/* Applies to all direct child elements of preferences-center-container */
+.preferences-center-container > * {
+    flex: 1 1 1;
+    width: 600px;
+    height: 400px;
+    box-sizing: border-box;
+}
+
+.ideal-temp {
+    flex: 100%;
+    max-width: 95.4%;
+    height: 120px;
 }
