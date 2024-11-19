@@ -1,4 +1,4 @@
-import '../components/TransparentBox.css'
+import './TransparentBox.css'
 
 /* Basic starter component for a transparent box, children and props are passed onto this */
 export function TransparentBox({ className, children, ...props }) {

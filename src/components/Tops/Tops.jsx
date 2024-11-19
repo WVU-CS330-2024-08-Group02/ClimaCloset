@@ -1,5 +1,5 @@
 import { useState } from "react";
-import '../components/Tops.css'
+import './Tops.css'
 
 export function Tops() {
   const [chosenOption, setChosenOption] = useState([]);

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { CenterContainer } from "../components/CenterContainer";
-import { TransparentBox } from "../components/TransparentBox";
+import { CenterContainer } from "../components/CenterContainer/CenterContainer";
+import { TransparentBox } from "../components/TransparentBox/TransparentBox";
 import './Signup.css';
 
 /**

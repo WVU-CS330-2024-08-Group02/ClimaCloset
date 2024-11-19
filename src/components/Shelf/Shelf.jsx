@@ -1,16 +1,16 @@
 // src/components/Shelf.jsx
 
 import React from 'react';
-import '../components/Shelf.css';
-import umbrella from '../assets/clothingIcons/umbrella.png';
-import shortSleeve from '../assets/clothingIcons/shortSleeve.png';
-import coat from '../assets/clothingIcons/Coat.png';
-import jeans from '../assets/clothingIcons/jeans.png';
-import shorts from '../assets/clothingIcons/shorts.png';
-import sneakers from '../assets/clothingIcons/sneakers.png';
-import sandals from '../assets/clothingIcons/sandals.png';
-import boots from '../assets/clothingIcons/boots.png';
-import flipFlops from '../assets/clothingIcons/flipFlops.png';
+import './Shelf.css';
+import umbrella from '../../assets/clothingIcons/umbrella.png';
+import shortSleeve from '../../assets/clothingIcons/shortSleeve.png';
+import coat from '../../assets/clothingIcons/Coat.png';
+import jeans from '../../assets/clothingIcons/jeans.png';
+import shorts from '../../assets/clothingIcons/shorts.png';
+import sneakers from '../../assets/clothingIcons/sneakers.png';
+import sandals from '../../assets/clothingIcons/sandals.png';
+import boots from '../../assets/clothingIcons/boots.png';
+import flipFlops from '../../assets/clothingIcons/flipFlops.png';
 
 /* this makes the ids for each of the thing in the closet */
 export function Shelf() {

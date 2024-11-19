@@ -1,5 +1,5 @@
 import { useState } from "react";
-import '../components/Bottoms.css'
+import './Bottoms.css'
 
 export function Bottoms() {
   const [chosenOption, setChosenOption] = useState([]);

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { WeatherPreferences } from "../components/WeatherPreferences";
-import { Tops } from "../components/Tops";
-import { Bottoms } from "../components/Bottoms";
-import { Shoes } from "../components/Shoes";
-import { Accessories } from "../components/Accessories";
-import { CenterContainer } from '../components/CenterContainer';
+import { WeatherPreferences } from '../components/WeatherPreferences/WeatherPreferences';
+import { Tops } from "../components/Tops/Tops";
+import { Bottoms } from '../components/Bottoms/Bottoms';
+import { Shoes } from "../components/Shoes/Shoes";
+import { Accessories } from '../components/Accessories/Accessories';
+import { CenterContainer } from '../components/CenterContainer/CenterContainer';
 import './Closet.css';
-import { TransparentBox } from '../components/TransparentBox';
+import { TransparentBox } from '../components/TransparentBox/TransparentBox';
 
 export function Closet() {
     // State to hold multiple selected options for each category

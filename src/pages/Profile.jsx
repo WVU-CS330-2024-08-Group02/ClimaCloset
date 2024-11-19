@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import '../pages/Profile.css';
-import { CenterContainer } from '../components/CenterContainer';
+import { CenterContainer } from '../components/CenterContainer/CenterContainer';
 
 export function Profile() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);

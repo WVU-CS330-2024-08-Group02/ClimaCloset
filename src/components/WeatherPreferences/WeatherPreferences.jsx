@@ -1,5 +1,5 @@
 import { useState } from "react"
-import '../components/WeatherPreferences.css'
+import './WeatherPreferences.css'
 
 export function WeatherPreferences() {
   const [temp, setTemp] = useState(50);

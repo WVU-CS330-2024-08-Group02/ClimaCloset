@@ -1,4 +1,4 @@
-import '../components/CenterContainer.css'
+import './CenterContainer.css'
 
 /* Component to contain webpage content */
 export function CenterContainer({ className, children, ...props }) {

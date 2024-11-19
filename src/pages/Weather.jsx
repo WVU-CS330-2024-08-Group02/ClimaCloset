@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { CenterContainer } from '../components/CenterContainer';
+import { CenterContainer } from '../components/CenterContainer/CenterContainer';
 import 'leaflet/dist/leaflet.css';
 import '../pages/Weather.css';
 

@@ -1,5 +1,5 @@
-import { CenterContainer } from '../components/CenterContainer'
-import { TransparentBox } from '../components/TransparentBox'
+import { CenterContainer } from '../components/CenterContainer/CenterContainer'
+import { TransparentBox } from '../components/TransparentBox/TransparentBox'
 import '../pages/About.css'
 
 export function About() {
