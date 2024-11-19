@@ -26,8 +26,8 @@ export function About() {
         },
         {
             name: 'Blake Casto',
-            pic: 'src/assets/Default.PNG',
-            hoverPic: 'src/assets/defaultHover.jpeg',
+            pic: 'src/assets/BlakeProfile.jpg',
+            hoverPic: 'src/assets/BlakeHover.jpg',
             bio: 'Dev Team: Frontend',
         },
         {
