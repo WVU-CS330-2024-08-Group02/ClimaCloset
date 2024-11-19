@@ -1,3 +1,5 @@
+import { CenterContainer } from '../components/CenterContainer'
+import { TransparentBox } from '../components/TransparentBox'
 import '../pages/About.css'
 
 export function About() {
@@ -58,34 +60,41 @@ export function About() {
         // Text to be displayed on the About page
         // Map the info for each group member to display their name and profile picture
         <>
+            <CenterContainer>
             {/* Main heading followed by description for the About page to describe what ClimaCloset is */}
             <h1>About ClimaCloset</h1>
-            <p>
-                Welcome to ClimaCloset, where deciding what to wear is made easy!
-                ClimaCloset is all about finding you the perfect outfit to wear based
-                on your ideal weather preferences as well as what types of clothing
-                items that you own which are then stored in your personal closet. You
-                can also choose your activity for the day to help 
-                tune your generated outfit.
-            </p>
+            <TransparentBox style={{width: "80%"}}>
+                <p>
+                    Welcome to ClimaCloset, where deciding what to wear is made easy!
+                    ClimaCloset is all about finding you the perfect outfit to wear based
+                    on your ideal weather preferences as well as what types of clothing
+                    items that you own which are then stored in your personal closet. You
+                    can also choose your activity for the day to help 
+                    tune your generated outfit.
+                </p>
+            </TransparentBox>
         
             <h1>Meet the Dream Team</h1>
-            <div className="group-members">
-                {/* Map through each group member and display their corresponding info */}
-                {teamInfo.map((member, index) => (
-                    <div key={index} className="group-member">
-                        {/* Group member's name */}
-                        <h2 className="member-name">{member.name}</h2>
-                        {/* Profile pictures (original & hovered) */}
-                        <div className="images-hovering">
-                            <img src={member.pic} alt={`Profile Pic`} className="profile-pic" />
-                            <img src={member.hoverPic} alt={`Funny Pic`} className="hover-pic" />
+            
+            <TransparentBox style={{width: "80%"}}>
+                <div className="group-members">
+                    {/* Map through each group member and display their corresponding info */}
+                    {teamInfo.map((member, index) => (
+                        <div key={index} className="group-member">
+                            {/* Group member's name */}
+                            <h2 className="member-name">{member.name}</h2>
+                            {/* Profile pictures (original & hovered) */}
+                            <div className="images-hovering">
+                                <img src={member.pic} alt={`Profile Pic`} className="profile-pic" />
+                                <img src={member.hoverPic} alt={`Funny Pic`} className="hover-pic" />
+                            </div>
+                            {/* Group member's short bio*/}
+                            <h3 className="member-bio">{member.bio}</h3>
                         </div>
-                        {/* Group member's short bio*/}
-                        <h3 className="member-bio">{member.bio}</h3>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            </TransparentBox>
+            </CenterContainer>
         </>
     )
 }
