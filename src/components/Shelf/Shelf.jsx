@@ -29,7 +29,7 @@ export function Shelf() {
     /* This goes through the map of items and places them in the shelf*/
     return (
         <div className="shelf">
-            <h2>Your Clothes</h2>
+            <h2>Your Closet</h2>
             <div className="product-list">
                 {products.map(product => (
                     <div className="product" key={product.id}>

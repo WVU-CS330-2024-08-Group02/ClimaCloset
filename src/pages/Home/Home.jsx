@@ -47,67 +47,69 @@ export function Home() {
         };
 
     return (
-        <CenterContainer>
-            <div>
-                <h1>Hi Kaylea, welcome to your home page!</h1>
-            </div>
+        <>
+            <h1>Hi Kaylea, welcome to your home page!</h1>
+            
+            <CenterContainer className="home-center-container">
+                <div className="left-container">
+                    <Shelf />
+                </div>
+                
+                <div className="right-container">
+                    {/* button for the generate outfit */}
+                    <label htmlFor="activity-select" className="dropdown-label">
+                        Choose an activity for the day:
+                    </label>
+                    <select
+                        id="activity-select"
+                        value={activity}
+                        onChange={handleActivityChange}
+                        className="dropdown"
+                        style={{position: "relative"}}
+                    >
+                        <option value="business">Business Professional</option>
+                        <option value="active">Outdoor Activity</option>
+                        <option value="indoor">Indoor Lounging</option>
+                        <option value="casual">Casual/Low Activity</option>
+                    </select>
 
-            {/* insert shelf component */}
-            <TransparentBox className='shelf-box'>
-                <Shelf />
-            </TransparentBox>
+                    <div className="button-container">
+                        <button onClick={generateOutfit} className="button">
+                            Generate Outfit
+                        </button>
+                    </div>
 
-            {/* button for the generate outfit */}
-            <label htmlFor="activity-select" className="dropdown-label">
-                Choose an activity for the day:
-            </label>
-            <select
-                id="activity-select"
-                value={activity}
-                onChange={handleActivityChange}
-                className="dropdown"
-                style={{position: "relative"}}
-            >
-                <option value="business">Business Professional</option>
-                <option value="active">Outdoor Activity</option>
-                <option value="indoor">Indoor Lounging</option>
-                <option value="casual">Casual/Low Activity</option>
-            </select>
-
-            <div className="button-container">
-                <button onClick={generateOutfit} className="button">
-                    Generate Outfit
-                </button>
-            </div>
-
-            {/* Modal for Outfit Suggestion */}
-            {showModal && (
-                <div className="modal">
-                    <div className="modal-content">
-                        {/* Close Button (X) */}
-                        <span className="close" onClick={closeModal}>&times;</span>
-                        <h2>Suggested Outfit</h2>
-                        <p>{outfitSuggestion.text}</p>
-                        <img 
-                            src={`src/assets/${outfitSuggestion.image}`} 
-                            alt="Outfit suggestion" 
-                            className="outfit-image"
-                        />
+                    {/* Modal for Outfit Suggestion */}
+                    {showModal && (
+                        <div className="modal">
+                            <div className="modal-content">
+                                {/* Close Button (X) */}
+                                <span className="close" onClick={closeModal}>&times;</span>
+                                <h2>Suggested Outfit</h2>
+                                <p>{outfitSuggestion.text}</p>
+                                <img 
+                                    src={`src/assets/${outfitSuggestion.image}`} 
+                                    alt="Outfit suggestion" 
+                                    className="outfit-image"
+                                />
+                            </div>
+                        </div>
+                    )}
+            
+                    {/* container for the weather on home page */}
+                    <div>
+                        <h1 className="weather-title">The Weather Today</h1>
+                        <div className="circle">
+                            <img className="weather-img" src="src/assets/sun.png" alt="weather-icon" />
+                            <span className="weather-temp">
+                                70&deg; F
+                            </span>
+                        </div>
+                        <p>in Morgantown, WV</p>
                     </div>
                 </div>
-            )}
-            
-            {/* container for thw weather on home page */}
-            <div>
-                <h1 className="weather-title">The Weather Today</h1>
-                <div className="circle">
-                    <img className="weather-img" src="src/assets/sun.png" alt="weather-icon" />
-                    <span className="weather-temp">
-                        70&deg; F
-                    </span>
-                </div>
-                <p>in Morgantown, WV</p>
-            </div>
-        </CenterContainer>
+                
+            </CenterContainer>
+        </>
     );
 }
