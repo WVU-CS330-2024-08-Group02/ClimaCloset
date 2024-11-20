@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { WeatherPreferences } from '../components/WeatherPreferences/WeatherPreferences';
-import { Tops } from "../components/Tops/Tops";
-import { Bottoms } from '../components/Bottoms/Bottoms';
-import { Shoes } from "../components/Shoes/Shoes";
-import { Accessories } from '../components/Accessories/Accessories';
-import { CenterContainer } from '../components/CenterContainer/CenterContainer';
-import './Closet.css';
-import { TransparentBox } from '../components/TransparentBox/TransparentBox';
+import { WeatherPreferences } from '../../components/WeatherPreferences/WeatherPreferences';
+import { Tops } from "../../components/Tops/Tops";
+import { Bottoms } from '../../components/Bottoms/Bottoms';
+import { Shoes } from "../../components/Shoes/Shoes";
+import { Accessories } from '../../components/Accessories/Accessories';
+import { CenterContainer } from '../../components/CenterContainer/CenterContainer';
+import './Preferences.css';
+import { TransparentBox } from '../../components/TransparentBox/TransparentBox';
 
-export function Closet() {
+export function Preferences() {
     // State to hold multiple selected options for each category
     const [selectedTops, setSelectedTops] = useState([]);
     const [selectedBottoms, setSelectedBottoms] = useState([]);

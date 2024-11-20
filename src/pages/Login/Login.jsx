@@ -1,7 +1,7 @@
 import './Login.css';
 import { NavLink } from "react-router-dom"
-import { TransparentBox } from '../components/TransparentBox/TransparentBox';
-import { CenterContainer } from '../components/CenterContainer/CenterContainer';
+import { TransparentBox } from '../../components/TransparentBox/TransparentBox';
+import { CenterContainer } from '../../components/CenterContainer/CenterContainer';
 import { useState } from 'react';
 
 /**

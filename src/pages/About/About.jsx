@@ -1,6 +1,6 @@
-import { CenterContainer } from '../components/CenterContainer/CenterContainer'
-import { TransparentBox } from '../components/TransparentBox/TransparentBox'
-import '../pages/About.css'
+import { CenterContainer } from '../../components/CenterContainer/CenterContainer'
+import { TransparentBox } from '../../components/TransparentBox/TransparentBox'
+import './About.css'
 
 export function About() {
     // Create an array to store the name, profile picture(s), and a short bio for each team member (8 total)

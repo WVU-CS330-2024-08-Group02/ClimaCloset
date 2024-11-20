@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { CenterContainer } from '../components/CenterContainer/CenterContainer';
+import { CenterContainer } from '../../components/CenterContainer/CenterContainer';
 import 'leaflet/dist/leaflet.css';
-import '../pages/Weather.css';
+import './Weather.css';
 
 // Function to determine the color of the progress bar based on temperature value
 function getColor(value) {

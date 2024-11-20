@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Shelf } from "../components/Shelf/Shelf";
+import { Shelf } from "../../components/Shelf/Shelf";
 import './Home.css';  // Import the CSS file
-import { CenterContainer } from "../components/CenterContainer/CenterContainer";
-import { TransparentBox } from "../components/TransparentBox/TransparentBox";
+import { CenterContainer } from "../../components/CenterContainer/CenterContainer";
+import { TransparentBox } from "../../components/TransparentBox/TransparentBox";
 
 export function Home() {
     const [activity, setActivity] = useState('casual'); // Default activity

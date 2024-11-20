@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { CenterContainer } from "../components/CenterContainer/CenterContainer";
-import { TransparentBox } from "../components/TransparentBox/TransparentBox";
+import { CenterContainer } from "../../components/CenterContainer/CenterContainer";
+import { TransparentBox } from "../../components/TransparentBox/TransparentBox";
 import './Signup.css';
 
 /**
@@ -77,7 +77,7 @@ export function Signup() {
 
     return (
         <>
-            <h1>Sign Up</h1>
+            <h1>Sign Up for ClimaCloset</h1>
             <CenterContainer>
                 <TransparentBox>
                     <form onSubmit={handleSubmit}>

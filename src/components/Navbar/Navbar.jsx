@@ -14,7 +14,7 @@ export function Navbar() {
                 <NavLink to="/">
                     <a className="nav-button">Home</a>
                 </NavLink>
-                <NavLink to="/Closet">
+                <NavLink to="/Preferences">
                     <a className="nav-button">Preferences</a>
                 </NavLink>
                 <NavLink to="/Weather">
