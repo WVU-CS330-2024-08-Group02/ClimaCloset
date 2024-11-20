@@ -1,4 +1,5 @@
 import { useState } from "react"
+import './Accessories.css'
 
 export function Accessories() {
     const [chosenOption, setChosenOption] = useState([]);
@@ -23,7 +24,7 @@ export function Accessories() {
 
     // Create a form that has checkboxes where the user can "choose all that apply"
     return (
-        <form onSubmit={handleChoice}>
+        <form className="accessories" onSubmit={handleChoice}>
             <h3>Select All Types of Accessories you Own</h3>
             {accessories.map((option, index) => (
                 <div key={index}>
@@ -37,7 +38,9 @@ export function Accessories() {
                     <label htmlFor={`checkbox4-${index}`}>{option}</label>
                 </div>
             ))}
-            <button style={{backgroundColor: '#14b0db'}} type="submit">Submit Accessories</button>
+            <button type="submit">
+                Submit Accessories
+            </button>
         </form>
     );
 }
