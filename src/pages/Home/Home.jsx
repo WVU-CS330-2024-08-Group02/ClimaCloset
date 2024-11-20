@@ -3,10 +3,25 @@ import { Shelf } from "../../components/Shelf/Shelf";
 import './Home.css';  // Import the CSS file
 import { CenterContainer } from "../../components/CenterContainer/CenterContainer";
 import { TransparentBox } from "../../components/TransparentBox/TransparentBox";
+import coat from '../../assets/clothingIcons/Coat.png';
+import jeans from '../../assets/clothingIcons/jeans.png';
+import boots from '../../assets/clothingIcons/boots.png';
+import umbrella from '../../assets/clothingIcons/umbrella.png';
+import backpack from '../../assets/clothingIcons/Backpack.png'
+import dressPants from '../../assets/clothingIcons/Dress_Pants.png'
+import flipFlops from '../../assets/clothingIcons/flipFlops.png'
+import gloves from '../../assets/clothingIcons/Gloves.png'
+import jacket from '../../assets/clothingIcons/Jacket.png'
+import longSleeves from '../../assets/clothingIcons/Long_Sleeve.png'
+import purse from '../../assets/clothingIcons/Purse.png'
+import shorts from '../../assets/clothingIcons/shorts.png'
+import sweatpants from '../../assets/clothingIcons/Sweatpants.png'
+import sweatshirt from '../../assets/clothingIcons/Sweatshirt.png'
+
 
 export function Home() {
     const [activity, setActivity] = useState('casual'); // Default activity
-    const [outfitSuggestion, setOutfitSuggestion] = useState(''); // State for outfit suggestion
+    const [outfitSuggestion, setOutfitSuggestion] = useState({ text: '', images: [] }); // State for outfit suggestion
     const [showModal, setShowModal] = useState(false); // State for showing modal
 
     const handleActivityChange = (event) => {
@@ -16,30 +31,31 @@ export function Home() {
     {/* outfit suggestions */}
     const generateOutfit = () => {
         let suggestion;
-        let outfitImage;
+        let outfitImages = [];
         switch (activity) {
             case 'business':
-                suggestion = "Dress shirt, blazer, and dress pants. Polo and kahkis.";
-                outfitImage = "business.jpg"; // Path to your image for business attire
+                suggestion = "Dress shirt, blazer, and dress pants. Polo and khakis.";
+                outfitImages = [coat, dressPants, boots, umbrella, purse]; // Example for multiple images
                 break;
             case 'active':
                 suggestion = "Athletic shirt and shorts, with sneakers. Leggings and an athletic shirt.";
-                outfitImage = "active.jpg"; // Path to your image for active attire
+                outfitImages = [longSleeves, shorts]; 
                 break;
             case 'indoor':
                 suggestion = "Comfortable loungewear or pajamas.";
-                outfitImage = "indoor.jpg"; // Path to your image for indoor attire
+                outfitImages = [sweatshirt, sweatpants];
                 break;
             case 'casual':
                 suggestion = "T-shirt and jeans. Shorts and a long sleeve.";
-                outfitImage = "casual.jpg"; // Path to your image for casual attire
+                outfitImages = [longSleeves, jeans, boots];
                 break;
             default:
                 suggestion = "Choose an activity to get an outfit suggestion.";
         }
-        setOutfitSuggestion({ text: suggestion, image: outfitImage });
+        setOutfitSuggestion({ text: suggestion, images: outfitImages });
         setShowModal(true); // Show the modal with the suggestion
     };
+    
 
         // Function to close the modal
         const closeModal = () => {
@@ -81,20 +97,26 @@ export function Home() {
 
                     {/* Modal for Outfit Suggestion */}
                     {showModal && (
-                        <div className="modal">
-                            <div className="modal-content">
-                                {/* Close Button (X) */}
-                                <span className="close" onClick={closeModal}>&times;</span>
-                                <h2>Suggested Outfit</h2>
-                                <p>{outfitSuggestion.text}</p>
+                     <div className={`modal ${outfitSuggestion.images.length > 2 ? 'large-modal' : 'small-modal'}`}>
+                         <div className="modal-content">
+                            {/* Close Button (X) */}
+                            <span className="close" onClick={closeModal}>&times;</span>
+                            <h2>Suggested Outfit</h2>
+                            <p>{outfitSuggestion.text}</p>
+                            <div className="outfit-images">
+                                {outfitSuggestion.images.map((image, index) => (
                                 <img 
-                                    src={`src/assets/${outfitSuggestion.image}`} 
-                                    alt="Outfit suggestion" 
+                                    key={index}
+                                    src={image} 
+                                    alt={`Outfit suggestion ${index + 1}`} 
                                     className="outfit-image"
                                 />
+                                ))}
                             </div>
                         </div>
+                     </div>
                     )}
+
             
                     {/* container for the weather on home page */}
                     <div>
