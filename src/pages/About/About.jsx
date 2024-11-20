@@ -33,7 +33,7 @@ export function About() {
         {
             name: 'Kevin Agazie',
             pic: 'src/assets/KevinProfile.png',
-            hoverPic: 'src/assets/defaultHover.jpeg',
+            hoverPic: 'src/assets/KevinProfileGoofyAhh.png',
             bio: 'Dev Team: Backend',
         },
         {
