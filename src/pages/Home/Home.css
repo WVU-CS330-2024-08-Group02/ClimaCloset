@@ -62,16 +62,17 @@
 .circle {
     width: 300px;
     height: 300px;
-    background-color: var(--lavender-blush);
     border-radius: 50%;
     margin: 20px auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: black;
+    color: white;
     font-weight: bold;
     font-size: 60px;
     flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 7.5px solid rgba(0, 0, 0, 0.4);
 }
 
 .dropdown {
@@ -89,9 +90,14 @@
 }
 
 .button {
-    margin-top: 10px;
-    font-size: 20px;
-    background-color: #14b0db;
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: none;
+    font-weight: bold;
+    font-size: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .outfit-suggestion {
@@ -123,20 +129,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
   box-sizing: border-box;
-  width: 50%;
   flex-wrap: wrap;
-  background-color: rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
-  padding: 30px;
-  -webkit-backdrop-filter: blur(3px);
-  backdrop-filter: blur(3px);
   height: 1080px;
+}
+.left-container > * {
+    display: flex;
+    width: 100%;
 }
 
 .home-center-container {
     display: flex;
     flex-direction: row !important;
+}
+
+.right-container > .top-half,
+.right-container > .bottom-half {
+  flex: 1; /* Each takes half the container height */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
 }

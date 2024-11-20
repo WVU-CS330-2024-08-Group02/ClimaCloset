@@ -72,54 +72,9 @@ export function Home() {
                 </div>
                 
                 <div className="right-container">
-                    {/* button for the generate outfit */}
-                    <label htmlFor="activity-select" className="dropdown-label">
-                        Choose an activity for the day:
-                    </label>
-                    <select
-                        id="activity-select"
-                        value={activity}
-                        onChange={handleActivityChange}
-                        className="dropdown"
-                        style={{position: "relative"}}
-                    >
-                        <option value="business">Business Professional</option>
-                        <option value="active">Outdoor Activity</option>
-                        <option value="indoor">Indoor Lounging</option>
-                        <option value="casual">Casual/Low Activity</option>
-                    </select>
 
-                    <div className="button-container">
-                        <button onClick={generateOutfit} className="button">
-                            Generate Outfit
-                        </button>
-                    </div>
-
-                    {/* Modal for Outfit Suggestion */}
-                    {showModal && (
-                     <div className={`modal ${outfitSuggestion.images.length > 2 ? 'large-modal' : 'small-modal'}`}>
-                         <div className="modal-content">
-                            {/* Close Button (X) */}
-                            <span className="close" onClick={closeModal}>&times;</span>
-                            <h2>Suggested Outfit</h2>
-                            <p>{outfitSuggestion.text}</p>
-                            <div className="outfit-images">
-                                {outfitSuggestion.images.map((image, index) => (
-                                <img 
-                                    key={index}
-                                    src={image} 
-                                    alt={`Outfit suggestion ${index + 1}`} 
-                                    className="outfit-image"
-                                />
-                                ))}
-                            </div>
-                        </div>
-                     </div>
-                    )}
-
-            
                     {/* container for the weather on home page */}
-                    <div>
+                    <TransparentBox className="top-half">
                         <h1 className="weather-title">The Weather Today</h1>
                         <div className="circle">
                             <img className="weather-img" src="src/assets/sun.png" alt="weather-icon" />
@@ -128,7 +83,59 @@ export function Home() {
                             </span>
                         </div>
                         <p>in Morgantown, WV</p>
-                    </div>
+                    </TransparentBox>
+
+                    <TransparentBox className="bottom-half">
+
+                        {/* button for the generate outfit */}
+                        <label htmlFor="activity-select" className="dropdown-label">
+                            Choose an activity for the day:
+                        </label>
+                        <select
+                            id="activity-select"
+                            value={activity}
+                            onChange={handleActivityChange}
+                            className="dropdown"
+                            style={{position: "relative", width: "400px"}}
+                        >
+                            <option value="business">Business Professional</option>
+                            <option value="active">Outdoor Activity</option>
+                            <option value="indoor">Indoor Lounging</option>
+                            <option value="casual">Casual/Low Activity</option>
+                        </select>
+
+                        <div className="button-container">
+                            <button onClick={generateOutfit} className="button">
+                                Generate Outfit
+                            </button>
+                        </div>
+
+                        {/* Modal for Outfit Suggestion */}
+                        {showModal && (
+                        <div className={`modal ${outfitSuggestion.images.length > 2 ? 'large-modal' : 'small-modal'}`}>
+                            <div className="modal-content">
+                                {/* Close Button (X) */}
+                                <span className="close" onClick={closeModal}>&times;</span>
+                                <h2>Suggested Outfit</h2>
+                                <p>{outfitSuggestion.text}</p>
+                                <div className="outfit-images">
+                                    {outfitSuggestion.images.map((image, index) => (
+                                    <img 
+                                        key={index}
+                                        src={image} 
+                                        alt={`Outfit suggestion ${index + 1}`} 
+                                        className="outfit-image"
+                                    />
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                        )}
+                    </TransparentBox>
+
+
+            
+                    
                 </div>
                 
             </CenterContainer>

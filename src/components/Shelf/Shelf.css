@@ -1,19 +1,27 @@
 .shelf {
-    padding: 2rem;
+    display: flex;
+    flex-direction: column; /* Ensures proper layout if content is stacked */
+    width: 100%; /* Fill the full width of the container */
+    height: 100%; /* Fill the full height of the container */
+    justify-content: center; /* Optional: Adjust vertical alignment */
+    align-items: center; /* Optional: Adjust horizontal alignment */
 }
 
 .product-list {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     gap: 10px;
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    padding: 20px;
+    padding: 30px;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
 }
 
 .product {
     background-color: rgba(0, 0, 0, 0.2);
     padding: 1rem;
     border-radius: 8px;
+    border: 7.5px solid rgba(0, 0, 0, 0.4);
 }
