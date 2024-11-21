@@ -77,9 +77,9 @@ export function Home() {
                     <TransparentBox className="top-half">
                         <h1 className="weather-title">The Weather Today</h1>
                         <div className="circle">
-                            <img className="weather-img" src="src/assets/sun.png" alt="weather-icon" />
+                            <img className="weather-img" src="src/assets/snowy.png" alt="weather-icon" />
                             <span className="weather-temp">
-                                70&deg; F
+                                34&deg; F
                             </span>
                         </div>
                         <p>in Morgantown, WV</p>

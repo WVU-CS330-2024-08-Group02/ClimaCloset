@@ -54,30 +54,30 @@ export function Weather() {
 
     // Data for the 12-hour forecast (time, temperature, and icon) 
     const firstContainerData = [
-        { time: 'Now', temp: '70&deg;', imgSrc: 'src/assets/Sun.png' },
-        { time: '3 pm', temp: '68&deg;', imgSrc: 'src/assets/Sun.png' },
-        { time: '4 pm', temp: '67&deg;', imgSrc: 'src/assets/Sun.png' },
-        { time: '5 pm', temp: '65&deg;', imgSrc: 'src/assets/Sun.png' },
-        { time: '6 pm', temp: '63&deg;', imgSrc: 'src/assets/Sun.png' },
-        { time: '7 pm', temp: '60&deg;', imgSrc: 'src/assets/cloud.png' },
-        { time: '8 pm', temp: '57&deg;', imgSrc: 'src/assets/cloud.png' },
-        { time: '9 pm', temp: '57&deg;', imgSrc: 'src/assets/cloud.png' },
-        { time: '10 pm', temp: '56&deg;', imgSrc: 'src/assets/cloud.png' },
-        { time: '11 pm', temp: '55&deg;', imgSrc: 'src/assets/cloud.png' },
-        { time: '12 am', temp: '55&deg;', imgSrc: 'src/assets/cloud.png' },
-        { time: '1 am', temp: '56&deg;', imgSrc: 'src/assets/cloud.png' },
-        { time: '2 am', temp: '56&deg;', imgSrc: 'src/assets/cloud.png' },
+        { time: 'Now', temp: '34&deg;', imgSrc: 'src/assets/Snowy.png' },
+        { time: '12 pm', temp: '35&deg;', imgSrc: 'src/assets/Snowy.png' },
+        { time: '1 pm', temp: '36&deg;', imgSrc: 'src/assets/Snowy.png' },
+        { time: '2 pm', temp: '36&deg;', imgSrc: 'src/assets/Snowy.png' },
+        { time: '3 pm', temp: '37&deg;', imgSrc: 'src/assets/Snowy.png' },
+        { time: '4 pm', temp: '37&deg;', imgSrc: 'src/assets/Rainy.png' },
+        { time: '5 pm', temp: '38&deg;', imgSrc: 'src/assets/Rainy.png' },
+        { time: '6 pm', temp: '38&deg;', imgSrc: 'src/assets/Rainy.png' },
+        { time: '7 pm', temp: '39&deg;', imgSrc: 'src/assets/Rainy.png' },
+        { time: '8 pm', temp: '40&deg;', imgSrc: 'src/assets/Rainy.png' },
+        { time: '9 pm', temp: '40&deg;', imgSrc: 'src/assets/Rainy.png' },
+        { time: '10 pm', temp: '40&deg;', imgSrc: 'src/assets/Rainy.png' },
+        { time: '11 pm', temp: '40&deg;', imgSrc: 'src/assets/Rainy.png' },
     ];
 
     // Data for the 7-day forecast (day, temperature range, and icon) 
     const secondContainerData = [
-        { time: 'Today', temp: '55&deg-75&deg;', imgSrc: 'src/assets/sun.png' },
-        { time: 'Sat', temp: '48&deg-67&deg;', imgSrc: 'src/assets/cloud.png' },
-        { time: 'Sun', temp: '41&deg-64&deg;', imgSrc: 'src/assets/sun.png' },
-        { time: 'Mon', temp: '38&deg-61&deg;', imgSrc: 'src/assets/sun_and_cloud.png' },
-        { time: 'Tue', temp: '45&deg-62&deg;', imgSrc: 'src/assets/sun.png' },
-        { time: 'Wed', temp: '51&deg-63&deg;', imgSrc: 'src/assets/sun_and_cloud.png' },
-        { time: 'Thu', temp: '88&deg-88&deg;', imgSrc: 'src/assets/sun_and_cloud.png' },
+        { time: 'Today', temp: '29&deg-40&deg;', imgSrc: 'src/assets/snowy.png' },
+        { time: 'Sat', temp: '40&deg-46&deg;', imgSrc: 'src/assets/Rainy.png' },
+        { time: 'Sun', temp: '37&deg-49&deg;', imgSrc: 'src/assets/cloud.png' },
+        { time: 'Mon', temp: '37&deg-57&deg;', imgSrc: 'src/assets/rainy.png' },
+        { time: 'Tue', temp: '36&deg-54&deg;', imgSrc: 'src/assets/cloud.png' },
+        { time: 'Wed', temp: '33&deg-39&deg;', imgSrc: 'src/assets/cloud.png' },
+        { time: 'Thu', temp: '30&deg-43&deg;', imgSrc: 'src/assets/cloud.png' },
     ];
 
     return (
@@ -115,18 +115,18 @@ export function Weather() {
                     <div className="right-box">
                         {/* Circle displaying current weather and temperature */}
                         <div className="circle-style">
-                            <span style={{ fontSize: '30px', marginTop: '20px' }}>Sunny</span>
-                            <span style={{ marginTop: '-50px' }}>70&deg;</span>
+                            <span style={{ fontSize: '30px', marginTop: '20px' }}>Snowy</span>
+                            <span style={{ marginTop: '-50px' }}>34&deg;</span>
                         </div>
 
                         {/* Centered progress bar displaying temperature range */}
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-                            <ProgressBar value={70} min={55} max={75} />
+                            <ProgressBar value={34} min={29} max={40} />
                         </div>
 
                         {/* Display the temperature range text */}
                         <div>
-                            <span className="text-style">Low of  55&deg; High of 75&deg;</span>
+                            <span className="text-style">Low of  29&deg; High of 40&deg;</span>
                         </div>
                     </div>
                 </div>
