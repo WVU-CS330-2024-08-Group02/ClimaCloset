@@ -1,53 +1,59 @@
 /* Home.css */
 /* Modal container */
+/* Default modal size */
 .modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    z-index: 1000;
-}
-
-/* Modal content */
-.modal-content {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: white;
     padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    width: 80%;
-    max-width: 400px;
-    position: relative; /* This is important for positioning the close button */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 50%; /* Default width */
+    max-width: 600px;
+    overflow: auto;
 }
 
-/* Close button (X) */
+/* Larger modal for more images */
+.large-modal {
+    width: 80%; /* Make the modal wider */
+    max-width: 900px;
+}
+
+/* Smaller modal for fewer images */
+.small-modal {
+    width: 40%; /* Make the modal smaller */
+    max-width: 500px;
+}
+
+/* Style for modal content */
+.modal-content {
+    padding: 20px;
+}
+
+/* Style for the close button */
 .close {
+    font-size: 30px;
+    color: black;
     position: absolute;
     top: 10px;
     right: 10px;
-    font-size: 30px;
-    font-weight: bold;
-    color: #333;
     cursor: pointer;
-    background: none;
-    border: none;
 }
 
-/* Change the close button color on hover */
-.close:hover {
-    color: #f00;
-}
-
-/* Outfit image */
+/* Style for the images */
 .outfit-image {
-    width: 100%;
-    max-width: 300px;
-    margin-top: 20px;
-    border-radius: 8px;
+    width: 100px;  /* Set width */
+    height: 100px; /* Set height */
+    object-fit: cover; /* Ensures the image maintains its aspect ratio, cropping if necessary */
+    margin: 10px; /* Optional: Adds space between images */
+}
+
+.outfit-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 200px; /* Limit the size of each image */
 }
 
 /* Add any additional styling you need */
@@ -56,16 +62,17 @@
 .circle {
     width: 300px;
     height: 300px;
-    background-color: var(--lavender-blush);
     border-radius: 50%;
     margin: 20px auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: black;
+    color: white;
     font-weight: bold;
     font-size: 60px;
     flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 7.5px solid rgba(0, 0, 0, 0.4);
 }
 
 .dropdown {
@@ -83,9 +90,14 @@
 }
 
 .button {
-    margin-top: 10px;
-    font-size: 20px;
-    background-color: #14b0db;
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: none;
+    font-weight: bold;
+    font-size: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .outfit-suggestion {
@@ -117,20 +129,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
   box-sizing: border-box;
-  width: 50%;
   flex-wrap: wrap;
-  background-color: rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
-  padding: 30px;
-  -webkit-backdrop-filter: blur(3px);
-  backdrop-filter: blur(3px);
   height: 1080px;
+}
+.left-container > * {
+    display: flex;
+    width: 100%;
 }
 
 .home-center-container {
     display: flex;
     flex-direction: row !important;
+}
+
+.right-container > .top-half,
+.right-container > .bottom-half {
+  flex: 1; /* Each takes half the container height */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
 }

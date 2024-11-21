@@ -1,19 +1,29 @@
 .shelf {
-    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .product-list {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     gap: 10px;
+    height: 90%;
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 8px;
-    padding: 40px;
+    padding: 30px;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .product {
     background-color: rgba(0, 0, 0, 0.2);
     padding: 1rem;
     border-radius: 8px;
+    border: 7.5px solid rgba(0, 0, 0, 0.4);
 }
