@@ -64,7 +64,7 @@ export function Home() {
 
     return (
         <>
-            <h1>Hi Kaylea, welcome to your home page!</h1>
+            <h1>Hi Cameron, welcome to your home page!</h1>
             
             <CenterContainer className="home-center-container">
                 <div className="left-container">
