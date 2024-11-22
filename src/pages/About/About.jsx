@@ -15,7 +15,7 @@ export function About() {
         {
             name: 'Eammon Anderson',
             pic: 'src/assets/EammonProfile1.png',
-            hoverPic: 'src/assets/defaultHover.jpeg',
+            hoverPic: 'src/assets/EammonProfile2.png',
             bio: 'Scrum Master',
         },
         {
