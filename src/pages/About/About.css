@@ -1,0 +1,55 @@
+.group-members {
+    display: flex;
+    flex-wrap: wrap; /* wrap the group-members containter to have two rows */
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.group-member {
+    text-align: center;
+    /* did research on the calc() function for css */
+    width: calc(25% - 20px); /* Adjust width to fit 4 group members per row */
+}
+
+.member-name {
+    margin-bottom: 10px;
+}
+
+/* Get the profile pictures to all display in a circle */
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.images-hovering {
+    position: relative;
+    display: inline-block;
+}
+
+/* Use the same styling as profile pic to get hovered pic in a circle */
+.hover-pic {
+    position: absolute; /* Helps to stack the images "on top" of each other in the circle */
+    top: 0;
+    left: 0;
+    opacity: 0; /* Set the hovered images to be transparent intially (before it gets hovered over) */
+    transition: opacity 0.3s ease; /* Transition the opacity when its value changes */
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.images-hovering:hover .profile-pic {
+    opacity: 0; /* Make the first profile pic fade out */
+}
+
+.images-hovering:hover .hover-pic {
+    opacity: 1; /* Make the second (hovered) profile pic fade in */
+}
+
+p {
+    font-size: 24px;
+}

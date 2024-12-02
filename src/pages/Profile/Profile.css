@@ -1,0 +1,93 @@
+/* Profile CSS */
+
+/* Profile Container */
+.profile-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/* Profile Image and Username Container */
+.profile-image-and-username {
+  display: flex;
+  width: 50vw;
+  height: 250px;
+  min-width: 300px;
+  align-items: center;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Profile Image */
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+  border: 4px solid #568259;
+}
+
+/* Profile Username Text */
+.profile-username {
+  flex-grow: 1;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* Edit Button Style */
+.edit-button {
+  background-color: #568259;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Edit Button On Hover */
+.edit-button:hover {
+  background-color: #45a049;
+}
+
+/* Dropdown Conatainer Style */
+.dropdown {
+  margin-top: 10px;
+  position: absolute;
+  border-radius: 5px;
+  width: 50vw;
+  padding: 0;
+}
+
+/* Style for ul in dropdown */
+.dropdown ul {
+  list-style: none;
+  background-color: #568259;
+  color: white;
+  padding: 0;
+  text-align: center;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* Style for ul in dropdown with li elements */
+.dropdown ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+/* on hover for li in dropdown */
+.dropdown ul li:hover {
+  background-color: #45a049;
+  border-radius: 20px;
+}
+

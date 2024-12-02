@@ -1,0 +1,9 @@
+.accessories {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto; /* Center the form on the page */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Horizontally center content inside the form */
+  }

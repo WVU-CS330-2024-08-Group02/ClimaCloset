@@ -1,0 +1,9 @@
+/* App.css */
+
+#root {
+  max-width: 1920px;
+  min-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}

@@ -1,0 +1,55 @@
+label {
+    position: relative;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+  input[type="range"] {
+    margin-top: 10px;
+  }
+
+  .question-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    background-color: grey;
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+
+/* Tooltip Styling */
+.tooltip {
+  position: absolute;
+  bottom: -15px;
+  left: 750px;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  width: 200px;
+  color: black;
+}
+
+/* Optional: Add a slight fade-in effect for smoothness */
+.tooltip {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Keyframe for fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

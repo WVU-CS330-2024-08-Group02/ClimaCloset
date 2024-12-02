@@ -1,0 +1,155 @@
+/* Home.css */
+/* Modal container */
+/* Default modal size */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 50%; /* Default width */
+    max-width: 600px;
+    overflow: auto;
+}
+
+/* Larger modal for more images */
+.large-modal {
+    width: 80%; /* Make the modal wider */
+    max-width: 900px;
+}
+
+/* Smaller modal for fewer images */
+.small-modal {
+    width: 40%; /* Make the modal smaller */
+    max-width: 500px;
+}
+
+/* Style for modal content */
+.modal-content {
+    padding: 20px;
+}
+
+/* Style for the close button */
+.close {
+    font-size: 30px;
+    color: black;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Style for the images */
+.outfit-image {
+    width: 100px;  /* Set width */
+    height: 100px; /* Set height */
+    object-fit: cover; /* Ensures the image maintains its aspect ratio, cropping if necessary */
+    margin: 10px; /* Optional: Adds space between images */
+}
+
+.outfit-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 200px; /* Limit the size of each image */
+}
+
+/* Add any additional styling you need */
+
+
+.circle {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 60px;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 7.5px solid rgba(0, 0, 0, 0.4);
+}
+
+.dropdown {
+    position: relative;
+    width: 12em;
+    height: 50px;
+    font-size: 20px;
+    padding: 5px;
+}
+
+.dropdown-label {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: none;
+    font-weight: bold;
+    font-size: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.outfit-suggestion {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.weather-title {
+    margin-top: 150px;
+}
+
+.weather-img {
+    height: 120px;
+    width: 120px;
+}
+
+.weather-temp {
+    margin-top: -20px;
+}
+
+.shelf-box {
+    min-width: 100%;
+    width: 100%;
+}
+
+.left-container, .right-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  height: 1080px;
+}
+.left-container > * {
+    display: flex;
+    width: 100%;
+}
+
+.home-center-container {
+    display: flex;
+    flex-direction: row !important;
+}
+
+.right-container > .top-half,
+.right-container > .bottom-half {
+  flex: 1; /* Each takes half the container height */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+}
