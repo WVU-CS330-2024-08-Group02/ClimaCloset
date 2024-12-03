@@ -1,13 +1,15 @@
 import { NavLink } from "react-router-dom"
 import Nav from 'react-bootstrap/Nav'
 import "./navbar.css" // Styles for navbar elements
+import closetIcon from "../../assets/ClosetIcon.ico"
+import profileImage from "../../assets/pfp/CamProfile.png" // Change when login is functional
 
 export function Navbar() {
     return (
         <Nav className="navbar">
             <Nav className="navbar-left">
                 <NavLink to="/About">
-                    <img alt="Logo" src="src/assets/ClosetIcon.ico" className="image-button"></img>
+                    <img alt="Logo" src={closetIcon} className="image-button"></img>
                 </NavLink>
             </Nav>
             <Nav className="navbar-middle">
@@ -26,7 +28,7 @@ export function Navbar() {
                     <button className="login-button">Login</button>
                 </NavLink>
                 <NavLink to="/Profile">
-                    <img alt="profile" src="src/assets/CamProfile.png" className="profile-button"></img>
+                    <img alt="profile" src={profileImage} className="profile-button"></img>
                 </NavLink>
             </Nav>
         </Nav>
