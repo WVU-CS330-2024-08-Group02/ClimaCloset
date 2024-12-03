@@ -18,6 +18,13 @@ import shorts from '../../assets/clothingIcons/shorts.png'
 import sweatpants from '../../assets/clothingIcons/Sweatpants.png'
 import sweatshirt from '../../assets/clothingIcons/Sweatshirt.png'
 
+// Placeholder imports until logic for weather is created
+import SunnyIcon from "../../assets/weatherIcons/Sun.png";
+import StormyIcon from "../../assets/weatherIcons/Rainy.png"
+import CloudyIcon from "../../assets/weatherIcons/Cloud.png"
+import SunnyCloudyIcon from "../../assets/weatherIcons/Sun_and_Cloud.png"
+import SnowyIcon from "../../assets/weatherIcons/Snowy.png"
+
 
 export function Home() {
     const [activity, setActivity] = useState('casual'); // Default activity
@@ -77,7 +84,7 @@ export function Home() {
                     <TransparentBox className="top-half">
                         <h1 className="weather-title">The Weather Today</h1>
                         <div className="circle">
-                            <img className="weather-img" src="src/assets/snowy.png" alt="weather-icon" />
+                            <img className="weather-img" src={SnowyIcon} alt="weather-icon" />
                             <span className="weather-temp">
                                 34&deg; F
                             </span>

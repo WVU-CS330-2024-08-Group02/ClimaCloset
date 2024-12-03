@@ -3,7 +3,11 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { CenterContainer } from '../../components/CenterContainer/CenterContainer';
 import 'leaflet/dist/leaflet.css';
 import './Weather.css';
-import { WeatherIcons } from '../../components/WeatherIcons/WeatherIcons';
+import SunnyIcon from "../../assets/weatherIcons/Sun.png";
+import StormyIcon from "../../assets/weatherIcons/Rainy.png"
+import CloudyIcon from "../../assets/weatherIcons/Cloud.png"
+import SunnyCloudyIcon from "../../assets/weatherIcons/Sun_and_Cloud.png"
+import SnowyIcon from "../../assets/weatherIcons/Snowy.png"
 
 // Function to determine the color of the progress bar based on temperature value
 function getColor(value) {
@@ -55,30 +59,30 @@ export function Weather() {
 
     // Data for the 12-hour forecast (time, temperature, and icon) 
     const firstContainerData = [
-        { time: 'Now', temp: '34&deg;', imgSrc: 'src/assets/Snowy.png' },
-        { time: '12 pm', temp: '35&deg;', imgSrc: 'src/assets/Snowy.png' },
-        { time: '1 pm', temp: '36&deg;', imgSrc: 'src/assets/Snowy.png' },
-        { time: '2 pm', temp: '36&deg;', imgSrc: 'src/assets/Snowy.png' },
-        { time: '3 pm', temp: '37&deg;', imgSrc: 'src/assets/Snowy.png' },
-        { time: '4 pm', temp: '37&deg;', imgSrc: 'src/assets/Rainy.png' },
-        { time: '5 pm', temp: '38&deg;', imgSrc: 'src/assets/Rainy.png' },
-        { time: '6 pm', temp: '38&deg;', imgSrc: 'src/assets/Rainy.png' },
-        { time: '7 pm', temp: '39&deg;', imgSrc: 'src/assets/Rainy.png' },
-        { time: '8 pm', temp: '40&deg;', imgSrc: 'src/assets/Rainy.png' },
-        { time: '9 pm', temp: '40&deg;', imgSrc: 'src/assets/Rainy.png' },
-        { time: '10 pm', temp: '40&deg;', imgSrc: 'src/assets/Rainy.png' },
-        { time: '11 pm', temp: '40&deg;', imgSrc: 'src/assets/Rainy.png' },
+        { time: 'Now', temp: '34&deg;', imgSrc: SnowyIcon },
+        { time: '12 pm', temp: '35&deg;', imgSrc: SnowyIcon },
+        { time: '1 pm', temp: '36&deg;', imgSrc: SnowyIcon },
+        { time: '2 pm', temp: '36&deg;', imgSrc: SnowyIcon },
+        { time: '3 pm', temp: '37&deg;', imgSrc: SnowyIcon },
+        { time: '4 pm', temp: '37&deg;', imgSrc: StormyIcon },
+        { time: '5 pm', temp: '38&deg;', imgSrc: StormyIcon },
+        { time: '6 pm', temp: '38&deg;', imgSrc: StormyIcon },
+        { time: '7 pm', temp: '39&deg;', imgSrc: StormyIcon },
+        { time: '8 pm', temp: '40&deg;', imgSrc: StormyIcon },
+        { time: '9 pm', temp: '40&deg;', imgSrc: StormyIcon },
+        { time: '10 pm', temp: '40&deg;', imgSrc: StormyIcon },
+        { time: '11 pm', temp: '40&deg;', imgSrc: StormyIcon },
     ];
 
     // Data for the 7-day forecast (day, temperature range, and icon) 
     const secondContainerData = [
-        { time: 'Today', temp: '29&deg-40&deg;', imgSrc: 'src/assets/snowy.png' },
-        { time: 'Sat', temp: '40&deg-46&deg;', imgSrc: 'src/assets/Rainy.png' },
-        { time: 'Sun', temp: '37&deg-49&deg;', imgSrc: 'src/assets/cloud.png' },
-        { time: 'Mon', temp: '37&deg-57&deg;', imgSrc: 'src/assets/rainy.png' },
-        { time: 'Tue', temp: '36&deg-54&deg;', imgSrc: 'src/assets/cloud.png' },
-        { time: 'Wed', temp: '33&deg-39&deg;', imgSrc: 'src/assets/cloud.png' },
-        { time: 'Thu', temp: '30&deg-43&deg;', imgSrc: 'src/assets/cloud.png' },
+        { time: 'Today', temp: '29&deg-40&deg;', imgSrc: SnowyIcon },
+        { time: 'Sat', temp: '40&deg-46&deg;', imgSrc: StormyIcon },
+        { time: 'Sun', temp: '37&deg-49&deg;', imgSrc: CloudyIcon },
+        { time: 'Mon', temp: '37&deg-57&deg;', imgSrc: StormyIcon },
+        { time: 'Tue', temp: '36&deg-54&deg;', imgSrc: CloudyIcon },
+        { time: 'Wed', temp: '33&deg-39&deg;', imgSrc: CloudyIcon },
+        { time: 'Thu', temp: '30&deg-43&deg;', imgSrc: CloudyIcon },
     ];
 
     return (
