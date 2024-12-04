@@ -13,15 +13,9 @@ export function Navbar() {
                 </NavLink>
             </Nav>
             <Nav className="navbar-middle">
-                <NavLink to="/">
-                    <a className="nav-button">Home</a>
-                </NavLink>
-                <NavLink to="/Preferences">
-                    <a className="nav-button">Preferences</a>
-                </NavLink>
-                <NavLink to="/Weather">
-                    <a className="nav-button">Weather</a>
-                </NavLink>
+                <NavLink to="/" className="nav-button">Home</NavLink>
+                <NavLink to="/Preferences" className="nav-button">Preferences</NavLink>
+                <NavLink to="/Weather" className="nav-button">Weather</NavLink>
             </Nav>
             <Nav className="navbar-right">
                 <NavLink to="/Login">
