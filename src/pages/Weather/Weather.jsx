@@ -54,6 +54,7 @@ export function Weather() {
     };
 
     const mapRef = useRef();
+    const searchInputRef = useRef(); // *** Fix for page not rendering, not sure if this is intended
 
     useEffect(() => {
         // After map has rendered, initialize geocoder control
