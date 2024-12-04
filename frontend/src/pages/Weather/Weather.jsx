@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { CenterContainer } from '../../components/CenterContainer/CenterContainer';
 import 'leaflet/dist/leaflet.css';
 import './Weather.css';
+import L from 'leaflet';
+import 'leaflet-control-geocoder';
+import 'leaflet-control-geocoder/dist/Control.Geocoder.css'; // Import geocoder CSS
 import SunnyIcon from "../../assets/weatherIcons/Sun.png";
 import StormyIcon from "../../assets/weatherIcons/Rainy.png"
 import CloudyIcon from "../../assets/weatherIcons/Cloud.png"
@@ -44,17 +47,56 @@ export function Weather() {
     // Initial coordinates to be shown on the map
     const [position, setPosition]= useState([39.64591951232883, -79.97339559170358]);
 
-    // Function to handle updating a position, based on latitude and longitude
-    const updatePosition = (latitude, longitude) => {
-        setPosition([latitude, longitude])
-    }
-    
+    // Display searched location name
+    const [location, setLocation] = useState('Your Current Location');
+
     // State to toggle between showing the 12-hour and 7-day forecast containers 
     const [isFirstContainerVisible, setIsFirstContainerVisible] = useState(true);
 
     // Function to toggle between the 12-hour and 7-day forecast view
     const toggleContainer = () => {
         setIsFirstContainerVisible(!isFirstContainerVisible);
+    };
+
+    const mapRef = useRef();
+    const searchInputRef = useRef(); // *** Fix for page not rendering, not sure if this is intended
+
+    useEffect(() => {
+        // After map has rendered, initialize geocoder control
+        const map = mapRef.current?.leafletElement;
+
+        // Add the geocoder control
+        if (map && !map.hasGeocoder) {
+            const geocoder = L.Control.geocoder({
+                defaultMarkGeocode: true,
+            }).addTo(map); 
+
+            // Event listener for when a location is found
+            geocoder.on('markgeocode', function(e) {
+                const latlng = e.geocode.center;
+                setPosition([latlng.lat, latlng.lng]);
+                setLocation(e.geocode.name);
+            });
+
+            map.hasGeocoder = true;
+        }
+    }, [])
+
+    // Handle when for a user searches a location
+    const handleSearch = () => {
+        const query = searchInputRef.current.value;
+        if (query) {
+            const geocoder = L.Control.Geocoder.nominatim();
+            geocoder.geocode(query, (results) => {
+                if (results.length > 0) {
+                    const { center, name } = results[0];
+                    setPosition([center.lat, center.lng]);
+                    setLocation(name);
+                } else {
+                    alert('Location not found');
+                }
+            });
+        }
     };
 
     // Data for the 12-hour forecast (time, temperature, and icon) 
@@ -91,32 +133,36 @@ export function Weather() {
                 {/* Display the title */}
                 <div className='top-section'>
                     <div className='left-box'>
-                        {/* Get inputs for latitude and longitude coordinates to change map location */}
-                        <div className="change-location">
-                            <label>
-                                Latitude:
-                                <input type="number" onChange={(e) => updatePosition(Number(e.target.value), position[1])} />
-                            </label>
-                            <label>
-                                Longitude:
-                                <input type="number" onChange={(e) => updatePosition(position[0], Number(e.target.value))} />
-                            </label>
-                        </div>
-                        {/* Map container showing the user's current location */}
-                        <div className="map-container-style">
-                            <MapContainer center={position} zoom={6} style={{height: '100%', width: '100%'}}>
-                                <TileLayer
-                                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" 
-                                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                        {/* Parent container for map and search bar*/}
+                        <div className="map-and-search-container">
+                            {/* Search bar containter displayng searchbar above map*/}
+                            <div className="search-bar-style">
+                                <input 
+                                    type="text"
+                                    placeholder="Search for a location..."
+                                    ref={searchInputRef}
+                                    className="search-input"
                                 />
-                                <Marker position={position}>
-                                    <Popup>
-                                        Your Current Location: {position[0].toFixed(4)}, {position[1].toFixed(4)}
-                                    </Popup>
-                                </Marker>
-                            </MapContainer>
+                                <button onClick={handleSearch} className="search-button">
+                                    Search
+                                </button>
+                            </div>
+                            {/* Map container showing the user's current location */}
+                            <div className="map-container-style">
+                                <MapContainer center={position} zoom={6} ref={mapRef} style={{height: '100%', width: '100%'}}>
+                                    <TileLayer
+                                        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" 
+                                        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                                    />
+                                    <Marker position={position}>
+                                        <Popup>{location}</Popup>
+                                    </Marker>
+                                </MapContainer>
+                            </div>
                         </div>
                     </div>
+                
+                        
                     <div className="right-box">
                         {/* Circle displaying current weather and temperature */}
                         <div className="circle-style">
