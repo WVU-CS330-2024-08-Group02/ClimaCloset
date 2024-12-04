@@ -75,21 +75,6 @@
     margin-top: -20px;
 }
 
-/* Container for the map */
-.map-container-style {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    min-width: 100%;
-    height: 100%;
-    min-height: 100%;
-    margin: 0;
-    overflow: hidden;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-}
-
 /* Progress bar sizing and coloring */
 .progress-bar-container {
     width: 600px;
@@ -165,3 +150,79 @@
     backdrop-filter: blur(3px);
     width: 96.5%;
   }
+
+/*Parent container for map and search bar */
+.map-and-search-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    width: 100%; 
+    height: auto; 
+    padding: 10px; 
+    background-color: rgba(255, 255, 255, 0.9); 
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+/* Container for the map */
+.map-container-style {
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+  /* Search bar container */
+  .search-bar-style {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+
+  /* Search input field */
+  .search-input {
+    width: 250px;
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Search button */
+  .search-button {
+    padding: 8px 16px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+  }
+
+  .search-button:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  /*.leaflet-control-geocoder {
+    position: absolute !important;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    width: auto;
+  }
+
+  .leaflet-control-geocoder input {
+    width: 250px;
+    padding: 5px;
+    border-radius: 4px;
+  }*/
