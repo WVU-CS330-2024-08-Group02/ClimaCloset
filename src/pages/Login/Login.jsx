@@ -1,8 +1,10 @@
 import './Login.css';
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { TransparentBox } from '../../components/TransparentBox/TransparentBox';
 import { CenterContainer } from '../../components/CenterContainer/CenterContainer';
 import { useState } from 'react';
+import axios from 'axios';
+
 
 /**
  * Login component that provides a form for users to log into ClimaCloset.
@@ -18,6 +20,8 @@ export function Login()  {
 
     const [username,setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     /**
      * Handles the submission of the login form by displaying the entered
@@ -25,14 +29,28 @@ export function Login()  {
      * 
      * @param {React.FormEvent} e - The form submit event.
      */
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
 
-        alert(`Submission received.\n
-            Username: ${username}\n
-            Password: ${password}\n
-        `)
-    } 
+        try {
+            const response = await axios.post(
+                'https://localhost:5001/auth/login',
+                { username, password },
+                { withCredentials: true }
+            );
+
+            if (response.data.message === 'Login successful') {
+                setAuthenticated(true);
+                navigate('/');
+            } else {
+                setError('Login failed. Please check your credentials.')
+            }
+        } catch (error) {
+            console.error('Login failed:', error);
+            setError('Invalid credentials');
+        }
+        
+    }; 
     
     return (
         <>
@@ -58,7 +76,8 @@ export function Login()  {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        <button type="submit">Submit</button>
+                        {error && <div className="error-message">{error}</div>}
+                        <button onClick={handleSubmit}>Submit</button>
                     </form>
                     <p>Don't have an account? Click 
                     <NavLink to="/Signup">
