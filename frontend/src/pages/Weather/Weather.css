@@ -159,9 +159,9 @@
     width: 100%; 
     height: auto; 
     padding: 10px; 
-    background-color: rgba(255, 255, 255, 0.9); 
+    background-color: rgba(0, 0, 0, 0.2); 
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 /* Container for the map */
 .map-container-style {
@@ -179,8 +179,6 @@
     justify-content: center;
     margin-bottom: 10px;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
   }
 
@@ -188,7 +186,7 @@
   .search-input {
     width: 250px;
     padding: 8px 12px;
-    border: 1px solid rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     font-size: 14px;
     outline: none;
@@ -209,20 +207,7 @@
     transition: background-color 0.3s ease;
   }
 
+  /* Change background color of search button when hovered over */
   .search-button:hover {
     background-color: rgba(0, 0, 0, 0.9);
   }
-
-  /*.leaflet-control-geocoder {
-    position: absolute !important;
-    top: 10px;
-    left: 10px;
-    z-index: 1000;
-    width: auto;
-  }
-
-  .leaflet-control-geocoder input {
-    width: 250px;
-    padding: 5px;
-    border-radius: 4px;
-  }*/

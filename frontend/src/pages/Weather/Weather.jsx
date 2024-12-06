@@ -82,7 +82,7 @@ export function Weather() {
         }
     }, [])
 
-    // Handle when for a user searches a location
+    // Handle for when a user searches a location
     const handleSearch = () => {
         const query = searchInputRef.current.value;
         if (query) {
