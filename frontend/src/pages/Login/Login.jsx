@@ -2,12 +2,14 @@ import './Login.css';
 import { NavLink, useNavigate } from "react-router-dom";
 import { TransparentBox } from '../../components/TransparentBox/TransparentBox';
 import { CenterContainer } from '../../components/CenterContainer/CenterContainer';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { AuthContext } from "../../context/AuthContext"; // Import context
 import axios from 'axios';
 
 export function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const { login } = useContext(AuthContext); // Access login function from context
     const navigate = useNavigate(); // Use navigate for redirecting
 
     const handleSubmit = async (e) => {
@@ -19,9 +21,10 @@ export function Login() {
                 { withCredentials: true });
             
             if (response.status === 200) {
+                // Login successful
                 console.log("Login successful:", response.data);
-                // Redirect to the homepage
-                navigate('/');
+                login(response.data.user); // Update context with user data
+                navigate('/'); // Redirect to the homepage
             }
         } catch (error) {
             console.error("Error logging in:", error);
