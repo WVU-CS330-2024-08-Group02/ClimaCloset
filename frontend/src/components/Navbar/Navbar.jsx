@@ -57,7 +57,7 @@ export function Navbar() {
                             <button className="login-button">Login</button>
                         </NavLink>
 
-                        <NavLink to="/Login">
+                        <NavLink to="/Profile">
                             <img
                                 alt="profile"
                                 src={defaultProfileImage}

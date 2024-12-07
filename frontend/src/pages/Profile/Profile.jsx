@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import './Profile.css';
 import { CenterContainer } from '../../components/CenterContainer/CenterContainer';
 import profileImage from '../../assets/pfp/CamProfile.png'; // Change when login is functional
+import { AuthContext } from '../../context/AuthContext';
 
 export function Profile() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -10,21 +11,34 @@ export function Profile() {
     setIsDropdownVisible(!isDropdownVisible);
   };
 
+  function ProfileSection() {
+    const { user } = useContext(AuthContext); // Assuming 'user' contains the name
+    return (
+      <>
+        <div className="profile-image-and-username">
+          <img src={profileImage} alt="Profile" className="profile-image"/>
+          <div className="profile-username">
+            <span>{user?.name || 'Guest'}</span> {/* Display user's name or a default */}
+          </div>
+        </div>
+        {/* Only render Edit button if the user is logged in */}
+        {user && (
+          <button className="edit-button" onClick={dropdown}>
+            Edit Profile
+          </button>
+        )}
+      </>
+    );
+  }
+
   return (
     <CenterContainer>
       <div className="profile-container">
         {/* Image and Username */}
-        <div className="profile-image-and-username">
-          <img src={profileImage} alt="Profile" className="profile-image"/>
-          <div className="profile-username">
-            <span>CamTheMan96</span>
-          </div> 
-        </div>
+        <ProfileSection/>
 
-        {/* Edit Button */}
+        
         <div>
-          <button className="edit-button" onClick={dropdown}>Edit Profile</button>
-
           {/* Dropdown */}
           {isDropdownVisible && (
             <div className="dropdown">

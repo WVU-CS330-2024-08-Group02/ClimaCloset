@@ -30,9 +30,20 @@ router.post('/login', async (req, res) => {
     // Check if user exists and password matches
     if (user && await bcrypt.compare(password, user.password)) {
       const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+      
       // Set JWT in HttpOnly cookie for secure storage
       res.cookie('token', token, { httpOnly: true, sameSite: 'strict' });
-      res.json({ message: 'Login successful' });
+
+      // Include user details in the response
+      res.json({
+        message: 'Login successful',
+        user: {
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          name: user.name
+        }
+      });
     } else {
       console.log(`Invalid credentials for user: ${username}`);
       res.status(401).json({ error: 'Invalid credentials' });
