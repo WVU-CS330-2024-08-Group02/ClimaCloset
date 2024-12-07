@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import { Shelf } from "../../components/Shelf/Shelf";
 import './Home.css';  // Import the CSS file
 import { CenterContainer } from "../../components/CenterContainer/CenterContainer";
@@ -27,6 +28,7 @@ import SnowyIcon from "../../assets/weatherIcons/Snowy.png"
 
 
 export function Home() {
+    const { isLoggedIn, user } = useContext(AuthContext); // Use authentication context
     const [activity, setActivity] = useState('casual'); // Default activity
     const [outfitSuggestion, setOutfitSuggestion] = useState({ text: '', images: [] }); // State for outfit suggestion
     const [showModal, setShowModal] = useState(false); // State for showing modal
@@ -71,7 +73,11 @@ export function Home() {
 
     return (
         <>
-            <h1>Hi Cameron, welcome to your home page!</h1>
+            <h1>
+                {isLoggedIn
+                    ? `Hi ${user?.name || "there"}, welcome to your home page!`
+                    : "Welcome to ClimaCloset! Please log in to access personalized features."}
+            </h1>
             
             <CenterContainer className="home-center-container">
                 <div className="left-container">
