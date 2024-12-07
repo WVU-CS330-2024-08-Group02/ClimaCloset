@@ -78,7 +78,7 @@ export function Home() {
                     ? `Hi ${user?.name || "there"}, welcome to your home page!`
                     : (
                         <>
-                            Welcome to ClimaCloset!<br/>
+                            Welcome to ClimaCloset!
                             <p>Please log in to access personalized features.</p>
                         </>
                 )}
@@ -150,12 +150,7 @@ export function Home() {
                         </div>
                         )}
                     </TransparentBox>
-
-
-            
-                    
                 </div>
-                
             </CenterContainer>
         </>
     );
