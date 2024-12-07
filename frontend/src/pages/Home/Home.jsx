@@ -76,7 +76,12 @@ export function Home() {
             <h1>
                 {isLoggedIn
                     ? `Hi ${user?.name || "there"}, welcome to your home page!`
-                    : "Welcome to ClimaCloset! Please log in to access personalized features."}
+                    : (
+                        <>
+                            Welcome to ClimaCloset!<br/>
+                            <p>Please log in to access personalized features.</p>
+                        </>
+                )}
             </h1>
             
             <CenterContainer className="home-center-container">
