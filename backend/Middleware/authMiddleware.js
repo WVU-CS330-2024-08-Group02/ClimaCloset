@@ -1,12 +1,5 @@
-/**
- * authMiddleware.js
- * 
- * This middleware function checks for a valid JWT in the request cookies. 
- * If the token is valid, it allows access to the protected route; otherwise, 
- * it blocks access and returns an error.
- */
-
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 
 /**
  * Middleware to protect routes by verifying JWT in cookies.
@@ -26,6 +19,10 @@ const authMiddleware = (req, res, next) => {
     req.user = decoded;
     next();
   } catch (error) {
+    if (error.name === 'TokenExpiredError') {
+      return res.status(401).json({ error: 'Token has expired' });
+    }
+    console.error("JWT Verification Error:", error);
     res.status(401).json({ error: 'Invalid token' });
   }
 };
