@@ -68,7 +68,7 @@ export function Weather() {
     //Fetch weather data
     useEffect(() => {
         //Make GET request to the backend API to fetch weather data
-        axios.get('http://localhost:5001/WeatherAPI')  
+        axios.get('http://localhost:5001/Weather')  
             .then(response => {
                 const { geoData, forecastHourly, forecastDaily } = response.data;
                
