@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import { CenterContainer } from '../../components/CenterContainer/CenterContainer';
 import 'leaflet/dist/leaflet.css';
 import './Weather.css';
@@ -39,6 +39,17 @@ function ProgressBar({ value, min, max }) {
             ></div>
         </div>
     );
+}
+
+// Function to re-orient map view after new location is searched
+function AdjustMapView({ position }) {
+    const map = useMap();
+    useEffect(() => {
+        if (position) {
+            map.setView(position, map.getZoom());
+        }
+    }, [map, position]);
+    return null;
 }
 
 // Main component for displaying weather information
@@ -154,6 +165,7 @@ export function Weather() {
                                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" 
                                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                                     />
+                                    <AdjustMapView position={position} />
                                     <Marker position={position}>
                                         <Popup>{location}</Popup>
                                     </Marker>
