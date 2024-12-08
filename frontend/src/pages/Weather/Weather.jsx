@@ -57,6 +57,8 @@ export function Weather() {
     // State to toggle between showing the 12-hour and 7-day forecast containers
     const [isFirstContainerVisible, setIsFirstContainerVisible] = useState(true);
 
+    const [forecastHourly, setForecastHourly] = useState([]);
+    const [forecastDaily, setForecastDaily] = useState([]);
 
     // Function to toggle between the 12-hour and 7-day forecast view
     const toggleContainer = () => {
@@ -66,7 +68,7 @@ export function Weather() {
     //Fetch weather data
     useEffect(() => {
         //Make GET request to the backend API to fetch weather data
-        axios.get('http://localhost:5001/weather')  
+        axios.get('http://localhost:5001/WeatherAPI')  
             .then(response => {
                 const { geoData, forecastHourly, forecastDaily } = response.data;
                

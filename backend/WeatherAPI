@@ -8,7 +8,7 @@ app.use(cors({
     origin: "http://localhost:5173"
 }));
 
-app.get('/weather', async (req, res) => {
+app.get('/Weather', async (req, res) => {
     try {
         //Get IP address of the user
         const ipAddress = (await axios.get('http://api.ipify.org')).data;
@@ -23,14 +23,11 @@ app.get('/weather', async (req, res) => {
         //Extract gridpoints for weather API
         const { gridId: office, gridX, gridY } = gridpoints.properties;
 
-        const [forecastHourly, setForecastHourly] = useState([]);
-        const [forecastDaily, setForecastDaily] = useState([]);
-
         //Fetch hourly forecast
-        forecastHourly = (await axios.get(`https://api.weather.gov/gridpoints/${office}/${gridX},${gridY}/forecast/hourly`)).data;
+        const forecastHourly = (await axios.get(`https://api.weather.gov/gridpoints/${office}/${gridX},${gridY}/forecast/hourly`)).data;
 
         //Fetch daily forecast
-        forecastDaily = (await axios.get(`https://api.weather.gov/gridpoints/${office}/${gridX},${gridY}/forecast`)).data;
+        const forecastDaily = (await axios.get(`https://api.weather.gov/gridpoints/${office}/${gridX},${gridY}/forecast`)).data;
 
         // Simplified weather data for response
         const weatherData = {
