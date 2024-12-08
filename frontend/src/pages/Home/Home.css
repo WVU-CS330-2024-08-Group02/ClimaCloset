@@ -1,30 +1,32 @@
 /* Home.css */
+
 /* Modal container */
-/* Default modal size */
-.modal {
+.modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Dim background */
+    z-index: 2000;
+    overflow: hidden; /* Prevent container from scrolling */
+}
+
+/* Uniform modal size */
+.modal {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 50%; /* Default width */
-    max-width: 600px;
-    overflow: auto;
-}
-
-/* Larger modal for more images */
-.large-modal {
-    width: 80%; /* Make the modal wider */
-    max-width: 900px;
-}
-
-/* Smaller modal for fewer images */
-.small-modal {
-    width: 40%; /* Make the modal smaller */
-    max-width: 500px;
+    width: 600px;
+    max-width: 90vw; /* Responsive width */
+    max-height: 80vh; /* Limit height to viewport */
+    overflow-y: auto; /* Allow modal content to scroll if too tall */
+    box-sizing: border-box;
+    z-index: 3000;
 }
 
 /* Style for modal content */
@@ -32,7 +34,7 @@
     padding: 20px;
 }
 
-/* Style for the close button */
+/* Close button */
 .close {
     font-size: 30px;
     color: black;
@@ -42,19 +44,14 @@
     cursor: pointer;
 }
 
-/* Style for the images */
 .outfit-image {
-    width: 100px;  /* Set width */
-    height: 100px; /* Set height */
-    object-fit: cover; /* Ensures the image maintains its aspect ratio, cropping if necessary */
-    margin: 10px; /* Optional: Adds space between images */
+    width: 150px;  /* Set default width */
+    height: 150px; /* Set default height */
+    object-fit: cover; /* Ensures the image maintains aspect ratio, cropping if necessary */
+    margin: 10px;  /* Adds space between images */
+    border-radius: 8px;  /* Optional: Rounds the image corners */
 }
 
-.outfit-image {
-    max-width: 100%;
-    height: auto;
-    max-height: 200px; /* Limit the size of each image */
-}
 
 /* Add any additional styling you need */
 
