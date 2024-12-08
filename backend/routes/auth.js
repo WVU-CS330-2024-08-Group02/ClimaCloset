@@ -1,3 +1,10 @@
+/**
+ * auth.js
+ * 
+ * This file defines routes for user registration and login. It handles authentication 
+ * by hashing passwords with bcrypt during registration and generating JWTs upon login.
+ */
+
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');

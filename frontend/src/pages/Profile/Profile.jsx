@@ -18,7 +18,7 @@ export function Profile() {
         <div className="profile-image-and-username">
           <img src={profileImage} alt="Profile" className="profile-image"/>
           <div className="profile-username">
-            <span>{user?.name || 'Guest'}</span> {/* Display user's name or a default */}
+            <span>{user?.username || 'Guest'}</span> {/* Display user's name or a default */}
           </div>
         </div>
         {/* Only render Edit button if the user is logged in */}
