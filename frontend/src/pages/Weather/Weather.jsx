@@ -13,7 +13,6 @@ import CloudyIcon from "../../assets/weatherIcons/Cloud.png"
 import SunnyCloudyIcon from "../../assets/weatherIcons/Sun_and_Cloud.png"
 import SnowyIcon from "../../assets/weatherIcons/Snowy.png"
 
-
 // Function to determine the color of the progress bar based on temperature value
 function getColor(value) {
     if (value <= 40) {
@@ -26,7 +25,6 @@ function getColor(value) {
         return '#CD5C5C';
     }
 }
-
 
 // Progress bar component that takes current, minimum, and maximum temperature values
 function ProgressBar({ value, min, max }) {
@@ -44,7 +42,6 @@ function ProgressBar({ value, min, max }) {
         </div>
     );
 }
-
 
 // Main component for displaying weather information
 export function Weather() {
@@ -66,7 +63,6 @@ export function Weather() {
         setIsFirstContainerVisible(!isFirstContainerVisible);
     };
 
-
     //Fetch weather data
     useEffect(() => {
         //Make GET request to the backend API to fetch weather data
@@ -86,28 +82,23 @@ export function Weather() {
             });
     }, []);
 
-
     //Render loading state while the data is being fetched
     if (forecastHourly.length === 0 || forecastDaily.length === 0) {
         return <div>Loading...</div>;
     }
 
-
     const mapRef = useRef();
     const searchInputRef = useRef(); // *** Fix for page not rendering, not sure if this is intended
-
 
     useEffect(() => {
         // After map has rendered, initialize geocoder control
         const map = mapRef.current?.leafletElement;
-
 
         // Add the geocoder control
         if (map && !map.hasGeocoder) {
             const geocoder = L.Control.geocoder({
                 defaultMarkGeocode: true,
             }).addTo(map);
-
 
             // Event listener for when a location is found
             geocoder.on('markgeocode', function(e) {
@@ -116,11 +107,9 @@ export function Weather() {
                 setLocation(e.geocode.name);
             });
 
-
             map.hasGeocoder = true;
         }
     }, [])
-
 
     // Handle when for a user searches a location
     const handleSearch = () => {
@@ -138,7 +127,6 @@ export function Weather() {
             });
         }
     };
-
 
     // Helper function to determine the icon based on short forecast
     const getIconForForecast = (forecast) => {
@@ -159,7 +147,6 @@ export function Weather() {
         }
     };
 
-
     // Map hourly forecast data to display
     const hourlyForecastData = forecastHourly.map(hour => {
         const icon = getIconForForecast(hour.shortForecast);  
@@ -171,7 +158,6 @@ export function Weather() {
         };
     });
 
-
     //Map daily forecast data to display
     const dailyForecastData = forecastDaily.map((day, index) => {
         const icon = getIconForForecast(day.shortForecast);
@@ -181,7 +167,6 @@ export function Weather() {
             imgSrc: icon,
         };
     });
-
 
     return (
         <>

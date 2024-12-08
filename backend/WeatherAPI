@@ -3,45 +3,34 @@ const axios = require('axios');
 const cors = require('cors');
 const app = express();
 
-
 //Enable CORS - allows for cross requests from frontend
 app.use(cors({
     origin: "http://localhost:5173"
 }));
-
 
 app.get('/weather', async (req, res) => {
     try {
         //Get IP address of the user
         const ipAddress = (await axios.get('http://api.ipify.org')).data;
 
-
         //Get the lat/lon data based on IP address
         const geoData = (await axios.get(`http://ip-api.com/json/${ipAddress}`)).data;
         const {lat, lon} = geoData;
 
-
         //Get gridpoints for weather API
         const gridpoints = (await axios.get(`https://api.weather.gov/points/${lat},${lon}`)).data;
-
 
         //Extract gridpoints for weather API
         const { gridId: office, gridX, gridY } = gridpoints.properties;
 
-
         const [forecastHourly, setForecastHourly] = useState([]);
         const [forecastDaily, setForecastDaily] = useState([]);
-
-
-
 
         //Fetch hourly forecast
         forecastHourly = (await axios.get(`https://api.weather.gov/gridpoints/${office}/${gridX},${gridY}/forecast/hourly`)).data;
 
-
         //Fetch daily forecast
         forecastDaily = (await axios.get(`https://api.weather.gov/gridpoints/${office}/${gridX},${gridY}/forecast`)).data;
-
 
         // Simplified weather data for response
         const weatherData = {
@@ -50,17 +39,14 @@ app.get('/weather', async (req, res) => {
             forecastDaily: forecastDaily.properties.periods.slice(0, 7),  //First 7 days
         };
 
-
         //Send weather data as JSON response
         res.json(weatherData);
-
 
     } catch (error) {
         console.error('Error fetching weather data:', error);
         res.status(500).json({ error: 'Failed to fetch weather data' });
     }
 });
-
 
 // Set the server to listen on port 5001
 app.listen(5001, () => {
