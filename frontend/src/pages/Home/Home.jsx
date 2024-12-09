@@ -20,6 +20,7 @@ export function Home() {
     const [activity, setActivity] = useState('casual'); // Default activity
     const [outfitSuggestion, setOutfitSuggestion] = useState([]); // State for outfit suggestion
     const [showModal, setShowModal] = useState(false); // State for showing modal
+    const [errorMessage, setErrorMessage] = useState(''); // State for "not enough in closet" message
 
     const handleActivityChange = (event) => {
         setActivity(event.target.value); // Update activity based on selection
@@ -28,11 +29,58 @@ export function Home() {
      // Function to suggest an outfit from available products in the shelf
      const suggestOutfit = () => {
         let suggestedItems = [];
+        let hasEnoughItems = true; // Flag to track if we have enough items in each category
 
-        // Randomly pick an item from each category in the shelf
+        // Check if we have enough items for each category
         products.forEach(category => {
-            const randomIndex = Math.floor(Math.random() * category.images.length);
-            suggestedItems.push(category.images[randomIndex]);
+            if (category.images.length === 0) {
+                hasEnoughItems = false;
+            }
+        });
+
+        // If not enough items, show error message
+        if (!hasEnoughItems) {
+            setErrorMessage("You don't have enough in your closet.");
+            setShowModal(false); // Ensure modal doesn't show
+            return;
+        }
+
+        // Reset the error message if there are enough items
+        setErrorMessage('');
+
+
+        // Suggest different items based on the selected activity
+        products.forEach(category => {
+            if (activity === 'casual') {
+                // Casual: Choose lighter, everyday wear
+                if (category.name === "Tops") {
+                    suggestedItems.push(category.images[0]); // Short-sleeve or casual tops
+                } else if (category.name === "Bottoms") {
+                    suggestedItems.push(category.images[1]); // Shorts or jeans
+                } else if (category.name === "Shoes") {
+                    suggestedItems.push(category.images[0]); // Sneakers
+                } else if (category.name === "Accessories") {
+                    suggestedItems.push(category.images[0]); // Umbrella
+                }
+            } else if (activity === 'business') {
+                // Formal: Choose more elegant clothing
+                if (category.name === "Tops") {
+                    suggestedItems.push(category.images[1]); // Coat
+                } else if (category.name === "Bottoms") {
+                    suggestedItems.push(category.images[0]); // Jeans or dress pants
+                } else if (category.name === "Shoes") {
+                    suggestedItems.push(category.images[2]); // Boots
+                }
+            } else if (activity === 'active') {
+                // Sporty: Choose comfortable, activity wear
+                if (category.name === "Tops") {
+                    suggestedItems.push(category.images[0]); // Short sleeve
+                } else if (category.name === "Bottoms") {
+                    suggestedItems.push(category.images[1]); // Shorts
+                } else if (category.name === "Shoes") {
+                    suggestedItems.push(category.images[0]); // Sneakers
+                }
+            }
         });
 
         // Set the outfit suggestion and show modal
