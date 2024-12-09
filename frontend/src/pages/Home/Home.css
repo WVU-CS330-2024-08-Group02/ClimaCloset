@@ -44,14 +44,6 @@
     cursor: pointer;
 }
 
-.outfit-image {
-    width: 150px;  /* Set default width */
-    height: 150px; /* Set default height */
-    object-fit: cover; /* Ensures the image maintains aspect ratio, cropping if necessary */
-    margin: 10px;  /* Adds space between images */
-    border-radius: 8px;  /* Optional: Rounds the image corners */
-}
-
 
 /* Add any additional styling you need */
 

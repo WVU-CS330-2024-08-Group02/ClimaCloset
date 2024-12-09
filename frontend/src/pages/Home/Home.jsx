@@ -30,7 +30,7 @@ import SnowyIcon from "../../assets/weatherIcons/Snowy.png"
 export function Home() {
     const { isLoggedIn, user } = useContext(AuthContext); // Use authentication context
     const [activity, setActivity] = useState('casual'); // Default activity
-    const [outfitSuggestion, setOutfitSuggestion] = useState({ text: '', images: [] }); // State for outfit suggestion
+    const [outfitSuggestion, setOutfitSuggestion] = useState({ text: '' }); // State for outfit suggestion
     const [showModal, setShowModal] = useState(false); // State for showing modal
 
     const handleActivityChange = (event) => {
@@ -40,28 +40,24 @@ export function Home() {
     {/* outfit suggestions */}
     const generateOutfit = () => {
         let suggestion;
-        let outfitImages = [];
+        //let outfitImages = [];
         switch (activity) {
             case 'business':
                 suggestion = "Dress shirt, blazer, and dress pants. Polo and khakis.";
-                outfitImages = [coat, dressPants, boots, umbrella, purse]; // Example for multiple images
                 break;
             case 'active':
                 suggestion = "Athletic shirt and shorts, with sneakers. Leggings and an athletic shirt.";
-                outfitImages = [longSleeves, shorts]; 
                 break;
             case 'indoor':
                 suggestion = "Comfortable loungewear or pajamas.";
-                outfitImages = [sweatshirt, sweatpants];
                 break;
             case 'casual':
                 suggestion = "T-shirt and jeans. Shorts and a long sleeve.";
-                outfitImages = [longSleeves, jeans, boots];
                 break;
             default:
                 suggestion = "Choose an activity to get an outfit suggestion.";
         }
-        setOutfitSuggestion({ text: suggestion, images: outfitImages });
+        setOutfitSuggestion({ text: suggestion });
         setShowModal(true); // Show the modal with the suggestion
     };
     
@@ -130,22 +126,12 @@ export function Home() {
 
                         {/* Modal for Outfit Suggestion */}
                         {showModal && (
-                        <div className={`modal ${outfitSuggestion.images.length > 2 ? 'large-modal' : 'small-modal'}`}>
+                        <div className={`modal`}>
                             <div className="modal-content">
                                 {/* Close Button (X) */}
                                 <span className="close" onClick={closeModal}>&times;</span>
                                 <h2>Suggested Outfit</h2>
                                 <p>{outfitSuggestion.text}</p>
-                                <div className="outfit-images">
-                                    {outfitSuggestion.images.map((image, index) => (
-                                    <img 
-                                        key={index}
-                                        src={image} 
-                                        alt={`Outfit suggestion ${index + 1}`} 
-                                        className="outfit-image"
-                                    />
-                                    ))}
-                                </div>
                             </div>
                         </div>
                         )}
