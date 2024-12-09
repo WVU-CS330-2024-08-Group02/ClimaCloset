@@ -4,20 +4,7 @@ import { Shelf } from "../../components/Shelf/Shelf";
 import './Home.css';  // Import the CSS file
 import { CenterContainer } from "../../components/CenterContainer/CenterContainer";
 import { TransparentBox } from "../../components/TransparentBox/TransparentBox";
-import coat from '../../assets/clothingIcons/Coat.png';
-import jeans from '../../assets/clothingIcons/jeans.png';
-import boots from '../../assets/clothingIcons/boots.png';
-import umbrella from '../../assets/clothingIcons/umbrella.png';
-import backpack from '../../assets/clothingIcons/Backpack.png'
-import dressPants from '../../assets/clothingIcons/Dress_Pants.png'
-import flipFlops from '../../assets/clothingIcons/flipFlops.png'
-import gloves from '../../assets/clothingIcons/Gloves.png'
-import jacket from '../../assets/clothingIcons/Jacket.png'
-import longSleeves from '../../assets/clothingIcons/Long_Sleeve.png'
-import purse from '../../assets/clothingIcons/Purse.png'
-import shorts from '../../assets/clothingIcons/shorts.png'
-import sweatpants from '../../assets/clothingIcons/Sweatpants.png'
-import sweatshirt from '../../assets/clothingIcons/Sweatshirt.png'
+
 
 // Placeholder imports until logic for weather is created
 import SunnyIcon from "../../assets/weatherIcons/Sun.png";
