@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Shelf } from "../../components/Shelf/Shelf";
+import { products } from "../../components/Shelf/Shelf";
 import './Home.css';  // Import the CSS file
 import { CenterContainer } from "../../components/CenterContainer/CenterContainer";
 import { TransparentBox } from "../../components/TransparentBox/TransparentBox";
@@ -17,37 +18,27 @@ import SnowyIcon from "../../assets/weatherIcons/Snowy.png"
 export function Home() {
     const { isLoggedIn, user } = useContext(AuthContext); // Use authentication context
     const [activity, setActivity] = useState('casual'); // Default activity
-    const [outfitSuggestion, setOutfitSuggestion] = useState({ text: '' }); // State for outfit suggestion
+    const [outfitSuggestion, setOutfitSuggestion] = useState([]); // State for outfit suggestion
     const [showModal, setShowModal] = useState(false); // State for showing modal
 
     const handleActivityChange = (event) => {
         setActivity(event.target.value); // Update activity based on selection
     };
 
-    {/* outfit suggestions */}
-    const generateOutfit = () => {
-        let suggestion;
-        //let outfitImages = [];
-        switch (activity) {
-            case 'business':
-                suggestion = "Dress shirt, blazer, and dress pants. Polo and khakis.";
-                break;
-            case 'active':
-                suggestion = "Athletic shirt and shorts, with sneakers. Leggings and an athletic shirt.";
-                break;
-            case 'indoor':
-                suggestion = "Comfortable loungewear or pajamas.";
-                break;
-            case 'casual':
-                suggestion = "T-shirt and jeans. Shorts and a long sleeve.";
-                break;
-            default:
-                suggestion = "Choose an activity to get an outfit suggestion.";
-        }
-        setOutfitSuggestion({ text: suggestion });
-        setShowModal(true); // Show the modal with the suggestion
+     // Function to suggest an outfit from available products in the shelf
+     const suggestOutfit = () => {
+        let suggestedItems = [];
+
+        // Randomly pick an item from each category in the shelf
+        products.forEach(category => {
+            const randomIndex = Math.floor(Math.random() * category.images.length);
+            suggestedItems.push(category.images[randomIndex]);
+        });
+
+        // Set the outfit suggestion and show modal
+        setOutfitSuggestion(suggestedItems);
+        setShowModal(true);
     };
-    
 
         // Function to close the modal
         const closeModal = () => {
@@ -106,22 +97,25 @@ export function Home() {
                         </select>
 
                         <div className="button-container">
-                            <button onClick={generateOutfit} className="button">
+                            <button onClick={suggestOutfit} className="button">
                                 Generate Outfit
                             </button>
                         </div>
 
-                        {/* Modal for Outfit Suggestion */}
-                        {showModal && (
-                        <div className={`modal`}>
+                    {/* Modal that shows the outfit suggestion */}
+                    {showModal && (
+                        <div className="modal">
                             <div className="modal-content">
-                                {/* Close Button (X) */}
                                 <span className="close" onClick={closeModal}>&times;</span>
-                                <h2>Suggested Outfit</h2>
-                                <p>{outfitSuggestion.text}</p>
+                                <h2>Your Suggested Outfit</h2>
+                                <div className="suggested-items">
+                                    {outfitSuggestion.map((item, index) => (
+                                        <img key={index} src={item} alt={`Suggested Item ${index}`} className="suggested-item" />
+                                    ))}
+                                </div>
                             </div>
                         </div>
-                        )}
+                    )}
                     </TransparentBox>
                 </div>
             </CenterContainer>
