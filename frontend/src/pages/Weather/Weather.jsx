@@ -13,7 +13,8 @@ import CloudyIcon from "../../assets/weatherIcons/Cloud.png"
 import SunnyCloudyIcon from "../../assets/weatherIcons/Sun_and_Cloud.png"
 import SnowyIcon from "../../assets/weatherIcons/Snowy.png"
 import RainyIcon from "../../assets/weatherIcons/PlaceholderRainy.png" // Placeholder Icon
-//import NightIcon from "path" // Night icon
+import NightIcon from "../../assets/weatherIcons/Night.png" // Night icon
+import DefaultIcon from "../../assets/ClosetLogo.png"
 
 // Function to determine the color of the progress bar based on temperature value
 function getColor(value) {
@@ -150,6 +151,7 @@ export function Weather() {
 
     // Helper function to determine the icon based on short forecast
     const getIconForForecast = (forecast) => {
+        
         if (forecast.includes("Snow")) {
             return SnowyIcon;
         } else if (forecast.includes("Rain")) {
@@ -162,9 +164,14 @@ export function Weather() {
             return SunnyCloudyIcon;
         } else if (forecast.includes("Clear")) {
             return SunnyIcon;
-        } else {
+        } else if (forecast.isDaytime){ // If weather clear and is day
             return SunnyIcon;
+        } else if (!forecast.isDaytime) { // If weather clear and is night
+            return NightIcon
+        } else {
+            return DefaultIcon; // This should never happen
         }
+            
     };
 
     // Helper function to print abbreviate of day
