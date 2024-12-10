@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
         const forecastHourly = (await axios.get(`https://api.weather.gov/gridpoints/${office}/${gridX},${gridY}/forecast/hourly`)).data;
         const forecastHourlyData = forecastHourly.properties.periods.slice(0, 12).map((period) => ({
             time: (new Date(period.startTime).toLocaleTimeString()),
-            temperature: `${period.temperature}&degF`,
+            temperature: `${period.temperature}°F`,
             shortForecast: period.shortForecast,
             icon: period.icon
         }));
@@ -37,7 +37,7 @@ router.get('/', async (req, res) => {
         const forecastDaily = (await axios.get(`https://api.weather.gov/gridpoints/${office}/${gridX},${gridY}/forecast`)).data;
         const forecastDailyData = forecastDaily.properties.periods.slice(0, 7).map((period) => ({
             time: period.name,
-            temperature: `${period.temperature}&degF`,
+            temperature: `${period.temperature}°F`,
             shortForecast: period.shortForecast,
             icon: period.icon
         }));

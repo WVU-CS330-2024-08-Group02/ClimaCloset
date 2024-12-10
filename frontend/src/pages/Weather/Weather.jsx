@@ -174,6 +174,15 @@ export function Weather() {
             
     };
 
+    // Helper function to get current temperature for top right box
+    const getCurrentTemperature = () => {
+        if (!forecastHourly || !forecastHourly.length) return null;
+
+        const currentHourForecast = forecastHourly[0];
+
+        return currentHourForecast ? currentHourForecast.temperature : null;
+    };
+
     // Helper function to print abbreviate of day
     const getDayAbbreviation = (day) => {
         if (day.includes("Sunday")) {
@@ -325,8 +334,12 @@ export function Weather() {
                     <div className="right-box">
                         {/* Circle displaying current weather and temperature */}
                         <div className="circle-style">
-                            <span style={{ fontSize: '30px', marginTop: '20px' }}>Snowy</span>
-                            <span style={{ marginTop: '-50px' }}>34&deg;</span>
+                            <span style={{ fontSize: '30px', marginTop: '20px' }}>
+                                {forecastHourly.length ? forecastHourly[0].shortForecast : "Loading..."}
+                            </span>
+                            <span style={{ marginTop: '-50px' }}>
+                                {getCurrentTemperature() != null ? `${getCurrentTemperature()}` : "Loading..."}
+                            </span>
                         </div>
 
 
