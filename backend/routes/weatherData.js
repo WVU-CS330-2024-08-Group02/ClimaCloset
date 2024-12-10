@@ -53,7 +53,7 @@ router.get('/', async (req, res) => {
   
         res.json(weatherData);
     } catch (error) {
-        console.error("Error in /auth/Weather:", error.message);
+        console.error("Error in /weather/:", error.message);
         res.status(500).json({ error: "Failed to fetch weather data", details: error.message });
     }
   });
