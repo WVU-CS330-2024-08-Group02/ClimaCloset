@@ -192,6 +192,8 @@ export function Weather() {
             return "Sat";
         } else if (day.includes("Tonight")) {
             return "Ton"
+        } else if (day.includes("Today")) {
+            return "Today";
         }
 
     };
@@ -202,6 +204,8 @@ export function Weather() {
             return "12AM";
         } else if (time.includes("11:00:00 PM")) {
                 return "11PM";
+        } else if (time.includes("11:00:00 AM")) {
+            return "11AM";
         } else if (time.includes("1:00:00 AM")) {
             return "1AM";
         } else if (time.includes("2:00:00 AM")) {
@@ -224,9 +228,6 @@ export function Weather() {
             return "10AM";
         } else if (time.includes("12:00:00 PM")) {
             return "12PM";
-        }
-        else if (time.includes("11:00:00 PM")) {
-                return "11PM";
         } else if (time.includes("1:00:00 PM")) {
             return "1PM";
         } else if (time.includes("2:00:00 PM")) {
