@@ -179,7 +179,7 @@ export function Weather() {
         } else if (day.includes("Thursday")) {
             return "Thu";
         } else if (day.includes("Friday")) {
-                return "Fri";
+            return "Fri";
         } else if (day.includes("Saturday")) {
             return "Sat";
         } else if (day.includes("Tonight")) {
@@ -188,11 +188,65 @@ export function Weather() {
 
     };
 
+    // Helper function to get shortend time
+    const getShortenedTime = (time) => {
+        if (time.includes("12:00:00 AM")) {
+            return "12AM";
+        } else if (time.includes("1:00:00 AM")) {
+            return "1AM";
+        } else if (time.includes("2:00:00 AM")) {
+            return "2AM";
+        } else if (time.includes("3:00:00 AM")) {
+            return "3AM";
+        } else if (time.includes("4:00:00 AM")) {
+            return "4AM";
+        } else if (time.includes("5:00:00 AM")) {
+            return "5AM";
+        } else if (time.includes("6:00:00 AM")) {
+            return "6AM";
+        } else if (time.includes("7:00:00 AM")) {
+            return "7AM";
+        } else if (time.includes("8:00:00 AM")) {
+            return "8AM";
+        } else if (time.includes("9:00:00 AM")) {
+            return "9AM";
+        } else if (time.includes("10:00:00 AM")) {
+            return "10AM";
+        } else if (time.includes("11:00:00 AM")) {
+            return "11AM";
+        } else if (time.includes("12:00:00 PM")) {
+            return "12PM";
+        } else if (time.includes("1:00:00 PM")) {
+            return "1PM";
+        } else if (time.includes("2:00:00 PM")) {
+            return "2PM";
+        } else if (time.includes("3:00:00 PM")) {
+            return "3PM";
+        } else if (time.includes("4:00:00 PM")) {
+            return "4PM";
+        } else if (time.includes("5:00:00 PM")) {
+            return "5PM";
+        } else if (time.includes("6:00:00 PM")) {
+            return "6PM";
+        } else if (time.includes("7:00:00 PM")) {
+            return "7PM";
+        } else if (time.includes("8:00:00 PM")) {
+            return "8PM";
+        } else if (time.includes("9:00:00 PM")) {
+            return "9PM";
+        } else if (time.includes("10:00:00 PM")) {
+            return "10PM";
+        } else if (time.includes("11:00:00 PM")) {
+            return "11PM";
+        }
+    };
+
     // Map hourly forecast data to display
     const hourlyForecastData = forecastHourly.map(hour => {
         const icon = getIconForForecast(hour.shortForecast);  
+        const shortTime = getShortenedTime(hour.time)
         return {
-            time: hour.time,
+            time: shortTime,
             temp: `${hour.temperature}`,
             imgSrc: icon,
             forecast: hour.shortForecast, //Short description of the weather
