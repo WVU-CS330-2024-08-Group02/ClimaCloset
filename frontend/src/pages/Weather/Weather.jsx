@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, useMap  } from 'react-leaflet';
 import { CenterContainer } from '../../components/CenterContainer/CenterContainer';
 import 'leaflet/dist/leaflet.css';
 import './Weather.css';
@@ -8,10 +8,11 @@ import L from 'leaflet';
 import 'leaflet-control-geocoder';
 import 'leaflet-control-geocoder/dist/Control.Geocoder.css'; // Import geocoder CSS
 import SunnyIcon from "../../assets/weatherIcons/Sun.png";
-import StormyIcon from "../../assets/weatherIcons/Rainy.png"
+import StormyIcon from "../../assets/weatherIcons/Stormy.png"
 import CloudyIcon from "../../assets/weatherIcons/Cloud.png"
 import SunnyCloudyIcon from "../../assets/weatherIcons/Sun_and_Cloud.png"
 import SnowyIcon from "../../assets/weatherIcons/Snowy.png"
+import RainyIcon from "../../assets/weatherIcons/PlaceholderRainy.png" // Placeholder Icon
 
 // Function to determine the color of the progress bar based on temperature value
 function getColor(value) {
@@ -45,7 +46,9 @@ function ProgressBar({ value, min, max }) {
 
 // Main component for displaying weather information
 export function Weather() {
+    
    
+
     // Initial coordinates to be shown on the map
     const [position, setPosition]= useState([39.64591951232883, -79.97339559170358]);
 
@@ -60,58 +63,72 @@ export function Weather() {
     const [forecastHourly, setForecastHourly] = useState([]);
     const [forecastDaily, setForecastDaily] = useState([]);
 
+    const mapRef = useRef();
+    const searchInputRef = useRef();
+
     // Function to toggle between the 12-hour and 7-day forecast view
     const toggleContainer = () => {
         setIsFirstContainerVisible(!isFirstContainerVisible);
     };
+    
 
-    //Fetch weather data
     useEffect(() => {
-        //Make GET request to the backend API to fetch weather data
-        axios.get('http://localhost:5001/Weather')  
+        axios.get('http://localhost:5001/auth/Weather')  
             .then(response => {
                 const { geoData, forecastHourly, forecastDaily } = response.data;
-               
-                //Set the location data from geoData
+    
+                // Log the data received
+                console.log("Received GeoData:", geoData);
+                console.log("Received Hourly Forecast:", forecastHourly);
+                console.log("Received Daily Forecast:", forecastDaily);
+    
+                // Set the location data from geoData
                 setPosition([geoData.lat, geoData.lon]);
-               
-                // Set hourly and daily forecast data
-                setForecastHourly(forecastHourly.properties.periods);  // Hourly forecast
-                setForecastDaily(forecastDaily.properties.periods);  // Daily forecast
+    
+                // Safely set the forecast data
+                if (forecastHourly && forecastHourly.length) {
+                    setForecastHourly(forecastHourly);  // Hourly forecast
+                } else {
+                    console.error('Hourly forecast data is missing or empty');
+                }
+    
+                if (forecastDaily && forecastDaily.length) {
+                    setForecastDaily(forecastDaily);  // Daily forecast
+                } else {
+                    console.error('Daily forecast data is missing or empty');
+                }
             })
             .catch(error => {
                 console.error('Error fetching weather data:', error);
             });
     }, []);
 
-    //Render loading state while the data is being fetched
-    if (forecastHourly.length === 0 || forecastDaily.length === 0) {
-        return <div>Loading...</div>;
-    }
-
-    const mapRef = useRef();
-    const searchInputRef = useRef(); // *** Fix for page not rendering, not sure if this is intended
-
     useEffect(() => {
-        // After map has rendered, initialize geocoder control
-        const map = mapRef.current?.leafletElement;
-
-        // Add the geocoder control
+        const map = mapRef.current?.leafletElement; // Safely access mapRef
+    
         if (map && !map.hasGeocoder) {
             const geocoder = L.Control.geocoder({
                 defaultMarkGeocode: true,
             }).addTo(map);
-
-            // Event listener for when a location is found
-            geocoder.on('markgeocode', function(e) {
+    
+            geocoder.on('markgeocode', function (e) {
                 const latlng = e.geocode.center;
-                setPosition([latlng.lat, latlng.lng]);
-                setLocation(e.geocode.name);
+                setPosition([latlng.lat, latlng.lng]); // Update position state
+                setLocation(e.geocode.name); // Update location state
             });
-
-            map.hasGeocoder = true;
+    
+            map.hasGeocoder = true; // Mark geocoder as initialized
         }
-    }, [])
+    }, []); // Ensure this runs only once after the initial render
+
+    //
+    const MapHandler = ({ position }) => {
+        const map = useMap(); // Get the Leaflet map instance
+        useEffect(() => {
+            map.setView(position, map.getZoom()); // Update the map view when position changes
+        }, [position, map]);
+        return null;
+    };
 
     // Handle when for a user searches a location
     const handleSearch = () => {
@@ -154,9 +171,9 @@ export function Weather() {
         const icon = getIconForForecast(hour.shortForecast);  
         return {
             time: hour.name,
-            temp: `${hour.temperature}°F`,
+            temp: `${hour.temperature}`,
             imgSrc: icon,
-           // forecast: hour.shortForecast, //Short description of the weather
+            forecast: hour.shortForecast, //Short description of the weather
         };
     });
 
@@ -165,10 +182,20 @@ export function Weather() {
         const icon = getIconForForecast(day.shortForecast);
         return {
             time: day.name,
-            temp: `${day.temperature}°F`,
+            temp: `${day.temperature}`,
             imgSrc: icon,
         };
     });
+
+    if (!forecastHourly.length || !forecastDaily.length) {
+        return (
+            <CenterContainer>
+                <div className="loading-container">
+                    <div>Loading weather data...</div>
+                </div>
+            </CenterContainer>
+        );
+    }
 
     return (
         <>
@@ -182,11 +209,12 @@ export function Weather() {
                             <div className="search-bar-style">
                                 <input
                                     type="text"
+                                    id="searchbar"
                                     placeholder="Search for a location..."
                                     ref={searchInputRef}
                                     className="search-input"
                                 />
-                                <button onClick={handleSearch} className="search-button">
+                                <button onClick={handleSearch} className="search-button" htmlFor="searchbar">
                                     Search
                                 </button>
                             </div>
@@ -200,6 +228,7 @@ export function Weather() {
                                     <Marker position={position}>
                                         <Popup>{location}</Popup>
                                     </Marker>
+                                    <MapHandler position={position} />
                                 </MapContainer>
                             </div>
                         </div>

@@ -21,7 +21,7 @@ import sweatshirt from '../../assets/clothingIcons/Sweatshirt.png'
 
 // Placeholder imports until logic for weather is created
 import SunnyIcon from "../../assets/weatherIcons/Sun.png";
-import StormyIcon from "../../assets/weatherIcons/Rainy.png"
+import StormyIcon from "../../assets/weatherIcons/Stormy.png"
 import CloudyIcon from "../../assets/weatherIcons/Cloud.png"
 import SunnyCloudyIcon from "../../assets/weatherIcons/Sun_and_Cloud.png"
 import SnowyIcon from "../../assets/weatherIcons/Snowy.png"
