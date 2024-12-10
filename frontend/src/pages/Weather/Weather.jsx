@@ -192,7 +192,7 @@ export function Weather() {
             return "Sat";
         } else if (day.includes("Tonight")) {
             return "Ton"
-        } else if (day.includes("Today")) {
+        } else if (day.includes("Today") || day.includes("This Afternoon")) {
             return "Today";
         }
 
