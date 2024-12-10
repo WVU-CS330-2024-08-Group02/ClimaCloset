@@ -350,7 +350,7 @@ export function Weather() {
 
                         {/* Display the temperature range text */}
                         <div>
-                            <span className="text-style">Low of  {forecastHourly.length ? forecastDaily[1].temperature : "Loading..."}&deg; High of {forecastHourly.length ? forecastDaily[0].temperature : "Loading..."}&deg;</span>
+                            <span className="text-style">Low of  {forecastHourly.length ? forecastDaily[1].temperature : "Loading..."} High of {forecastHourly.length ? forecastDaily[0].temperature : "Loading..."}</span>
                         </div>
                     </div>
                 </div>
