@@ -345,13 +345,13 @@ export function Weather() {
 
                         {/* Centered progress bar displaying temperature range */}
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-                            <ProgressBar value={34} min={29} max={40} />
+                            <ProgressBar value={34} min={forecastDaily[1].temperature} max={forecastDaily[0].temperature} /> {/* NEEDS WORK */}
                         </div>
 
 
                         {/* Display the temperature range text */}
                         <div>
-                            <span className="text-style">Low of  29&deg; High of 40&deg;</span>
+                            <span className="text-style">Low of  {forecastHourly.length ? forecastDaily[1].temperature : "Loading..."}&deg; High of {forecastHourly.length ? forecastDaily[0].temperature : "Loading..."}&deg;</span>
                         </div>
                     </div>
                 </div>
