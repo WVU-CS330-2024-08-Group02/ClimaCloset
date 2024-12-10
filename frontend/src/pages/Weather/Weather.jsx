@@ -170,8 +170,7 @@ export function Weather() {
             return NightIcon
         } else {
             return DefaultIcon; // This should never happen
-        }
-            
+        }        
     };
 
     // Helper function to get current temperature for top right box
