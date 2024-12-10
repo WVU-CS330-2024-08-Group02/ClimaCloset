@@ -166,11 +166,33 @@ export function Weather() {
         }
     };
 
+    // Helper function to print abbreviate of day
+    const getDayAbbreviation = (day) => {
+        if (day.includes("Sunday")) {
+            return "Sun";
+        } else if (day.includes("Monday")) {
+            return "Mon";
+        } else if (day.includes("Tuesday")) {
+            return "Tue";
+        } else if (day.includes("Wednesday")) {
+            return "Wed";
+        } else if (day.includes("Thursday")) {
+            return "Thu";
+        } else if (day.includes("Friday")) {
+                return "Fri";
+        } else if (day.includes("Saturday")) {
+            return "Sat";
+        } else if (day.includes("Tonight")) {
+            return "Ton"
+        }
+
+    };
+
     // Map hourly forecast data to display
     const hourlyForecastData = forecastHourly.map(hour => {
         const icon = getIconForForecast(hour.shortForecast);  
         return {
-            time: hour.name,
+            time: hour.time,
             temp: `${hour.temperature}`,
             imgSrc: icon,
             forecast: hour.shortForecast, //Short description of the weather
@@ -180,8 +202,9 @@ export function Weather() {
     //Map daily forecast data to display
     const dailyForecastData = forecastDaily.map((day, index) => {
         const icon = getIconForForecast(day.shortForecast);
+        const abbrevTime = getDayAbbreviation(day.time);
         return {
-            time: day.name,
+            time: abbrevTime,
             temp: `${day.temperature}`,
             imgSrc: icon,
         };
