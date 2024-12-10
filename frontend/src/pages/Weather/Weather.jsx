@@ -162,7 +162,7 @@ export function Weather() {
             return CloudyIcon;
         } else if (forecast.includes('Partly Cloudy')) {
             return SunnyCloudyIcon;
-        } else if (forecast.includes("Clear")) {
+        } else if (forecast.includes("Clear") || forecast.includes("Sunny")) {
             return SunnyIcon;
         } else if (forecast.isDaytime){ // If weather clear and is day
             return SunnyIcon;
