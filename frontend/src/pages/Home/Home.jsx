@@ -2,23 +2,11 @@ import axios from 'axios';
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Shelf } from "../../components/Shelf/Shelf";
+import { products } from "../../components/Shelf/Shelf";
 import './Home.css';  // Import the CSS file
 import { CenterContainer } from "../../components/CenterContainer/CenterContainer";
 import { TransparentBox } from "../../components/TransparentBox/TransparentBox";
-import coat from '../../assets/clothingIcons/Coat.png';
-import jeans from '../../assets/clothingIcons/jeans.png';
-import boots from '../../assets/clothingIcons/boots.png';
-import umbrella from '../../assets/clothingIcons/umbrella.png';
-import backpack from '../../assets/clothingIcons/Backpack.png'
-import dressPants from '../../assets/clothingIcons/Dress_Pants.png'
-import flipFlops from '../../assets/clothingIcons/flipFlops.png'
-import gloves from '../../assets/clothingIcons/Gloves.png'
-import jacket from '../../assets/clothingIcons/Jacket.png'
-import longSleeves from '../../assets/clothingIcons/Long_Sleeve.png'
-import purse from '../../assets/clothingIcons/Purse.png'
-import shorts from '../../assets/clothingIcons/shorts.png'
-import sweatpants from '../../assets/clothingIcons/Sweatpants.png'
-import sweatshirt from '../../assets/clothingIcons/Sweatshirt.png'
+
 
 // Placeholder imports until logic for weather is created
 import SunnyIcon from "../../assets/weatherIcons/Sun.png";
@@ -33,8 +21,9 @@ import DefaultIcon from "../../assets/ClosetLogo.png"
 export function Home() {
     const { isLoggedIn, user } = useContext(AuthContext); // Use authentication context
     const [activity, setActivity] = useState('casual'); // Default activity
-    const [outfitSuggestion, setOutfitSuggestion] = useState({ text: '', images: [] }); // State for outfit suggestion
+    const [outfitSuggestion, setOutfitSuggestion] = useState([]); // State for outfit suggestion
     const [showModal, setShowModal] = useState(false); // State for showing modal
+    const [errorMessage, setErrorMessage] = useState(''); // State for "not enough in closet" message
     const [position, setPosition]= useState([39.64591951232883, -79.97339559170358]);
     const [forecastHourly, setForecastHourly] = useState([]);
 
@@ -110,34 +99,67 @@ export function Home() {
         setActivity(event.target.value); // Update activity based on selection
     };
 
-    {/* outfit suggestions */}
-    const generateOutfit = () => {
-        let suggestion;
-        let outfitImages = [];
-        switch (activity) {
-            case 'business':
-                suggestion = "Dress shirt, blazer, and dress pants. Polo and khakis.";
-                outfitImages = [coat, dressPants, boots, umbrella, purse]; // Example for multiple images
-                break;
-            case 'active':
-                suggestion = "Athletic shirt and shorts, with sneakers. Leggings and an athletic shirt.";
-                outfitImages = [longSleeves, shorts]; 
-                break;
-            case 'indoor':
-                suggestion = "Comfortable loungewear or pajamas.";
-                outfitImages = [sweatshirt, sweatpants];
-                break;
-            case 'casual':
-                suggestion = "T-shirt and jeans. Shorts and a long sleeve.";
-                outfitImages = [longSleeves, jeans, boots];
-                break;
-            default:
-                suggestion = "Choose an activity to get an outfit suggestion.";
+     // Function to suggest an outfit from available products in the shelf
+     const suggestOutfit = () => {
+        let suggestedItems = [];
+        let hasEnoughItems = true; // Flag to track if we have enough items in each category
+
+        // Check if we have enough items for each category
+        products.forEach(category => {
+            if (category.images.length === 0) {
+                hasEnoughItems = false;
+            }
+        });
+
+        // If not enough items, show error message
+        if (!hasEnoughItems) {
+            setErrorMessage("You don't have enough in your closet.");
+            setShowModal(false); // Ensure modal doesn't show
+            return;
         }
-        setOutfitSuggestion({ text: suggestion, images: outfitImages });
-        setShowModal(true); // Show the modal with the suggestion
+
+        // Reset the error message if there are enough items
+        setErrorMessage('');
+
+
+        // Suggest different items based on the selected activity
+        products.forEach(category => {
+            if (activity === 'casual') {
+                // Casual: Choose lighter, everyday wear
+                if (category.name === "Tops") {
+                    suggestedItems.push(category.images[0]); // Short-sleeve or casual tops
+                } else if (category.name === "Bottoms") {
+                    suggestedItems.push(category.images[1]); // Shorts or jeans
+                } else if (category.name === "Shoes") {
+                    suggestedItems.push(category.images[0]); // Sneakers
+                } else if (category.name === "Accessories") {
+                    suggestedItems.push(category.images[0]); // Umbrella
+                }
+            } else if (activity === 'business') {
+                // Formal: Choose more elegant clothing
+                if (category.name === "Tops") {
+                    suggestedItems.push(category.images[1]); // Coat
+                } else if (category.name === "Bottoms") {
+                    suggestedItems.push(category.images[0]); // Jeans or dress pants
+                } else if (category.name === "Shoes") {
+                    suggestedItems.push(category.images[2]); // Boots
+                }
+            } else if (activity === 'active') {
+                // Sporty: Choose comfortable, activity wear
+                if (category.name === "Tops") {
+                    suggestedItems.push(category.images[0]); // Short sleeve
+                } else if (category.name === "Bottoms") {
+                    suggestedItems.push(category.images[1]); // Shorts
+                } else if (category.name === "Shoes") {
+                    suggestedItems.push(category.images[0]); // Sneakers
+                }
+            }
+        });
+
+        // Set the outfit suggestion and show modal
+        setOutfitSuggestion(suggestedItems);
+        setShowModal(true);
     };
-    
 
         // Function to close the modal
         const closeModal = () => {
@@ -196,32 +218,25 @@ export function Home() {
                         </select>
 
                         <div className="button-container">
-                            <button onClick={generateOutfit} className="button">
+                            <button onClick={suggestOutfit} className="button">
                                 Generate Outfit
                             </button>
                         </div>
 
-                        {/* Modal for Outfit Suggestion */}
-                        {showModal && (
-                        <div className={`modal ${outfitSuggestion.images.length > 2 ? 'large-modal' : 'small-modal'}`}>
+                    {/* Modal that shows the outfit suggestion */}
+                    {showModal && (
+                        <div className="modal">
                             <div className="modal-content">
-                                {/* Close Button (X) */}
                                 <span className="close" onClick={closeModal}>&times;</span>
-                                <h2>Suggested Outfit</h2>
-                                <p>{outfitSuggestion.text}</p>
-                                <div className="outfit-images">
-                                    {outfitSuggestion.images.map((image, index) => (
-                                    <img 
-                                        key={index}
-                                        src={image} 
-                                        alt={`Outfit suggestion ${index + 1}`} 
-                                        className="outfit-image"
-                                    />
+                                <h2>Your Suggested Outfit</h2>
+                                <div className="suggested-items">
+                                    {outfitSuggestion.map((item, index) => (
+                                        <img key={index} src={item} alt={`Suggested Item ${index}`} className="suggested-item" />
                                     ))}
                                 </div>
                             </div>
                         </div>
-                        )}
+                    )}
                     </TransparentBox>
                 </div>
             </CenterContainer>

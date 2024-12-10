@@ -46,6 +46,17 @@ function ProgressBar({ value, min, max }) {
     );
 }
 
+// Function to re-orient map view after new location is searched
+function AdjustMapView({ position }) {
+    const map = useMap();
+    useEffect(() => {
+        if (position) {
+            map.setView(position, map.getZoom());
+        }
+    }, [map, position]);
+    return null;
+}
+
 // Main component for displaying weather information
 export function Weather() {
     
@@ -320,6 +331,7 @@ export function Weather() {
                                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                                     />
+                                    <AdjustMapView position={position} />
                                     <Marker position={position}>
                                         <Popup>{location}</Popup>
                                     </Marker>
