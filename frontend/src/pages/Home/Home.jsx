@@ -168,7 +168,7 @@ export function Home() {
                     <TransparentBox className="top-half">
                         <h1 className="weather-title">The Weather Today</h1>
                         <div className="circle">
-                            <img className="weather-img" src={hourlyForecastData.imgSrc} alt="weather-icon" />
+                            <img className="weather-img" src={hourlyForecastData[0]?.imgSrc || "Loading..."} alt="weather-icon" />
                             <span className="weather-temp">
                                 {getCurrentTemperature() != null ? `${getCurrentTemperature()}` : "Loading..."}
                             </span>
