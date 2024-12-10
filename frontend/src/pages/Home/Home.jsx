@@ -1,4 +1,5 @@
-import { useState, useContext } from "react";
+import axios from 'axios';
+import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Shelf } from "../../components/Shelf/Shelf";
 import './Home.css';  // Import the CSS file
@@ -25,14 +26,86 @@ import StormyIcon from "../../assets/weatherIcons/Stormy.png"
 import CloudyIcon from "../../assets/weatherIcons/Cloud.png"
 import SunnyCloudyIcon from "../../assets/weatherIcons/Sun_and_Cloud.png"
 import SnowyIcon from "../../assets/weatherIcons/Snowy.png"
-
+import RainyIcon from "../../assets/weatherIcons/PlaceholderRainy.png" // Placeholder Icon
+import NightIcon from "../../assets/weatherIcons/Night.png" // Night icon
+import DefaultIcon from "../../assets/ClosetLogo.png"
 
 export function Home() {
     const { isLoggedIn, user } = useContext(AuthContext); // Use authentication context
     const [activity, setActivity] = useState('casual'); // Default activity
     const [outfitSuggestion, setOutfitSuggestion] = useState({ text: '', images: [] }); // State for outfit suggestion
     const [showModal, setShowModal] = useState(false); // State for showing modal
+    const [position, setPosition]= useState([39.64591951232883, -79.97339559170358]);
+    const [forecastHourly, setForecastHourly] = useState([]);
 
+    useEffect(() => {
+        axios.get('http://localhost:5001/weather/')  
+            .then(response => {
+                const { geoData, forecastHourly } = response.data;
+    
+                // Log the data received
+                console.log("Received GeoData:", geoData);
+                console.log("Received Hourly Forecast:", forecastHourly);
+    
+                // Set the location data from geoData
+                setPosition([geoData.lat, geoData.lon]);
+    
+                // Safely set the forecast data
+                if (forecastHourly && forecastHourly.length) {
+                    setForecastHourly(forecastHourly);  // Hourly forecast
+                } else {
+                    console.error('Hourly forecast data is missing or empty');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching weather data:', error);
+            });
+    }, []);
+
+
+    // Helper function to determine the icon based on short forecast
+    const getIconForForecast = (forecast) => {
+        if (forecast.includes("Snow")) {
+            return SnowyIcon;
+        } else if (forecast.includes("Rain")) {
+            return RainyIcon;
+        } else if (forecast.includes("Storm")) {
+            return StormyIcon;
+        } else if (forecast.includes("Cloudy")) {
+            return CloudyIcon;
+        } else if (forecast.includes('Partly Cloudy')) {
+            return SunnyCloudyIcon;
+        } else if (forecast.includes("Clear") || forecast.includes("Sunny")) {
+            return SunnyIcon;
+        } else if (forecast.isDaytime){ // If weather clear and is day
+            return SunnyIcon;
+        } else if (!forecast.isDaytime) { // If weather clear and is night
+            return NightIcon
+        } else {
+            return DefaultIcon; // This should never happen
+        }        
+    };
+    
+    // Map hourly forecast data to display
+    const hourlyForecastData = forecastHourly.map(hour => {
+        const icon = getIconForForecast(hour.shortForecast);  
+        return {
+            time: hour.time,
+            temp: `${hour.temperature}`,
+            imgSrc: icon,
+            forecast: hour.shortForecast, //Short description of the weather
+        };
+    });
+
+    // Helper function to get current temperature for top right box
+    const getCurrentTemperature = () => {
+        if (!forecastHourly || !forecastHourly.length) return null;
+
+        const currentHourForecast = forecastHourly[0];
+
+        return currentHourForecast ? currentHourForecast.temperature : null;
+    };
+        
     const handleActivityChange = (event) => {
         setActivity(event.target.value); // Update activity based on selection
     };
@@ -95,12 +168,12 @@ export function Home() {
                     <TransparentBox className="top-half">
                         <h1 className="weather-title">The Weather Today</h1>
                         <div className="circle">
-                            <img className="weather-img" src={SnowyIcon} alt="weather-icon" />
+                            <img className="weather-img" src={hourlyForecastData[0]?.imgSrc || "Loading..."} alt="weather-icon" />
                             <span className="weather-temp">
-                                34&deg; F
+                                {getCurrentTemperature() != null ? `${getCurrentTemperature()}` : "Loading..."}
                             </span>
                         </div>
-                        <p>in Morgantown, WV</p>
+                        <p>in Your Current Location</p>
                     </TransparentBox>
 
                     <TransparentBox className="bottom-half">
