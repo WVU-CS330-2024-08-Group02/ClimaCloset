@@ -73,7 +73,7 @@ export function Weather() {
     
 
     useEffect(() => {
-        axios.get('http://localhost:5001/auth/Weather')  
+        axios.get('http://localhost:5001/weather/')  
             .then(response => {
                 const { geoData, forecastHourly, forecastDaily } = response.data;
     
