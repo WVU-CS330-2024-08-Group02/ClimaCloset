@@ -200,6 +200,8 @@ export function Weather() {
     const getShortenedTime = (time) => {
         if (time.includes("12:00:00 AM")) {
             return "12AM";
+        } else if (time.includes("11:00:00 PM")) {
+                return "11PM";
         } else if (time.includes("1:00:00 AM")) {
             return "1AM";
         } else if (time.includes("2:00:00 AM")) {
@@ -220,10 +222,11 @@ export function Weather() {
             return "9AM";
         } else if (time.includes("10:00:00 AM")) {
             return "10AM";
-        } else if (time.includes("11:00:00 AM")) {
-            return "11AM";
         } else if (time.includes("12:00:00 PM")) {
             return "12PM";
+        }
+        else if (time.includes("11:00:00 PM")) {
+                return "11PM";
         } else if (time.includes("1:00:00 PM")) {
             return "1PM";
         } else if (time.includes("2:00:00 PM")) {
@@ -244,8 +247,6 @@ export function Weather() {
             return "9PM";
         } else if (time.includes("10:00:00 PM")) {
             return "10PM";
-        } else if (time.includes("11:00:00 PM")) {
-            return "11PM";
         }
     };
 
