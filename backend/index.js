@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const { connectDB } = require('./config'); // Import function to connect to Azure SQL database
 const authRoutes = require('./routes/auth'); // Import authentication routes
+const weatherRoutes = require('./routes/weatherData'); // Weather routes
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -24,7 +25,7 @@ app.use(cors({ origin: 'http://localhost:5173', credentials: true })); // Allows
 
 // Route setup
 app.use('/auth', authRoutes); // Routes for user authentication
-//app.use('/api/temperature', stacRoutes); // Routes for STAC API access to planetary computer data
+app.use('/weather', weatherRoutes); // Weather routes
 
 // Start server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
