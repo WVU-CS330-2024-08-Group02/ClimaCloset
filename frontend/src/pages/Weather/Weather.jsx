@@ -16,6 +16,16 @@ import RainyIcon from "../../assets/weatherIcons/PlaceholderRainy.png" // Placeh
 import NightIcon from "../../assets/weatherIcons/Night.png" // Night icon
 import DefaultIcon from "../../assets/ClosetLogo.png"
 
+// Radar API URL
+const RADAR_MAPS_URL = "https://api.rainviewer.com/public/weather-maps.json";
+
+// Function to fetch the most recent radar map path
+const getMostRecentWeatherMap = async () => {
+    const res = await fetch(RADAR_MAPS_URL);
+    const resJson = await res.json();
+    return resJson.radar.nowcast[0].path;
+  };  
+
 // Function to determine the color of the progress bar based on temperature value
 function getColor(value) {
     if (value <= 40) {
@@ -76,6 +86,10 @@ export function Weather() {
     const [forecastHourly, setForecastHourly] = useState([]);
     const [forecastDaily, setForecastDaily] = useState([]);
 
+    // const for the Radar and its button toggle
+    const [isRadarVisible, setIsRadarVisible] = useState(false);
+    const [mostRecentWeatherMap, setMostRecentWeatherMap] = useState(null);
+
     const mapRef = useRef();
     const searchInputRef = useRef();
 
@@ -133,6 +147,16 @@ export function Weather() {
             map.hasGeocoder = true; // Mark geocoder as initialized
         }
     }, []); // Ensure this runs only once after the initial render
+
+    // Radar map
+    useEffect(() => {
+        (async () => {
+          const path = await getMostRecentWeatherMap();
+          setMostRecentWeatherMap(path);
+        })();
+      }, []);
+    
+    const toggleRadar = () => setIsRadarVisible(!isRadarVisible);
 
     //
     const MapHandler = ({ position }) => {
@@ -331,6 +355,14 @@ export function Weather() {
                                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                                     />
+                                    {isRadarVisible && mostRecentWeatherMap && (
+                                        <TileLayer
+                                            attribution="RainViewer.com"
+                                            url={`https://tilecache.rainviewer.com${mostRecentWeatherMap}/256/{z}/{x}/{y}/2/1_1.png`}
+                                            opacity={0.6}
+                                            zIndex={2}
+                                        />
+                                    )}
                                     <AdjustMapView position={position} />
                                     <Marker position={position}>
                                         <Popup>{location}</Popup>
@@ -395,6 +427,9 @@ export function Weather() {
                     {/* Toggle button to switch between the 12-hour and 7-day forecast */}
                     <button onClick={toggleContainer} className="toggle-button">
                         {isFirstContainerVisible ? 'Show 7 day Forecast' : 'Show 12 hour Forecast'}
+                    </button>
+                    <button onClick={toggleRadar} className="toggle-button">
+                        {isRadarVisible ? 'Hide Radar' : 'Show Radar'}
                     </button>
                 </div>
             </CenterContainer>
