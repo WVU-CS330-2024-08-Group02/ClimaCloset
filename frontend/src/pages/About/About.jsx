@@ -10,7 +10,7 @@ export function About() {
             name: 'Wesam Almubarak',
             pic: 'frontend/src/assets/pfp/WesamGrad.JPG',
             hoverPic: 'frontend/src/assets/pfp/wesamPfp.jpg',
-            bio: 'Project Owner/Manager',
+            bio: `Project Owner/Manager & Backend`,
         },
         {
             name: 'Eammon Anderson',
@@ -34,25 +34,25 @@ export function About() {
             name: 'Kevin Agazie',
             pic: 'frontend/src/assets/pfp/KevinProfile.png',
             hoverPic: 'frontend/src/assets/pfp/KevinProfileGoofyAhh.png',
-            bio: 'Dev Team: Backend',
+            bio: 'Dev Team: Web App Deployment',
         },
         {
             name: 'Cameron Hannay',
             pic: 'frontend/src/assets/pfp/CamProfile.png',
             hoverPic: 'frontend/src/assets/pfp/CamProfile.jpg',
-            bio: 'Dev Team: Frontend',
+            bio: 'Dev Team: Front & Backend',
         },
         {
             name: 'Kaylea Lantz',
             pic: 'frontend/src/assets/pfp/2024-Kaylea Lantz - EE-1436.jpg',
             hoverPic: 'frontend/src/assets/pfp/Kaylea Profile Pic.jpg',
-            bio: 'Dev Team: Frontend',
+            bio: 'Dev Team: Front & Backend',
         },
         {
             name: 'Mason Phillips',
             pic: 'frontend/src/assets/pfp/MasonProfile.png',
             hoverPic: 'frontend/src/assets/pfp/MasonFunnyPic.png',
-            bio: 'Dev Team: Frontend',
+            bio: 'Dev Team: Front & Backend',
         },
     ]
 
