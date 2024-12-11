@@ -429,11 +429,11 @@ export function Weather() {
                     {/* Toggle button to switch between the 12-hour and 7-day forecast */}
                     <TransparentBox className="control-panel">
                         <p className='control-panel-text'>Control Panel</p>
-                        <button onClick={toggleContainer} className="toggle-button">
-                            {isFirstContainerVisible ? 'Show 7 day Forecast' : 'Show 12 hour Forecast'}
-                        </button>
                         <button onClick={toggleRadar} className="toggle-button">
                             {isRadarVisible ? 'Hide Radar' : 'Show Radar'}
+                        </button>
+                        <button onClick={toggleContainer} className="toggle-button">
+                            {isFirstContainerVisible ? 'Daily Forecast' : 'Hourly Forecast'}
                         </button>
                     </TransparentBox>
                 </div>
