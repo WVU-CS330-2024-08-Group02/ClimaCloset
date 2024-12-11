@@ -83,9 +83,6 @@
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    
-
-    /* For debugging */
 }
 
 /* Progress bar style for smoother resizing */
@@ -93,8 +90,6 @@
     height: 100%;
     border-radius: 10px 0 0 10px;
     transition: width 0.3s ease, background-color 0.3s ease;
-
-    /* For debugging */
 }
 
 /* Style for button to toggle 7 day forcast/12 hour forcast */
@@ -102,11 +97,15 @@
     display: block;
     margin: 10px auto;
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--action-color);
     border: none;
     font-weight: bold;
     font-size: 30px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+.toggle-button:hover {
+  background-color: var(--action-color-hover);
 }
 
 .top-section {
@@ -140,7 +139,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     background-color: rgba(0, 0, 0, 0.2);
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
@@ -195,7 +194,7 @@
   /* Search button */
   .search-button {
     padding: 8px 16px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: var(--action-color);
     color: white;
     border: none;
     border-radius: 4px;
@@ -204,9 +203,25 @@
     font-size: 14px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s ease;
+    margin-left: 10px;
   }
 
   /* Change background color of search button when hovered over */
   .search-button:hover {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: var(--action-color-hover);
+  }
+
+  .control-panel {
+    width: 30%;
+    margin-left: 10%;
+    align-items: normal;
+    padding: 20px;
+  }
+
+  .control-panel-text {
+    color: white;
+    margin: none;
+    padding: none;
+    border: none;
+    font-weight: bold;
   }

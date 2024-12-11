@@ -8,14 +8,15 @@ import L from 'leaflet';
 import 'leaflet-control-geocoder';
 import 'leaflet-control-geocoder/dist/Control.Geocoder.css'; // Import geocoder CSS
 import SunnyIcon from "../../assets/weatherIcons/Sun.png";
-import StormyIcon from "../../assets/weatherIcons/Stormy.png"
-import CloudyIcon from "../../assets/weatherIcons/Cloud.png"
-import SunnyCloudyIcon from "../../assets/weatherIcons/Sun_and_Cloud.png"
-import SnowyIcon from "../../assets/weatherIcons/Snowy.png"
-import RainyIcon from "../../assets/weatherIcons/Rain.png" // Placeholder Icon
-import NightIcon from "../../assets/weatherIcons/Night.png" // Night icon
-import DefaultIcon from "../../assets/ClosetLogo.png"
+import StormyIcon from "../../assets/weatherIcons/Stormy.png";
+import CloudyIcon from "../../assets/weatherIcons/Cloud.png";
+import SunnyCloudyIcon from "../../assets/weatherIcons/Sun_and_Cloud.png";
+import SnowyIcon from "../../assets/weatherIcons/Snowy.png";
+import RainyIcon from "../../assets/weatherIcons/Rain.png"; // Placeholder Icon
+import NightIcon from "../../assets/weatherIcons/Night.png"; // Night icon
+import DefaultIcon from "../../assets/ClosetLogo.png";
 import Throbber from '../../components/Throbber/Throbber';
+import { TransparentBox } from "../../components/TransparentBox/TransparentBox";
 
 // Radar API URL
 const RADAR_MAPS_URL = "https://api.rainviewer.com/public/weather-maps.json";
@@ -426,12 +427,15 @@ export function Weather() {
 
 
                     {/* Toggle button to switch between the 12-hour and 7-day forecast */}
-                    <button onClick={toggleContainer} className="toggle-button">
-                        {isFirstContainerVisible ? 'Show 7 day Forecast' : 'Show 12 hour Forecast'}
-                    </button>
-                    <button onClick={toggleRadar} className="toggle-button">
-                        {isRadarVisible ? 'Hide Radar' : 'Show Radar'}
-                    </button>
+                    <TransparentBox className="control-panel">
+                        <p className='control-panel-text'>Control Panel</p>
+                        <button onClick={toggleContainer} className="toggle-button">
+                            {isFirstContainerVisible ? 'Show 7 day Forecast' : 'Show 12 hour Forecast'}
+                        </button>
+                        <button onClick={toggleRadar} className="toggle-button">
+                            {isRadarVisible ? 'Hide Radar' : 'Show Radar'}
+                        </button>
+                    </TransparentBox>
                 </div>
             </CenterContainer>
         </>
