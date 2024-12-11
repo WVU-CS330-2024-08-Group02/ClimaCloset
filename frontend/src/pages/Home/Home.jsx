@@ -14,7 +14,7 @@ import StormyIcon from "../../assets/weatherIcons/Stormy.png"
 import CloudyIcon from "../../assets/weatherIcons/Cloud.png"
 import SunnyCloudyIcon from "../../assets/weatherIcons/Sun_and_Cloud.png"
 import SnowyIcon from "../../assets/weatherIcons/Snowy.png"
-import RainyIcon from "../../assets/weatherIcons/PlaceholderRainy.png" // Placeholder Icon
+import RainyIcon from "../../assets/weatherIcons/Rain.png" // Placeholder Icon
 import NightIcon from "../../assets/weatherIcons/Night.png" // Night icon
 import DefaultIcon from "../../assets/ClosetLogo.png"
 
