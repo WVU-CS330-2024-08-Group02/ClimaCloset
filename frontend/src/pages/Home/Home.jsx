@@ -27,8 +27,17 @@ export function Home() {
     const [errorMessage, setErrorMessage] = useState(''); // State for "not enough in closet" message
     const [position, setPosition]= useState([39.64591951232883, -79.97339559170358]);
     const [forecastHourly, setForecastHourly] = useState([]);
+    const [idealTemperature, setIdealTemperature] = useState(null); // Example default value
+
 
     useEffect(() => {
+        // Retrieve the ideal temperature from localStorage when the component loads
+        const savedIdealTemperature = localStorage.getItem('idealTemperature');
+        if (savedIdealTemperature) {
+            setIdealTemperature(parseInt(savedIdealTemperature, 10)); // Convert the string to an integer
+        }
+        
+        //retrieve weather data
         axios.get('http://localhost:5001/weather/')  
             .then(response => {
                 const { geoData, forecastHourly } = response.data;
@@ -51,6 +60,13 @@ export function Home() {
                 console.error('Error fetching weather data:', error);
             });
     }, []);
+
+
+    // Helper function to determine if it's warm or cold based on current temperature and ideal temperature
+    function isWarmWeather() {
+        const currentTemp = getCurrentTemperature();
+        return currentTemp >= idealTemperature;
+    };
 
 
     // Helper function to determine the icon based on short forecast
@@ -87,6 +103,14 @@ export function Home() {
         };
     });
 
+
+    // Helper function to check if there is precipitation in the forecast
+    function hasPrecipitation(forecast) {
+        const precipKeywords = ["Rain", "Snow", "Storm", "Shower"]; // Keywords for precipitation
+        return precipKeywords.some(keyword => forecast.includes(keyword));
+    }
+    
+
     // Helper function to get current temperature for top right box
     const getCurrentTemperature = () => {
         if (!forecastHourly || !forecastHourly.length) return null;
@@ -103,6 +127,7 @@ export function Home() {
      // Function to suggest an outfit from available products in the shelf
      const suggestOutfit = () => {
         let suggestedItems = [];
+        const warmWeather = isWarmWeather();
         let hasEnoughItems = true; // Flag to track if we have enough items in each category
 
         // Check if we have enough items for each category
@@ -122,40 +147,98 @@ export function Home() {
         // Reset the error message if there are enough items
         setErrorMessage('');
 
+        // Check if there is precipitation in the current forecast
+        const currentForecast = forecastHourly[0]?.shortForecast || ""; // Get the current hour's forecast
+        const isPrecipitating = hasPrecipitation(currentForecast);
+        
+        // If there is precipitation, suggest rain-related items
+        if (isPrecipitating) {
+             suggestedItems.push("Umbrella", "Rain Jacket");
+        }
+        
 
         // Suggest different items based on the selected activity
         products.forEach(category => {
-            if (activity === 'casual') {
-                // Casual: Choose lighter, everyday wear
-                if (category.name === "Tops") {
-                    suggestedItems.push(category.images[0]); // Short-sleeve or casual tops
-                } else if (category.name === "Bottoms") {
-                    suggestedItems.push(category.images[1]); // Shorts or jeans
-                } else if (category.name === "Shoes") {
-                    suggestedItems.push(category.images[0]); // Sneakers
-                } else if (category.name === "Accessories") {
-                    suggestedItems.push(category.images[0]); // Umbrella
+            //suggest outfit if weather warm
+            if (warmWeather){
+                if (activity === 'casual') {
+                    if (category.name === "Tops") {
+                        suggestedItems.push("Short Sleeve or Tank Top");
+                    } else if (category.name === "Bottoms") {
+                        suggestedItems.push("Shorts");
+                    } else if (category.name === "Shoes") {
+                        suggestedItems.push("Sandals");
+                    } else if (category.name === "Accessories") {
+                        suggestedItems.push("Purse");
+                    }
+                } else if (activity === 'business') {
+                    // Formal: Choose more elegant clothing
+                    if (category.name === "Tops") {
+                        suggestedItems.push("Short Sleeve"); // Coat
+                    } else if (category.name === "Bottoms") {
+                        suggestedItems.push("Dress Pants"); // Jeans or dress pants
+                    } else if (category.name === "Shoes") {
+                        suggestedItems.push("Tennis Shoes"); // Boots
+                    }
+                } else if (activity === 'active') {
+                    // Sporty: Choose comfortable, activity wear
+                    if (category.name === "Tops") {
+                        suggestedItems.push("Tank Top"); // Short sleeve
+                    } else if (category.name === "Bottoms") {
+                        suggestedItems.push("Shorts"); // Shorts
+                    } else if (category.name === "Shoes") {
+                        suggestedItems.push("Tennis Shoes"); // Sneakers
+                    }
+                } else if (activity === 'indoor') {
+                    // Sporty: Choose comfortable, activity wear
+                    if (category.name === "Tops") {
+                        suggestedItems.push("Tank Top"); // Short sleeve
+                    } else if (category.name === "Bottoms") {
+                        suggestedItems.push("Shorts"); // Shorts
+                    }
                 }
-            } else if (activity === 'business') {
-                // Formal: Choose more elegant clothing
-                if (category.name === "Tops") {
-                    suggestedItems.push(category.images[1]); // Coat
-                } else if (category.name === "Bottoms") {
-                    suggestedItems.push(category.images[0]); // Jeans or dress pants
-                } else if (category.name === "Shoes") {
-                    suggestedItems.push(category.images[2]); // Boots
-                }
-            } else if (activity === 'active') {
-                // Sporty: Choose comfortable, activity wear
-                if (category.name === "Tops") {
-                    suggestedItems.push(category.images[0]); // Short sleeve
-                } else if (category.name === "Bottoms") {
-                    suggestedItems.push(category.images[1]); // Shorts
-                } else if (category.name === "Shoes") {
-                    suggestedItems.push(category.images[0]); // Sneakers
+            } 
+            //suggest different outfit is weather cool
+            else{
+                if (activity === 'casual') {
+                    if (category.name === "Tops") {
+                        suggestedItems.push("Long Sleeve or Sweater");
+                    } else if (category.name === "Bottoms") {
+                        suggestedItems.push("Jeans");
+                    } else if (category.name === "Shoes") {
+                        suggestedItems.push("Boots");
+                    } else if (category.name === "Accessories") {
+                        suggestedItems.push("Hat");
+                    }
+                } else if (activity === 'business') {
+                    // Formal: Choose more elegant clothing
+                    if (category.name === "Tops") {
+                        suggestedItems.push("Coat"); // Coat
+                    } else if (category.name === "Bottoms") {
+                        suggestedItems.push("Dress Pants"); // Jeans or dress pants
+                    } else if (category.name === "Shoes") {
+                        suggestedItems.push("Boots"); // Boots
+                    }
+                } else if (activity === 'active') {
+                    // Sporty: Choose comfortable, activity wear
+                    if (category.name === "Tops") {
+                        suggestedItems.push("Long Sleeves"); // Short sleeve
+                    } else if (category.name === "Bottoms") {
+                        suggestedItems.push("Sweatpants"); // Shorts
+                    } else if (category.name === "Shoes") {
+                        suggestedItems.push("Tennis Shoes"); // Sneakers
+                    }
+                }  else if (activity === 'indoor') {
+                    // Sporty: Choose comfortable, activity wear
+                    if (category.name === "Tops") {
+                        suggestedItems.push("Sweatshirt"); // Short sleeve
+                    } else if (category.name === "Bottoms") {
+                        suggestedItems.push("Sweatpants"); // Shorts
+                    }
                 }
             }
         });
+
 
         // Set the outfit suggestion and show modal
         setOutfitSuggestion(suggestedItems);
@@ -231,8 +314,8 @@ export function Home() {
                                 <span className="close" onClick={closeModal}>&times;</span>
                                 <h2>Your Suggested Outfit</h2>
                                 <div className="suggested-items">
-                                    {outfitSuggestion.map((item, index) => (
-                                        <img key={index} src={item} alt={`Suggested Item ${index}`} className="suggested-item" />
+                                    {Object.keys(outfitSuggestion).map((category, index) => (
+                                        <p key={index}> {outfitSuggestion[category]}</p> /* Display items on the same line */
                                     ))}
                                 </div>
                             </div>
