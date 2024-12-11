@@ -15,6 +15,7 @@ import SnowyIcon from "../../assets/weatherIcons/Snowy.png"
 import RainyIcon from "../../assets/weatherIcons/Rain.png" // Placeholder Icon
 import NightIcon from "../../assets/weatherIcons/Night.png" // Night icon
 import DefaultIcon from "../../assets/ClosetLogo.png"
+import Throbber from '../../components/Throbber/Throbber';
 
 // Radar API URL
 const RADAR_MAPS_URL = "https://api.rainviewer.com/public/weather-maps.json";
@@ -321,7 +322,7 @@ export function Weather() {
         return (
             <CenterContainer>
                 <div className="loading-container">
-                    <div>Loading weather data...</div>
+                    <Throbber />
                 </div>
             </CenterContainer>
         );
@@ -378,7 +379,7 @@ export function Weather() {
                         {/* Circle displaying current weather and temperature */}
                         <div className="circle-style">
                             <span style={{ fontSize: '30px', marginTop: '20px' }}>
-                                {forecastHourly.length ? forecastHourly[0].shortForecast : "Loading..."}
+                                {forecastHourly.length ? forecastHourly[0].shortForecast : <Throbber />}
                             </span>
                             <span style={{ marginTop: '-50px' }}>
                                 {getCurrentTemperature() != null ? `${getCurrentTemperature()}` : "Loading..."}

@@ -6,6 +6,7 @@ import { products } from "../../components/Shelf/Shelf";
 import './Home.css';  // Import the CSS file
 import { CenterContainer } from "../../components/CenterContainer/CenterContainer";
 import { TransparentBox } from "../../components/TransparentBox/TransparentBox";
+import Throbber from '../../components/Throbber/Throbber';
 
 
 // Placeholder imports until logic for weather is created
@@ -190,9 +191,9 @@ export function Home() {
                     <TransparentBox className="top-half">
                         <h1 className="weather-title">The Weather Today</h1>
                         <div className="circle">
-                            <img className="weather-img" src={hourlyForecastData[0]?.imgSrc || "Loading..."} alt="weather-icon" />
+                            <img className="weather-img" src={hourlyForecastData[0]?.imgSrc || <Throbber/>} alt="weather-icon" />
                             <span className="weather-temp">
-                                {getCurrentTemperature() != null ? `${getCurrentTemperature()}` : "Loading..."}
+                                {getCurrentTemperature() != null ? `${getCurrentTemperature()}` : <Throbber/>}
                             </span>
                         </div>
                         <p>in Your Current Location</p>
