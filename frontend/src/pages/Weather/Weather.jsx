@@ -360,7 +360,7 @@ export function Weather() {
                                     />
                                     {isRadarVisible && mostRecentWeatherMap && (
                                         <TileLayer
-                                            attribution="RainViewer.com"
+                                            attribution='&copy; <a href="https://www.rainviewer.com/api.html">RainViewer.com</a>'
                                             url={`https://tilecache.rainviewer.com${mostRecentWeatherMap}/256/{z}/{x}/{y}/2/1_1.png`}
                                             opacity={0.6}
                                             zIndex={2}
