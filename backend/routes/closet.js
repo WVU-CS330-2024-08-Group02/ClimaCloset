@@ -73,39 +73,48 @@ router.post('/PullCloset', async (req, res) => {
 
 
 // Save Closet to Azure
-router.post('/saveCloset', async (req,res) => {
-    const {Backpack , Boots, Coat, DressPants, FlipFlops, Gloves, Jacket, Jeans, LongSleeves, Purse, Sandals, Scarf, Shorts, ShortSleeves, Sneakers, Sunglasses, Sweater, Sweatpants, Sweatshirt, Umbrella} = req.body;
+router.post('/saveCloset', async (req, res) => {
+    const { Id, Backpack, Boots, Coat, DressPants, FlipFlops, Gloves, Jacket, Jeans, LongSleeves, Purse, Sandals, Scarf, Shorts, ShortSleeves, Sneakers, Sunglasses, Sweater, Sweatpants, Sweatshirt, Umbrella } = req.body;
+
+    if (!Id) {
+        return res.status(400).json({ error: 'User Id is required' });
+    }
 
     try {
-        // Connect to server
         const pool = await sql.connect();
         await pool.request()
-            .input('Backpack', sql.Int, Backpack)
-            .input('Boots', sql.Int, Boots)
-            .input('Coat', sql.Int, Coat)
-            .input('DressPants', sql.Int, DressPants)
-            .input('FlipFlops', sql.Int, FlipFlops)
-            .input('Gloves', sql.Int, Gloves)
-            .input('Jacket', sql.Int, Jacket)
-            .input('Jeans', sql.Int, Jeans)
-            .input('LongSleeves', sql.Int, LongSleeves)
-            .input('Purse', sql.Int, Purse)
-            .input('Sandals', sql.Int, Sandals)
-            .input('Scarf', sql.Int, Scarf)
-            input('Shorts', sql.Int, Shorts)
-            .input('ShortSleeves', sql.Int, ShortSleeves)
-            .input('Sneakers', sql.Int, Sneakers)
-            .input('Sunglasses', sql.Int, Sunglasses)
-            .input('Sweater', sql.Int, Sweater)
-            .input('Sweatpants', sql.Int, Sweatpants)
-            .input('Sweatshirt', sql.Int, Sweatshirt)
-            .input('Umbrella', sql.Int, Umbrella)
-            .query('INSERT INTO closet (Backpack, Boots, Coat, DressPants, FlipFlops, Gloves, Jacket, Jeans, LongSleeves, Purse, Sandals, Scarf, Shorts, ShortSleeves, Sneakers, Sunglasses, Sweater, Sweatpants, Sweatshirt, Umbrella) VALUES(@Backpack, @Boots, @Coat, @DressPants, @FlipFlops, @Gloves, @Jacket, @Jeans, @LongSleeves, @Purse, @Sandals, @Scarf, @Shorts, @ShortSleeves, @Sneakers, @Sunglasses, @Sweater, @Sweatpants, @Sweatshirt, @Umbrella)');
+            .input('Id', sql.Int, Id) // Ensure Id is part of the query
+            .input('Backpack', sql.Int, Backpack || 0)
+            .input('Boots', sql.Int, Boots || 0)
+            .input('Coat', sql.Int, Coat || 0)
+            .input('DressPants', sql.Int, DressPants || 0)
+            .input('FlipFlops', sql.Int, FlipFlops || 0)
+            .input('Gloves', sql.Int, Gloves || 0)
+            .input('Jacket', sql.Int, Jacket || 0)
+            .input('Jeans', sql.Int, Jeans || 0)
+            .input('LongSleeves', sql.Int, LongSleeves || 0)
+            .input('Purse', sql.Int, Purse || 0)
+            .input('Sandals', sql.Int, Sandals || 0)
+            .input('Scarf', sql.Int, Scarf || 0)
+            .input('Shorts', sql.Int, Shorts || 0)
+            .input('ShortSleeves', sql.Int, ShortSleeves || 0)
+            .input('Sneakers', sql.Int, Sneakers || 0)
+            .input('Sunglasses', sql.Int, Sunglasses || 0)
+            .input('Sweater', sql.Int, Sweater || 0)
+            .input('Sweatpants', sql.Int, Sweatpants || 0)
+            .input('Sweatshirt', sql.Int, Sweatshirt || 0)
+            .input('Umbrella', sql.Int, Umbrella || 0)
+            .query(`
+                INSERT INTO closet (Id, Backpack, Boots, Coat, DressPants, FlipFlops, Gloves, Jacket, Jeans, LongSleeves, Purse, Sandals, Scarf, Shorts, ShortSleeves, Sneakers, Sunglasses, Sweater, Sweatpants, Sweatshirt, Umbrella)
+                VALUES (@Id, @Backpack, @Boots, @Coat, @DressPants, @FlipFlops, @Gloves, @Jacket, @Jeans, @LongSleeves, @Purse, @Sandals, @Scarf, @Shorts, @ShortSleeves, @Sneakers, @Sunglasses, @Sweater, @Sweatpants, @Sweatshirt, @Umbrella)
+                ON DUPLICATE KEY UPDATE
+                Backpack = @Backpack, Boots = @Boots, Coat = @Coat, DressPants = @DressPants, FlipFlops = @FlipFlops, Gloves = @Gloves, Jacket = @Jacket, Jeans = @Jeans, LongSleeves = @LongSleeves, Purse = @Purse, Sandals = @Sandals, Scarf = @Scarf, Shorts = @Shorts, ShortSleeves = @ShortSleeves, Sneakers = @Sneakers, Sunglasses = @Sunglasses, Sweater = @Sweater, Sweatpants = @Sweatpants, Sweatshirt = @Sweatshirt, Umbrella = @Umbrella
+            `);
 
-            res.status(201).json({ message: 'Closet Saved Successfully'});
+        res.status(201).json({ message: 'Closet saved successfully' });
     } catch (error) {
-        console.error('Error attempting to save to closet', error);
-        res.status(500).json({ error: 'Failed to register user' });
+        console.error('Error attempting to save to closet:', error);
+        res.status(500).json({ error: 'Failed to save closet data' });
     }
 });
 
