@@ -319,6 +319,7 @@ export function Weather() {
         };
     });
 
+    // If weather data not yet received, display loading icon 
     if (!forecastHourly.length || !forecastDaily.length) {
         return (
             <CenterContainer>
@@ -383,7 +384,7 @@ export function Weather() {
                                 {forecastHourly.length ? forecastHourly[0].shortForecast : <Throbber />}
                             </span>
                             <span style={{ marginTop: '-50px' }}>
-                                {getCurrentTemperature() != null ? `${getCurrentTemperature()}` : "Loading..."}
+                                {`${getCurrentTemperature()}`}
                             </span>
                         </div>
 
@@ -397,7 +398,7 @@ export function Weather() {
                         {/* Display the temperature range text */}
                         <div>
                             <span className="text-style">
-                                Low of { forecastDaily[1].temperature < forecastDaily[0].temperature ? forecastDaily[1].temperature : forecastDaily[0].temperature } High of { forecastDaily[1].temperature > forecastDaily[0].temperature ? forecastDaily[1].temperature : forecastDaily[0].temperature }</span>
+                                Low of { Math.min(parseInt(forecastDaily[0].temperature), parseInt(forecastDaily[1].temperature)) }°F High of { Math.max(parseInt(forecastDaily[0].temperature), parseInt(forecastDaily[1].temperature)) }°F</span>
                         </div>
                     </div>
                 </div>
