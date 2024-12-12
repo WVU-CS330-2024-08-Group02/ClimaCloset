@@ -17,7 +17,7 @@ import SunnyCloudyIcon from "../../assets/weatherIcons/Sun_and_Cloud.png"
 import SnowyIcon from "../../assets/weatherIcons/Snowy.png"
 import RainyIcon from "../../assets/weatherIcons/Rain.png" // Placeholder Icon
 import NightIcon from "../../assets/weatherIcons/Night.png" // Night icon
-import DefaultIcon from "../../assets/ClosetLogo.png"
+import DefaultIcon from "../../assets/ClosetIcon.ico"
 
 export function Home() {
     const { isLoggedIn, user } = useContext(AuthContext); // Use authentication context
