@@ -1,10 +1,11 @@
-import { useState } from "react"
-import './Accessories.css'
+import { useState } from "react";
+import axios from "axios";
+import './Accessories.css';
 
 export function Accessories() {
     const [chosenOption, setChosenOption] = useState([]);
 
-    // Store the types of shoes and their respective desecriptions in an array
+    // Store the types of accessories in an array
     const accessories = ["Sunglasses", "Hat", "Gloves", "Scarf", "Backpack", "Purse", "Umbrella"];
 
     // Handle the event when checkbox(es) are clicked by the user
@@ -20,39 +21,26 @@ export function Accessories() {
     const handleChoice = async (event) => {
         event.preventDefault();
     
-        // Hardcoded user Id for this example
         const userId = 1;
     
-        // Convert chosen options into an object to send to the backend
+        // Create dataToSend with default values for all accessories
         const dataToSend = {
-            Id: userId, // Hardcoded Id
+            Id: userId,
+            ...accessories.reduce((acc, accessory) => {
+                acc[accessory] = chosenOption.includes(accessory) ? 1 : 0;
+                return acc;
+            }, {}),
         };
     
-        // Add chosen accessories with values indicating ownership
-        chosenOption.forEach(option => {
-            dataToSend[option] = 1; // '1' indicates the accessory is owned
-        });
-    
-        // Prepare the API request
         try {
-            const response = await fetch('http://localhost:5001/closet/saveCloset', { // Update URL if needed
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(dataToSend),
+            const response = await axios.post('http://localhost:5001/closet/saveCloset', dataToSend, {
+                headers: { 'Content-Type': 'application/json' },
             });
-    
-            // Handle the response
-            if (response.ok) {
-                const result = await response.json();
-                alert('Accessories saved successfully: ' + JSON.stringify(result));
-            } else {
-                alert('Failed to save accessories: ' + response.statusText);
-            }
+
+            alert('Accessories saved successfully: ' + JSON.stringify(response.data));
         } catch (error) {
             console.error('Error submitting accessories:', error);
-            alert('An error occurred while submitting the accessories.');
+            alert('Failed to save accessories: ' + (error.response?.statusText || 'An error occurred.'));
         }
     };
 
@@ -71,7 +59,7 @@ export function Accessories() {
                     />
                     <label htmlFor={`checkbox4-${index}`}>{option}</label>
                 </div>
-            ))}would 
+            ))}
             <button type="submit">
                 Submit Accessories
             </button>
