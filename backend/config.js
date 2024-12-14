@@ -1,4 +1,4 @@
-/**
+node/**
  * This file exports the database configutation for Azure SQL and the connectDB
  * function, which establishes the connection. It uses enviorment variables for
  * sensitive data

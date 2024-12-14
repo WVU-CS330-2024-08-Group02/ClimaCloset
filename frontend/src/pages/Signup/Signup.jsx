@@ -37,7 +37,7 @@ export function Signup() {
             alert("Password does not meet requirements.");
         } else {
             try {
-                const response = await axios.post(`http://localhost:5001/auth/register`, 
+                const response = await axios.post(`http://135.237.82.214:5000/auth/register`, 
                     { name, email, username, password });
                 
                 if (response.status === 201) {

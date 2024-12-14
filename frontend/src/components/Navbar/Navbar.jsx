@@ -2,7 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Nav from 'react-bootstrap/Nav';
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import "./navbar.css"; // Styles for navbar elements
+import "./Navbar.css"; // Styles for navbar elements
 import closetIcon from "../../assets/ClosetIcon.ico";
 import profileImage from "../../assets/pfp/CamProfile.png"; // Change when login is functional
 import defaultProfileImage from "../../assets/pfp/DefaultProfile.png"
