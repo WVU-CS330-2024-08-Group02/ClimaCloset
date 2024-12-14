@@ -9,12 +9,12 @@ The `assets` folder contains all of the images that are being displayed in the a
 ```
 frontend/
 ├── src/        # Includes the entire app set-up and UI design, and handles any user interactions
-│   ├── assets       # Holds all images for the app
-│   │   ├── backgroundImage    # Different background images for the app
-│   │   ├── clothingIcons      # Clothing icons for closet
-│   │   ├── pfp                # Profile pictures for about page
-│   │   ├── weatherIcons       # Weather icons for weather forecast
-│   │   ├── ClosetIcon.ico     # ClimaCloset official logo
+│   ├── assets/       # Holds all images for the app
+│   │   ├── backgroundImage/    # Different background images for the app
+│   │   ├── clothingIcons/      # Clothing icons for closet
+│   │   ├── pfp/                # Profile pictures for about page
+│   │   ├── weatherIcons/       # Weather icons for weather forecast
+│   │   ├── ClosetIcon.ico      # ClimaCloset official logo
 │   │   └── README.md
 ```
 

@@ -7,8 +7,8 @@ The `clothingIcons` folder is used to hold the clothing icons that are displayed
 ```
 frontend/
 ├── src/        # Includes the entire app set-up and UI design, and handles any user interactions
-│   ├── assets       # Holds all images for the app
-│   │   ├── clothingIcons    # Clothing icons for closet
+│   ├── assets/       # Holds all images for the app
+│   │   ├── clothingIcons/    # Clothing icons for closet
 │   │   │   ├── Backpack.png    
 │   │   │   ├── boots.png     
 │   │   │   ├── Coat.png

@@ -7,8 +7,8 @@ The `weatherIcons` folder contains all of the weather icons displayed with the h
 ```
 frontend/
 ├── src/        # Includes the entire app set-up and UI design, and handles any user interactions
-│   ├── assets      # Holds all images for the app
-│   │   ├── weatherIcons    # Weather icons for weather forecast
+│   ├── assets/      # Holds all images for the app
+│   │   ├── weatherIcons/    # Weather icons for weather forecast
 │   │   │   ├── Cloud.png
 │   │   │   ├── Night.png     
 │   │   │   ├── nighttime.png
