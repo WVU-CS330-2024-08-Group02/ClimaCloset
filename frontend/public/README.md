@@ -4,7 +4,7 @@ The `public` folder...
 
 ## `public` Folder/File Structure and Overview
 
-## Structure
+### Structure
 
 ```
 frontend/

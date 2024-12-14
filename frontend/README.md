@@ -4,7 +4,7 @@ The `frontend` folder contains the user-side components of the project (a React-
 
 ## `frontend` Folder/File Structure and Overview
 
-## Structure
+### Structure
 
 ```
 frontend/

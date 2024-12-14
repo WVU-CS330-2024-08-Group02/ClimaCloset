@@ -4,19 +4,19 @@ The `src` folder...
 
 ## `src` Folder/File Structure and Overview
 
-## Structure
+### Structure
 
 ```
 frontend/
-├── src/        # Includes the entire app set-up and UI design, and handles any user interactions
-│   ├── assets  # xxxx
-│   ├── components  # xxxx
-│   ├── context  # xxxx
-│   ├── pages  # xxxx
-│   ├── App.css  # xxxx
-│   ├── App.jsx  # xxxx
-│   ├── index.css  # xxxx
-│   ├── main.jsx  # xxxx
+├── src/      # Includes the entire app set-up and UI design, and handles any user interactions
+│   ├── assets        # Holds all images for the app
+│   ├── components    # xxxx
+│   ├── context       # xxxx
+│   ├── pages         # xxxx
+│   ├── App.css       # xxxx
+│   ├── App.jsx       # xxxx
+│   ├── index.css     # xxxx
+│   ├── main.jsx      # xxxx
 │   └── README.md
 ```
 
