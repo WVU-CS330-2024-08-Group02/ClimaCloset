@@ -100,7 +100,7 @@ export function Shelf() {
                         <h3>{product.name}</h3>
                         <div className="product-images">
                             {product.items.map((item, index) => (
-                                item.selected ? (
+                                item.selected? (
                                     <img key={index} src={item.image} alt={`${item.name}`} className="product-image" />
                                 ) : null    
                             ))}
