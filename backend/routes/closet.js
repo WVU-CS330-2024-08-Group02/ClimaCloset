@@ -49,11 +49,14 @@ router.post('/saveCloset', async (req, res) => {
         const request = pool.request();
         request.input('Id', sql.Int, Id);
         accessories.forEach(accessory => {
-            request.input(accessory, sql.Int, req.body[accessory] || 0);
+            const value = parseInt(req.body[accessory], 10) || 0;
+            request.input(accessory, sql.Int, value);
         });
 
         // SQL Server-compatible UPSERT (MERGE)
+        
         const mergeQuery = `
+            SET IDENTITY_INSERT closet ON;
             MERGE INTO closet AS Target
             USING (VALUES (@Id, ${accessories.map(a => `@${a}`).join(", ")})) AS Source (Id, ${accessories.join(", ")})
             ON Target.Id = Source.Id
@@ -62,8 +65,10 @@ router.post('/saveCloset', async (req, res) => {
             WHEN NOT MATCHED THEN 
                 INSERT (Id, ${accessories.join(", ")})
                 VALUES (Source.Id, ${accessories.map(a => `Source.${a}`).join(", ")});
+            SET IDENTITY_INSERT closet OFF
         `;
 
+        console.log('Executing query:', mergeQuery);
         await request.query(mergeQuery);
         res.status(201).json({ message: 'Closet saved successfully' });
     } catch (error) {
