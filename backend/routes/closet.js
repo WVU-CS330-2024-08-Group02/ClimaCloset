@@ -52,12 +52,12 @@ router.post('/PullCloset', async (req, res) => {
 
         const clothingData = {
             tops: tops.map(item => result.recordset[0][item] || 0),
-            bottoms: bottoms.map(item => result.recordset[1][item] || 0),
-            shoes: shoes.map(item => result.recordset[2][item] || 0),
-            accessories: accessories.map(item => result.recordset[3][item] || 0)
+            bottoms: bottoms.map(item => result.recordset[0][item] || 0),
+            shoes: shoes.map(item => result.recordset[0][item] || 0),
+            accessories: accessories.map(item => result.recordset[0][item] || 0)
         };
 
-        res.status(200).json(result.recordset[0]);
+        res.status(200).json(clothingData);
     } catch (error) {
         console.error('Error pulling closet data:', error);
         res.status(500).json({ error: 'Failed to retrieve closet data' });

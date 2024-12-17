@@ -37,7 +37,7 @@ export function Accessories() {
                 headers: { 'Content-Type': 'application/json' },
             });
 
-            alert('Accessories saved successfully: ' + JSON.stringify(response.data));
+            alert('Accessories saved successfully');
         } catch (error) {
             console.error('Error submitting accessories:', error);
             alert('Failed to save accessories: ' + (error.response?.statusText || 'An error occurred.'));

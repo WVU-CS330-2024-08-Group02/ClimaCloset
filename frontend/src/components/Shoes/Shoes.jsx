@@ -7,9 +7,9 @@ export function Shoes() {
   const [hoveredOption, setHoveredOption] = useState(null); // Track which shoe is hovered
   // Store the types of shoes and their respective desecriptions in an array
   const shoes = [
-    { name: "Tennis_Shoes", description: "Versatile shoes for sports or casual wear. This includes any sneakers you may have." },
+    { name: "Tennis Shoes", description: "Versatile shoes for sports or casual wear. This includes any sneakers you may have." },
     { name: "Boots", description: "Sturdy footwear for colder climates or rugged terrain. This includes rain boots, cowboy boots, and steel toe boots." },
-    { name: "Flip_Flops", description: "Casual footwear perfect for warm weather." },
+    { name: "Flip Flops", description: "Casual footwear perfect for warm weather." },
     { name: "Sandals", description: "Open-toe footwear ideal for hot weather. This includes any type of open design shoe that is not a flip flop." },
   ];
 
@@ -31,9 +31,9 @@ export function Shoes() {
     // Create dataToSend with default values for all accessories
     const dataToSend = {
         Id: userId,
-        ...shoes.reduce((s, shoe) => {
-            s[shoe] = chosenOption.includes(shoe) ? 1 : 0;
-            return s;
+        ...shoes.reduce((acc, shoe) => {
+            acc[shoe.name.replace(" ", "_")] = chosenOption.includes(shoe.name) ? 1 : 0;
+            return acc;
         }, {}),
     };
 
@@ -42,7 +42,7 @@ export function Shoes() {
             headers: { 'Content-Type': 'application/json' },
         });
 
-        alert('Shoes saved successfully: ' + JSON.stringify(response.data));
+        alert('Shoes saved successfully');
     } catch (error) {
         console.error('Error submitting shoes:', error);
         alert('Failed to save shoes: ' + (error.response?.statusText || 'An error occurred.'));
