@@ -2,6 +2,21 @@ const express = require('express');
 const sql = require('mssql'); // Assuming you're using mssql for Azure SQL Server
 const router = express.Router();
 
+// Define all tops
+const tops = [
+    "Short_Sleeve", "Long_Sleeve", "Flannel", "Tank_Top", "Sweater", "Sweatshirt", "Jacket", "Coat"
+];
+
+// Define all bottoms
+const bottoms = [
+    "Jeans", "Sweatpants", "Dress_Pants", "Shorts"
+];
+
+// Define all shoes
+const shoes = [
+    "Tennis_Shoes", "Boots", "Flip_Flops", "Sandals"
+];
+
 // Define all accessories
 const accessories = [
     "Sunglasses", "Hat", "Gloves", "Scarf", "Backpack", "Purse", "Umbrella"
@@ -17,7 +32,15 @@ router.post('/PullCloset', async (req, res) => {
 
     try {
         const pool = await sql.connect();
-        const query = `SELECT ${accessories.join(", ")} FROM closet WHERE Id = @Id`;
+        const query = `
+        SELECT
+            Short_Sleeve, Long_Sleeve, Flannel, Tank_Top, Sweater, Sweatshirt, Jacket, Coat,
+            Jeans, Sweatpants, Dress_Pants, Shorts,
+            Tennis_Shoes, Boots, Flip_Flops, Sandals,
+            Sunglasses, Hat, Gloves, Scarf, Backpack, Purse, Umbrella
+        FROM closet 
+        WHERE Id = @Id
+        `;
 
         const result = await pool.request()
             .input('Id', sql.Int, Id)
@@ -26,6 +49,13 @@ router.post('/PullCloset', async (req, res) => {
         if (result.recordset.length === 0) {
             return res.status(404).json({ error: 'No items found in your closet' });
         }
+
+        const clothingData = {
+            tops: tops.map(item => result.recordset[0][item] || 0),
+            bottoms: bottoms.map(item => result.recordset[1][item] || 0),
+            shoes: shoes.map(item => result.recordset[2][item] || 0),
+            accessories: accessories.map(item => result.recordset[3][item] || 0)
+        };
 
         res.status(200).json(result.recordset[0]);
     } catch (error) {
@@ -48,9 +78,12 @@ router.post('/saveCloset', async (req, res) => {
         // Ensure all accessories have default values
         const request = pool.request();
         request.input('Id', sql.Int, Id);
-        accessories.forEach(accessory => {
-            const value = parseInt(req.body[accessory], 10) || 0;
-            request.input(accessory, sql.Int, value);
+
+        const clothingTypes = [...tops, ...bottoms, ...shoes, ...accessories];
+
+        clothingTypes.forEach(item => {
+            const value = parseInt(req.body[item], 10) || 0;
+            request.input(item, sql.Int, value);
         });
 
         // SQL Server-compatible UPSERT (MERGE)
@@ -58,17 +91,16 @@ router.post('/saveCloset', async (req, res) => {
         const mergeQuery = `
             SET IDENTITY_INSERT closet ON;
             MERGE INTO closet AS Target
-            USING (VALUES (@Id, ${accessories.map(a => `@${a}`).join(", ")})) AS Source (Id, ${accessories.join(", ")})
+            USING (VALUES (@Id, ${clothingTypes.map(c => `@${c}`).join(", ")})) AS Source (Id, ${clothingTypes.join(", ")})
             ON Target.Id = Source.Id
             WHEN MATCHED THEN 
-                UPDATE SET ${accessories.map(a => `${a} = Source.${a}`).join(", ")}
+                UPDATE SET ${clothingTypes.map(c => `${c} = Source.${c}`).join(", ")}
             WHEN NOT MATCHED THEN 
-                INSERT (Id, ${accessories.join(", ")})
-                VALUES (Source.Id, ${accessories.map(a => `Source.${a}`).join(", ")});
+                INSERT (Id, ${clothingTypes.join(", ")})
+                VALUES (Source.Id, ${clothingTypes.map(c => `Source.${c}`).join(", ")});
             SET IDENTITY_INSERT closet OFF
         `;
 
-        console.log('Executing query:', mergeQuery);
         await request.query(mergeQuery);
         res.status(201).json({ message: 'Closet saved successfully' });
     } catch (error) {

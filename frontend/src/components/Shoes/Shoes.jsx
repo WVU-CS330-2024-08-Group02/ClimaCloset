@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from 'axios';
 import './Shoes.css'
 
 export function Shoes() {
@@ -6,9 +7,9 @@ export function Shoes() {
   const [hoveredOption, setHoveredOption] = useState(null); // Track which shoe is hovered
   // Store the types of shoes and their respective desecriptions in an array
   const shoes = [
-    { name: "Tennis Shoes", description: "Versatile shoes for sports or casual wear. This includes any sneakers you may have." },
+    { name: "Tennis_Shoes", description: "Versatile shoes for sports or casual wear. This includes any sneakers you may have." },
     { name: "Boots", description: "Sturdy footwear for colder climates or rugged terrain. This includes rain boots, cowboy boots, and steel toe boots." },
-    { name: "Flip Flops", description: "Casual footwear perfect for warm weather." },
+    { name: "Flip_Flops", description: "Casual footwear perfect for warm weather." },
     { name: "Sandals", description: "Open-toe footwear ideal for hot weather. This includes any type of open design shoe that is not a flip flop." },
   ];
 
@@ -22,9 +23,30 @@ export function Shoes() {
   };
 
   // Handle displaying the choices that the user checked
-  const handleChoice = (event) => {
+  const handleChoice = async (event) => {
     event.preventDefault();
-    alert(`You selected: ${chosenOption.join(", ")}`);
+    
+    const userId = 1;
+    
+    // Create dataToSend with default values for all accessories
+    const dataToSend = {
+        Id: userId,
+        ...shoes.reduce((s, shoe) => {
+            s[shoe] = chosenOption.includes(shoe) ? 1 : 0;
+            return s;
+        }, {}),
+    };
+
+    try {
+        const response = await axios.post('http://localhost:5001/closet/saveCloset', dataToSend, {
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        alert('Shoes saved successfully: ' + JSON.stringify(response.data));
+    } catch (error) {
+        console.error('Error submitting shoes:', error);
+        alert('Failed to save shoes: ' + (error.response?.statusText || 'An error occurred.'));
+    }
   };
 
   // Create a form that has checkboxes where the user can "choose all that apply"

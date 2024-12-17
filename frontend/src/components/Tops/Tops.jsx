@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from 'axios';
 import './Tops.css'
 
 export function Tops() {
@@ -6,10 +7,10 @@ export function Tops() {
   const [hoveredOption, setHoveredOption] = useState(null); // State to track the hovered shirt
   // Store the types of tops and their respective desecriptions in an array
   const tops = [
-    { name: "Short Sleeve", description: "Any top with sleeves covering your shoulders." },
-    { name: "Long Sleeve", description: "Sleeves cover your entire arm till your wrist." },
+    { name: "Short_Sleeve", description: "Any top with sleeves covering your shoulders." },
+    { name: "Long_Sleeve", description: "Sleeves cover your entire arm till your wrist." },
     { name: "Flannel", description: "A button up top with a collar typically in a plaid pattern." },
-    { name: "Tank Top", description: "A sleeveless shirt ideal for hot weather or layering." },
+    { name: "Tank_Top", description: "A sleeveless shirt ideal for hot weather or layering." },
     { name: "Sweater", description: "A knitted love sleeve top, typically worn for warmth." },
     { name: "Sweatshirt", description: "A casual, long-sleeve shirt made from soft, warm fabric." },
     { name: "Jacket", description: "A lightweight or heavy outerwear garment for layering." },
@@ -26,9 +27,30 @@ export function Tops() {
   };
 
   // Handle displaying the choices that the user checked
-  const handleChoice = (event) => {
+  const handleChoice = async (event) => {
     event.preventDefault();
-    alert(`You selected: ${chosenOption.join(", ")}`);
+    
+    const userId = 1;
+    
+    // Create dataToSend with default values for all accessories
+    const dataToSend = {
+        Id: userId,
+        ...tops.reduce((t, top) => {
+            t[top] = chosenOption.includes(top) ? 1 : 0;
+            return t;
+        }, {}),
+    };
+
+    try {
+        const response = await axios.post('http://localhost:5001/closet/saveCloset', dataToSend, {
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        alert('Tops saved successfully: ' + JSON.stringify(response.data));
+    } catch (error) {
+        console.error('Error submitting tops:', error);
+        alert('Failed to save tops: ' + (error.response?.statusText || 'An error occurred.'));
+    }
   };
 
   // Create a form that has checkboxes where the user can "choose all that apply"

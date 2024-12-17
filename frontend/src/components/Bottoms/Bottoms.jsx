@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from 'axios';
 import './Bottoms.css'
 
 export function Bottoms() {
@@ -8,7 +9,7 @@ export function Bottoms() {
   const bottoms = [
     { name: "Jeans", description: "Durable and classic, great for casual or semi-formal wear." },
     { name: "Sweatpants", description: "Comfortable and relaxed, perfect for lounging." },
-    { name: "Dress Pants", description: "Formal and sleek, ideal for professional settings." },
+    { name: "Dress_Pants", description: "Formal and sleek, ideal for professional settings." },
     { name: "Shorts", description: "Cool and casual, perfect for hot weather. We are counting capri as shorts." }
   ];
 
@@ -22,9 +23,30 @@ export function Bottoms() {
   };
 
   // Handle displaying the choices that the user checked
-  const handleChoice = (event) => {
+  const handleChoice = async (event) => {
     event.preventDefault();
-    alert(`You selected: ${chosenOption.join(", ")}`);
+    
+    const userId = 1;
+    
+    // Create dataToSend with default values for all bottoms
+    const dataToSend = {
+        Id: userId,
+        ...bottoms.reduce((bot, bottom) => {
+            bot[bottom] = chosenOption.includes(bottom) ? 1 : 0;
+            return bot;
+        }, {}),
+    };
+
+    try {
+        const response = await axios.post('http://localhost:5001/closet/saveCloset', dataToSend, {
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        alert('Bottoms saved successfully: ' + JSON.stringify(response.data));
+    } catch (error) {
+        console.error('Error submitting bottoms:', error);
+        alert('Failed to save bottoms: ' + (error.response?.statusText || 'An error occurred.'));
+    }
   };
 
   // Create a form that has checkboxes where the user can "choose all that apply"
