@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState, useContext, useEffect } from "react";
+import Popup from 'reactjs-popup'; // Import react-popup
 import { AuthContext } from "../../context/AuthContext";
 import { Shelf } from "../../components/Shelf/Shelf";
 import { products } from "../../components/Shelf/Shelf";
@@ -307,20 +308,18 @@ export function Home() {
                             </button>
                         </div>
 
-                    {/* Modal that shows the outfit suggestion */}
-                    {showModal && (
-                        <div className="modal">
+                        {/* Modal popup that shows the outfit suggestion */}
+                        <Popup open={showModal} onClose={() => setShowModal(false)} modal>
                             <div className="modal-content">
-                                <span className="close" onClick={closeModal}>&times;</span>
                                 <h2>Your Suggested Outfit</h2>
                                 <div className="suggested-items">
-                                    {Object.keys(outfitSuggestion).map((category, index) => (
-                                        <p key={index}> {outfitSuggestion[category]}</p> /* Display items on the same line */
+                                    {outfitSuggestion.map((item, index) => (
+                                        <p key={index}>{item}</p>
                                     ))}
                                 </div>
+                                <button onClick={() => setShowModal(false)}>Close</button>
                             </div>
-                        </div>
-                    )}
+                        </Popup>
                     </TransparentBox>
                 </div>
             </CenterContainer>
