@@ -3,7 +3,6 @@ import { useState, useContext, useEffect } from "react";
 import Popup from 'reactjs-popup'; // Import react-popup
 import { AuthContext } from "../../context/AuthContext";
 import { Shelf } from "../../components/Shelf/Shelf";
-import { products } from "../../components/Shelf/Shelf";
 import './Home.css';  // Import the CSS file
 import { CenterContainer } from "../../components/CenterContainer/CenterContainer";
 import { TransparentBox } from "../../components/TransparentBox/TransparentBox";
