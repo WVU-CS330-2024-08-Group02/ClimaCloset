@@ -1,7 +1,7 @@
 # ClimaCloset with React + Vite
 
 Are you tired of experiencing all different season of weather everyday? If so, then ClimaCloset is for you! ClimaCloset is a web-based application that is designed to help you pick the ideal outfit based on the current weather in your area. 
-By accessing weather and climate data from the National Oceanic and Atmospheric Administration (NOAA)'s National Weather Service (NWS), ClimaCloset generates and suggests outfits from the user's own customized wardrobe which is based off of the generic types of clothing that he or she owns. Users have the ability to manange/view their wardrobe, update the clothing or accessory types they own, change their ideal weather preferences, and view the weather conditions in their local area.
+By accessing weather and climate data from the National Oceanic and Atmospheric Administration (NOAA)'s National Weather Service (NWS), ClimaCloset generates and suggests outfits from the user's own customized wardrobe which is based off of the generic types of clothing that he or she owns. Users have the ability to manage/view their wardrobe, update the clothing or accessory types they own, change their ideal weather preferences, and view the weather conditions in their local area.
 
 ## Features
 
