@@ -44,6 +44,21 @@ export function Home() {
     const [forecastHourly, setForecastHourly] = useState([]);
     const [idealTemperature, setIdealTemperature] = useState(null); // Example default value
     const [products, setProducts] = useState([]); 
+    // Predefined outfits for different activities and weather
+const predefinedOutfits = {
+    warm: {
+        casual: ["T-shirt", "Shorts", "Flip Flops", "Sunglasses"],
+        business: ["Short Sleeve Shirt", "Dress Pants", "Dress Shoes"],
+        active: ["Tank Top", "Shorts", "Sneakers"],
+        indoor: ["Tank Top", "Sweatpants"]
+    },
+    cold: {
+        casual: ["Sweater", "Jeans", "Boots", "Scarf"],
+        business: ["Long Sleeve Shirt", "Dress Pants", "Dress Shoes", "Blazer"],
+        active: ["Long Sleeve Shirt", "Sweatpants", "Sneakers", "Gloves"],
+        indoor: ["Sweatshirt", "Sweatpants", "Socks"]
+    }
+};
 
     useEffect(() => {
         // Retrieve the ideal temperature from localStorage when the component loads
@@ -142,7 +157,6 @@ export function Home() {
      // Function to suggest an outfit from available products in the shelf
      const suggestOutfit = () => {
         let suggestedItems = [];
-
         const warmWeather = isWarmWeather();
         let hasEnoughItems = true; // Flag to track if we have enough items in each category
 
@@ -159,94 +173,24 @@ export function Home() {
         // Check if there is precipitation in the current forecast
         const currentForecast = forecastHourly[0]?.shortForecast || ""; // Get the current hour's forecast
         const isPrecipitating = hasPrecipitation(currentForecast);
-        
+        const currentWeather = warmWeather ? "warm" : "cold";
+
+
+            // Fetch the predefined outfit based on the current weather and activity
+            if (predefinedOutfits[currentWeather][activity]) {
+                suggestedItems = predefinedOutfits[currentWeather][activity];
+            } else {
+                setErrorMessage("No predefined outfits available for this selection.");
+                setShowModal(false);
+                return;
+            }
+            
         // If there is precipitation, suggest rain-related items
         if (isPrecipitating) {
              suggestedItems.push("Umbrella", "Rain Jacket");
         }
-        
 
-        // Suggest different items based on the selected activity
-        products.forEach(category => {
-            //suggest outfit if weather warm
-            if (warmWeather){
-                if (activity === 'casual') {
-                    if (category.name === "Tops") {
-                        suggestedItems.push("Short Sleeve or Tank Top");
-                    } else if (category.name === "Bottoms") {
-                        suggestedItems.push("Shorts");
-                    } else if (category.name === "Shoes") {
-                        suggestedItems.push("Sandals");
-                    } else if (category.name === "Accessories") {
-                        suggestedItems.push("Purse");
-                    }
-                } else if (activity === 'business') {
-                    // Formal: Choose more elegant clothing
-                    if (category.name === "Tops") {
-                        suggestedItems.push("Short Sleeve"); // Coat
-                    } else if (category.name === "Bottoms") {
-                        suggestedItems.push("Dress Pants"); // Jeans or dress pants
-                    } else if (category.name === "Shoes") {
-                        suggestedItems.push("Tennis Shoes"); // Boots
-                    }
-                } else if (activity === 'active') {
-                    // Sporty: Choose comfortable, activity wear
-                    if (category.name === "Tops") {
-                        suggestedItems.push("Tank Top"); // Short sleeve
-                    } else if (category.name === "Bottoms") {
-                        suggestedItems.push("Shorts"); // Shorts
-                    } else if (category.name === "Shoes") {
-                        suggestedItems.push("Tennis Shoes"); // Sneakers
-                    }
-                } else if (activity === 'indoor') {
-                    // Sporty: Choose comfortable, activity wear
-                    if (category.name === "Tops") {
-                        suggestedItems.push("Tank Top"); // Short sleeve
-                    } else if (category.name === "Bottoms") {
-                        suggestedItems.push("Shorts"); // Shorts
-                    }
-                }
-            } 
-            //suggest different outfit is weather cool
-            else{
-                if (activity === 'casual') {
-                    if (category.name === "Tops") {
-                        suggestedItems.push("Long Sleeve or Sweater");
-                    } else if (category.name === "Bottoms") {
-                        suggestedItems.push("Jeans");
-                    } else if (category.name === "Shoes") {
-                        suggestedItems.push("Boots");
-                    } else if (category.name === "Accessories") {
-                        suggestedItems.push("Hat");
-                    }
-                } else if (activity === 'business') {
-                    // Formal: Choose more elegant clothing
-                    if (category.name === "Tops") {
-                        suggestedItems.push("Coat"); // Coat
-                    } else if (category.name === "Bottoms") {
-                        suggestedItems.push("Dress Pants"); // Jeans or dress pants
-                    } else if (category.name === "Shoes") {
-                        suggestedItems.push("Boots"); // Boots
-                    }
-                } else if (activity === 'active') {
-                    // Sporty: Choose comfortable, activity wear
-                    if (category.name === "Tops") {
-                        suggestedItems.push("Long Sleeves"); // Short sleeve
-                    } else if (category.name === "Bottoms") {
-                        suggestedItems.push("Sweatpants"); // Shorts
-                    } else if (category.name === "Shoes") {
-                        suggestedItems.push("Tennis Shoes"); // Sneakers
-                    }
-                }  else if (activity === 'indoor') {
-                    // Sporty: Choose comfortable, activity wear
-                    if (category.name === "Tops") {
-                        suggestedItems.push("Sweatshirt"); // Short sleeve
-                    } else if (category.name === "Bottoms") {
-                        suggestedItems.push("Sweatpants"); // Shorts
-                    }
-                }
-            }
-        });
+    
 
 
         // Set the outfit suggestion and show modal
