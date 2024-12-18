@@ -19,7 +19,8 @@ frontend/
 ### Overview
 
 1. **`Signup.css`**
-   - xxxx.
+   - This file handles the display of the where the user sign-ups for the app.
 
 2. **`Signup.jsx`**
-   - xxxx.
+   - This file creates the area where the user will sign-up for the app. It creates form input fields, validates user input, submits an API request to the backend, and provides error handling. 
+ 

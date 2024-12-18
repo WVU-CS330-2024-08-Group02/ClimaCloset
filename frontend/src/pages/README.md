@@ -16,7 +16,7 @@ frontend/
 │   │   ├── Preferences/    # xxxx
 │   │   ├── Profile/        # xxxx
 │   │   ├── Signup/         # xxxx
-│   │   ├── Weather/        # xxxx
+│   │   ├── Weather/        # Contains code for Weather page
 │   │   ├── README.md
 │   │   └── Welcome.jsx     # xxxx
 ```
