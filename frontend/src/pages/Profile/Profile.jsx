@@ -1,4 +1,5 @@
 import React, {useState, useContext} from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Profile.css';
 import { CenterContainer } from '../../components/CenterContainer/CenterContainer';
 import profileImage from '../../assets/pfp/CamProfile.png'; // Change when login is functional
@@ -7,10 +8,17 @@ import Throbber from '../../components/Throbber/Throbber';
 
 export function Profile() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const { logout } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const dropdown = () => {
     setIsDropdownVisible(!isDropdownVisible);
   };
+
+  const handleLogout = () => {
+    logout(); // Clear authentication state
+    navigate("/Login"); // Redirect to the login page
+};
 
   function ProfileSection() {
     const { user } = useContext(AuthContext); // Assuming 'user' contains the name
@@ -47,7 +55,7 @@ export function Profile() {
                 <li>Edit Username</li>
                 <li>Change Password</li>
                 <li>Update Email</li>
-                <li>Log Out</li>
+                <li onClick={handleLogout}>Log Out</li>
               </ul>
             </div>
           )}
