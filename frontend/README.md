@@ -8,6 +8,7 @@ The `frontend` folder contains the user-side components of the project (a React-
 
 ```
 frontend/
+├── public/     # xxxx
 ├── src/        # Modifies the UI design and handles user interactions
 └── README.md
 ```

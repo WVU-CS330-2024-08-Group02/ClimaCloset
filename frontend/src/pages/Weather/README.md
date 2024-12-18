@@ -1,6 +1,6 @@
 # The `Weather` Folder
 
-The `Weather` folder.... 
+The `Weather` folder contains the files that create, format, and modify the Weather page. These files handle interactions with the user, handles interactions with the backend weather API, creates the weather map, and displays the daily/hourly forecast.
 
 ## `Weather` Folder/File Structure and Overview
 
@@ -9,8 +9,8 @@ The `Weather` folder....
 ```
 frontend/
 ├── src/      # Modifies the UI design and handles user interactions
-│   ├── pages/    # xxxx
-│   │   ├── Weather/      # Contains code for Weather page
+│   ├── pages/    # All pages in the app 
+│   │   ├── Weather/      # Creates and formats weather page
 │   │   │   ├── README.md          
 │   │   │   ├── Weather.css          # Controls appearance and layout of Weather page
 │   │   │   └── Weather.jsx          # Adds all elements of the Weather page

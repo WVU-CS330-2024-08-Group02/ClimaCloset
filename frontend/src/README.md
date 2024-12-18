@@ -10,38 +10,38 @@ The `src` folder contains the code that modifies the UI design and handles user 
 frontend/
 ├── src/      # Modifies the UI design and handles user interactions
 │   ├── assets        # Holds all images for the app
-│   ├── components    # xxxx
-│   ├── context       # xxxx
-│   ├── pages         # xxxx
-│   ├── App.css       # xxxx
-│   ├── App.jsx       # xxxx
-│   ├── index.css     # xxxx
-│   ├── main.jsx      # xxxx
+│   ├── components    # Non-page components of the app
+│   ├── context       # Holds authentication state management
+│   ├── pages         # All pages in the app
+│   ├── App.css       # Style information for #root
+│   ├── App.jsx       # Sets up routing
+│   ├── index.css     # Default style/design for app 
+│   ├── main.jsx      # Entry point for React application
 │   └── README.md
 ```
 
 ### Overview
 
 1. **`assets`**
-   - .
+   - This folder contains all of the images displayed in the app, and keeps filepaths clear and concise with one general location. 
 
 2. **`components`**
-   - xxxxx.
+   - This folder contains all of the jsx and css files for the different components in the webapp that are not full pages.
 
 3. **`context`**
-   - xxxxx.
+   - This folder holds the jsx file that provides authentication state management through React context.
 
 4. **`pages`**
-   - xxxxx.
+   - This folder contains the jsx and css files for all of the different pages in the webapp.
 
 5. **`App.css`**
-   - xxxxx.
+   - This file contains the style information for the root element.
 
 6. **`App.jsx`**
-   - xxxxx.
+   - This file contains the React application code that sets up routing, using react-router-dom, through all of the files in the `pages` folder and the `Layout.jsx` file in the `components` folder. 
 
 7. **`index.css`**
-   - xxxxx.
+   - This file contains the default style and design elements for the entire webapp.
 
 8. **`Main.jsx`**
-   - xxxxx.
+   - This file contains the entry point for a React application. It sets up the app wt strict mode and provides authentication by importing AuthProvider.
