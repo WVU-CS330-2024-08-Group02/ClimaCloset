@@ -13,6 +13,10 @@ export function WeatherPreferences() {
   // Handle the event when the user lifts their mouse off of the slider
   const handleMouseUp = () => {
     alert(`Temperature Selected Is: ${temp}°F`)
+
+    // Save the selected temperature to localStorage
+     localStorage.setItem('idealTemperature', temp); 
+
   }
     
   // Show tooltip on hover

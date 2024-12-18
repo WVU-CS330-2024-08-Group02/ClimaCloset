@@ -10,6 +10,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { sql } = require('../config'); // Importing database configuration and connection
 const router = express.Router();
+const axios = require('axios');
 
 /**
  * Authenticates a user by verifying the password and generates a JWT for session management.

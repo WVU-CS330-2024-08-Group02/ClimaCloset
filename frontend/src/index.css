@@ -21,6 +21,7 @@
   /* Custon colors for scheme*/
   --lavender-blush: #F3E8EE;
   --action-color: #14b0db; /* Color for interactable items */
+  --action-color-hover: #0b637b;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

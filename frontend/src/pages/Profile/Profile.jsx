@@ -3,6 +3,7 @@ import './Profile.css';
 import { CenterContainer } from '../../components/CenterContainer/CenterContainer';
 import profileImage from '../../assets/pfp/CamProfile.png'; // Change when login is functional
 import { AuthContext } from '../../context/AuthContext';
+import Throbber from '../../components/Throbber/Throbber';
 
 export function Profile() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
