@@ -23,40 +23,57 @@ router.post('/login', async (req, res) => {
 
   try {
     const pool = await sql.connect();
-    const result = await pool.request()
+
+    // Step 1: Retrieve user data from the database
+    const userResult = await pool.request()
       .input('username', sql.NVarChar, username)
       .query('SELECT * FROM users WHERE username = @username');
-    const user = result.recordset[0];
+    const user = userResult.recordset[0];
 
-    // Log the login attempt and user info for debugging
-    console.log(`Login attempt: ${username} ${password}`);
-    if (user) {
-      console.log(`User from DB: ${user.username} ${user.password}`);
-    }
-
-    // Check if user exists and password matches
-    if (user && await bcrypt.compare(password, user.password)) {
-      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-      
-      // Set JWT in HttpOnly cookie for secure storage
-      res.cookie('token', token, { httpOnly: true, sameSite: 'strict' });
-
-      // Include user details in the response
-      res.json({
-        message: 'Login successful',
-        user: {
-          id: user.id,
-          username: user.username,
-          email: user.email,
-          name: user.name
-        }
-      });
-    } else {
+    if (!user || !(await bcrypt.compare(password, user.password))) {
       console.log(`Invalid credentials for user: ${username}`);
-      res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ error: 'Invalid credentials' });
     }
+
+    const userId = user.id;
+
+    // Step 2: Check if the user already has a closet row
+    const closetResult = await pool.request()
+      .input('Id', sql.Int, userId)
+      .query('SELECT COUNT(*) AS count FROM closet WHERE Id = @Id');
+    
+    const closetExists = closetResult.recordset[0].count > 0;
+
+    // Step 3: Create a new closet row if it doesn't exist
+    if (!closetExists) {
+      await pool.request()
+        .query(`
+          INSERT INTO closet (Short_Sleeve, Long_Sleeve, Flannel, Tank_Top, Sweater, Sweatshirt, Jacket, Coat,
+                              Jeans, Sweatpants, Dress_Pants, Shorts,
+                              Tennis_Shoes, Boots, Flip_Flops, Sandals,
+                              Sunglasses, Hat, Gloves, Scarf, Backpack, Purse, Umbrella)
+          VALUES (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        `);
+      console.log(`Closet created for user with ID: ${userId}`);
+    }
+
+    // Step 4: Generate a JWT and set it as a cookie
+    const token = jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    res.cookie('token', token, { httpOnly: true, sameSite: 'strict' });
+
+    // Step 5: Return success response with user details
+    res.json({
+      message: 'Login successful',
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        name: user.name
+      }
+    });
+
   } catch (error) {
-    console.error("Error during login:", error);
+    console.error('Error during login:', error);
     res.status(500).json({ error: 'Failed to login' });
   }
 });
@@ -70,12 +87,26 @@ router.post('/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const pool = await sql.connect();
-    await pool.request()
+
+    // Step 1: Insert the user into the users table
+    const userResult = await pool.request()
       .input('username', sql.NVarChar, username)
       .input('email', sql.NVarChar, email)
       .input('password', sql.NVarChar, hashedPassword)
       .input('name', sql.NVarChar, name)
-      .query('INSERT INTO users (username, email, password, name) VALUES (@username, @email, @password, @name)');
+      .query('INSERT INTO users (username, email, password, name) OUTPUT INSERTED.id AS userId');
+
+    const userId = userResult.recordset[0].userId;
+
+    // Step 2: Create a new row in the closet table for this user
+    await pool.request()
+      .query(`
+        INSERT INTO closet (Short_Sleeve, Long_Sleeve, Flannel, Tank_Top, Sweater, Sweatshirt, Jacket, Coat,
+                            Jeans, Sweatpants, Dress_Pants, Shorts,
+                            Tennis_Shoes, Boots, Flip_Flops, Sandals,
+                            Sunglasses, Hat, Gloves, Scarf, Backpack, Purse, Umbrella)
+        VALUES (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+      `);
 
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {

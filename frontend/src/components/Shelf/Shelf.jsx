@@ -1,7 +1,7 @@
 // src/components/Shelf.jsx
 
 import React from 'react';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from 'axios';
 import './Shelf.css';
 import shortSleeve from '../../assets/clothingIcons/shortSleeve.png';
@@ -23,9 +23,12 @@ import scarf from '../../assets/clothingIcons/Scarf.png';
 import backpack from '../../assets/clothingIcons/Backpack.png';
 import purse from '../../assets/clothingIcons/Purse.png';
 import umbrella from '../../assets/clothingIcons/umbrella.png';
+import { AuthContext } from '../../context/AuthContext';
 
 /* this makes the ids for each of the thing in the closet */
 export function Shelf() {
+    const { isLoggedIn, user } = useContext(AuthContext); // Use authentication context
+
     const [clothingData, setClothingData] = useState({
         tops: [], 
         bottoms: [],
@@ -34,7 +37,7 @@ export function Shelf() {
     });
 
     useEffect(() => {
-        const userId = 1;
+        const userId = user?.id;
 
         axios.post('http://localhost:5001/closet/PullCloset', { Id: userId })
             .then(response => {

@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import './Accessories.css';
+import { AuthContext } from "../../context/AuthContext";
 
 export function Accessories() {
+    const { isLoggedIn, user } = useContext(AuthContext); // Use authentication context
     const [chosenOption, setChosenOption] = useState([]);
 
     // Store the types of accessories in an array
@@ -21,7 +23,7 @@ export function Accessories() {
     const handleChoice = async (event) => {
         event.preventDefault();
     
-        const userId = 1;
+        const userId = user?.id;
     
         // Create dataToSend with default values for all accessories
         const dataToSend = {

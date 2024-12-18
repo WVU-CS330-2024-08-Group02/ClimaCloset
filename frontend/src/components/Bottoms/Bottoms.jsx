@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from 'axios';
 import './Bottoms.css'
+import { AuthContext } from "../../context/AuthContext";
 
 export function Bottoms() {
+  const { isLoggedIn, user } = useContext(AuthContext); // Use authentication context
   const [chosenOption, setChosenOption] = useState([]);
   const [hoveredOption, setHoveredOption] = useState(null); // State to track the hovered bottom
   // Store the types of bottoms and their respective desecriptions in an array
@@ -26,7 +28,7 @@ export function Bottoms() {
   const handleChoice = async (event) => {
     event.preventDefault();
     
-    const userId = 1;
+    const userId = user?.id;
     
     // Create dataToSend with default values for all bottoms
     const dataToSend = {

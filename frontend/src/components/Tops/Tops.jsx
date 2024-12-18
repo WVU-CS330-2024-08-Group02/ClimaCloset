@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from 'axios';
 import './Tops.css'
+import { AuthContext } from "../../context/AuthContext";
 
 export function Tops() {
+  const { isLoggedIn, user } = useContext(AuthContext); // Use authentication context
   const [chosenOption, setChosenOption] = useState([]);
   const [hoveredOption, setHoveredOption] = useState(null); // State to track the hovered shirt
   // Store the types of tops and their respective desecriptions in an array
@@ -30,7 +32,7 @@ export function Tops() {
   const handleChoice = async (event) => {
     event.preventDefault();
     
-    const userId = 1;
+    const userId = user?.id;
     
     // Create dataToSend with default values for all accessories
     const dataToSend = {

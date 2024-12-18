@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from 'axios';
 import './Shoes.css'
+import { AuthContext } from "../../context/AuthContext";
 
 export function Shoes() {
+  const { isLoggedIn, user } = useContext(AuthContext); // Use authentication context
   const [chosenOption, setChosenOption] = useState([]);
   const [hoveredOption, setHoveredOption] = useState(null); // Track which shoe is hovered
   // Store the types of shoes and their respective desecriptions in an array
@@ -26,7 +28,7 @@ export function Shoes() {
   const handleChoice = async (event) => {
     event.preventDefault();
     
-    const userId = 1;
+    const userId = user?.id;
     
     // Create dataToSend with default values for all accessories
     const dataToSend = {
