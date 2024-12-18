@@ -7,6 +7,7 @@ import './Shelf.css';
 import shortSleeve from '../../assets/clothingIcons/shortSleeve.png';
 import longSleeve from '../../assets/clothingIcons/Long_Sleeve.png';
 import sweater from '../../assets/clothingIcons/Sweater.png';
+import sweatshirt from '../../assets/clothingIcons/Sweatshirt.png'
 import jacket from '../../assets/clothingIcons/jacket.png';
 import coat from '../../assets/clothingIcons/Coat.png';
 import jeans from '../../assets/clothingIcons/jeans.png';
@@ -64,7 +65,7 @@ export function Shelf() {
                 { name: "Flannel", selected: !!clothingData.tops[2], image: shortSleeve },
                 { name: "Tank_Top", selected: !!clothingData.tops[3], image: shortSleeve },
                 { name: "Sweater", selected: !!clothingData.tops[4], image: sweater },
-                { name: "Sweatshirt", selected: !!clothingData.tops[5], image: shortSleeve },
+                { name: "Sweatshirt", selected: !!clothingData.tops[5], image: sweatshirt },
                 { name: "Jacket", selected: !!clothingData.tops[6], image: jacket },
                 { name: "Coat", selected: !!clothingData.tops[7], image: coat },
             ]
