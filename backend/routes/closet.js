@@ -75,34 +75,57 @@ router.post('/saveCloset', async (req, res) => {
     try {
         const pool = await sql.connect();
 
-        // Ensure all accessories have default values
-        const request = pool.request();
-        request.input('Id', sql.Int, Id);
+        // Step 1: Fetch existing data
+        const currentDataQuery = `
+            SELECT *
+            FROM closet
+            WHERE Id = @Id
+        `;
+        const existingDataResult = await pool.request()
+            .input('Id', sql.Int, Id)
+            .query(currentDataQuery);
 
+        if (existingDataResult.recordset.length === 0) {
+            return res.status(404).json({ error: 'Closet not found for the given user Id' });
+        }
+
+        const existingData = existingDataResult.recordset[0];
+
+        // Step 2: Merge submitted data with existing data
         const clothingTypes = [...tops, ...bottoms, ...shoes, ...accessories];
+        const mergedData = {};
 
-        clothingTypes.forEach(item => {
-            const value = parseInt(req.body[item], 10) || 0;
-            request.input(item, sql.Int, value);
+        clothingTypes.forEach(type => {
+            mergedData[type] = req.body.hasOwnProperty(type)
+                ? parseInt(req.body[type], 10) || 0 // Use submitted value if present
+                : existingData[type]; // Otherwise, retain existing value
         });
 
-        // SQL Server-compatible UPSERT (MERGE)
-        
-        const mergeQuery = `
-            SET IDENTITY_INSERT closet ON;
-            MERGE INTO closet AS Target
-            USING (VALUES (@Id, ${clothingTypes.map(c => `@${c}`).join(", ")})) AS Source (Id, ${clothingTypes.join(", ")})
-            ON Target.Id = Source.Id
-            WHEN MATCHED THEN 
-                UPDATE SET ${clothingTypes.map(c => `${c} = Source.${c}`).join(", ")}
-            WHEN NOT MATCHED THEN 
-                INSERT (Id, ${clothingTypes.join(", ")})
-                VALUES (Source.Id, ${clothingTypes.map(c => `Source.${c}`).join(", ")});
-            SET IDENTITY_INSERT closet OFF
-        `;
+        // Step 3: Dynamically build the update query
+        const updateFields = clothingTypes
+            .filter(type => req.body.hasOwnProperty(type)) // Only include submitted fields
+            .map(type => `${type} = @${type}`)
+            .join(", ");
 
-        await request.query(mergeQuery);
-        res.status(201).json({ message: 'Closet saved successfully' });
+        if (updateFields) {
+            const updateQuery = `
+                UPDATE closet
+                SET ${updateFields}
+                WHERE Id = @Id
+            `;
+            const request = pool.request();
+            request.input('Id', sql.Int, Id);
+
+            // Add submitted values to the request
+            Object.entries(mergedData).forEach(([key, value]) => {
+                request.input(key, sql.Int, value);
+            });
+
+            // Execute the query
+            await request.query(updateQuery);
+        }
+
+        res.status(200).json({ message: 'Closet updated successfully' });
     } catch (error) {
         console.error('Error saving closet data:', error);
         res.status(500).json({ error: 'Failed to save closet data' });
