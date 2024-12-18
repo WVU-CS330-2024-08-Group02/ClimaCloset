@@ -27,3 +27,7 @@
     border-radius: 8px;
     border: 7.5px solid rgba(0, 0, 0, 0.4);
 }
+
+.product-image {
+    width: 75px;
+}
