@@ -43,7 +43,7 @@ export function Home() {
     const [position, setPosition]= useState([39.64591951232883, -79.97339559170358]);
     const [forecastHourly, setForecastHourly] = useState([]);
     const [idealTemperature, setIdealTemperature] = useState(null); // Example default value
-
+    const [products, setProducts] = useState([]); 
 
     useEffect(() => {
         // Retrieve the ideal temperature from localStorage when the component loads
@@ -142,6 +142,7 @@ export function Home() {
      // Function to suggest an outfit from available products in the shelf
      const suggestOutfit = () => {
         let suggestedItems = [];
+
         const warmWeather = isWarmWeather();
         let hasEnoughItems = true; // Flag to track if we have enough items in each category
 
