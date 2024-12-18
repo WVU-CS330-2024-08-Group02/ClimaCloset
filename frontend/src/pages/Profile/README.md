@@ -8,7 +8,7 @@ The `Profile` folder....
 
 ```
 frontend/
-├── src/      # Includes the entire app set-up and UI design, and handles any user interactions
+├── src/      # Modifies the UI design and handles user interactions
 │   ├── pages/    # xxxx
 │   │   ├── Profile/       # xxxx
 │   │   │   ├── Profile.css          # xxxx

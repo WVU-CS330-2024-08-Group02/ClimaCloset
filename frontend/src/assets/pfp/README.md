@@ -6,7 +6,7 @@ The `pfp` folder is used to hold the profile pictures for all of the members of 
 
 ```
 frontend/
-├── src/        # Includes the entire app set-up and UI design, and handles any user interactions
+├── src/        # Modifies the UI design and handles user interactions
 │   ├── assets/      # Holds all images for the app
 │   │   ├── pfp/         # Profile pictures for about page
 │   │   │   ├── 2024-Kaylea Lantz - EE-1436.jpg   

@@ -6,7 +6,7 @@ The `backgroundImage` folder is used to hold the background images for all of th
 
 ```
 frontend/
-├── src/        # Includes the entire app set-up and UI design, and handles any user interactions
+├── src/        # Modifies the UI design and handles user interactions
 │   ├── assets/       # Holds all images for the app
 │   │   ├── backgroundImage/    # Different background images for the app
 │   │   │   ├── cloudy.jpg    

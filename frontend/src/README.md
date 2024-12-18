@@ -1,6 +1,6 @@
 # The `src` Folder
 
-The `src` folder...
+The `src` folder contains the code that modifies the UI design and handles user interactions, frontend/backend interactions, and interactive UI elements.
 
 ## `src` Folder/File Structure and Overview
 
@@ -8,7 +8,7 @@ The `src` folder...
 
 ```
 frontend/
-├── src/      # Includes the entire app set-up and UI design, and handles any user interactions
+├── src/      # Modifies the UI design and handles user interactions
 │   ├── assets        # Holds all images for the app
 │   ├── components    # xxxx
 │   ├── context       # xxxx
@@ -23,7 +23,7 @@ frontend/
 ### Overview
 
 1. **`assets`**
-   - xxxxx.
+   - .
 
 2. **`components`**
    - xxxxx.

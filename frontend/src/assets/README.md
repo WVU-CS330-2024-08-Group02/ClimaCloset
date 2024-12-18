@@ -8,7 +8,7 @@ The `assets` folder contains all of the images that are being displayed in the a
 
 ```
 frontend/
-├── src/        # Includes the entire app set-up and UI design, and handles any user interactions
+├── src/        # Modifies the UI design and handles user interactions
 │   ├── assets/       # Holds all images for the app
 │   │   ├── backgroundImage/    # Different background images for the app
 │   │   ├── clothingIcons/      # Clothing icons for closet
