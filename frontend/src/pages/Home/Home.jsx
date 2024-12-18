@@ -104,6 +104,8 @@ export function Home() {
                         <p>in Morgantown, WV</p>
                     </TransparentBox>
 
+                    
+
                     <TransparentBox className="bottom-half">
 
                         {/* button for the generate outfit */}

@@ -121,7 +121,7 @@
     width: 100%;
 }
 
-.left-container, .right-container {
+.left-container {
   flex: 1;
   display: flex;
   align-items: center;
@@ -130,10 +130,16 @@
   flex-wrap: wrap;
   height: 1080px;
 }
-.left-container > * {
+.right-container {
+    flex: 1;
     display: flex;
-    width: 100%;
-}
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    flex: column;
+    height: 1080px;
+  }
 
 .home-center-container {
     display: flex;
@@ -142,7 +148,6 @@
 
 .right-container > .top-half,
 .right-container > .bottom-half {
-  flex: 1; /* Each takes half the container height */
   width: 100%;
   display: flex;
   align-items: center;
