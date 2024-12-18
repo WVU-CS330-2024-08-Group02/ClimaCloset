@@ -91,11 +91,16 @@ router.post('/register', async (req, res) => {
 
     // Step 1: Insert the user into the users table
     const userResult = await pool.request()
-      .input('username', sql.NVarChar, username)
-      .input('email', sql.NVarChar, email)
-      .input('password', sql.NVarChar, hashedPassword)
-      .input('name', sql.NVarChar, name)
-      .query('INSERT INTO users (username, email, password, name) OUTPUT INSERTED.id'); // Removed alias
+  .input('username', sql.NVarChar, username)
+  .input('email', sql.NVarChar, email)
+  .input('password', sql.NVarChar, hashedPassword)
+  .input('name', sql.NVarChar, name)
+  .input('pfp', sql.NVarChar, null) // Pass NULL for pfp if no value is provided
+  .query(`
+    INSERT INTO users (username, email, password, name, pfp)
+    OUTPUT INSERTED.id
+    VALUES (@username, @email, @password, @name, @pfp)
+  `);
 
     const userId = userResult.recordset[0].id; // Access the 'id' field directly
 
