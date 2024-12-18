@@ -55,6 +55,7 @@ export function Profile() {
                 <li>Edit Username</li>
                 <li>Change Password</li>
                 <li>Update Email</li>
+                <li>Change Profile Picture</li>
                 <li onClick={handleLogout}>Log Out</li>
               </ul>
             </div>
