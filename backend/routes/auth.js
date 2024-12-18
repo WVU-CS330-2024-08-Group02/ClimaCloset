@@ -95,18 +95,19 @@ router.post('/register', async (req, res) => {
       .input('email', sql.NVarChar, email)
       .input('password', sql.NVarChar, hashedPassword)
       .input('name', sql.NVarChar, name)
-      .query('INSERT INTO users (username, email, password, name) OUTPUT INSERTED.id AS userId');
+      .query('INSERT INTO users (username, email, password, name) OUTPUT INSERTED.id'); // Removed alias
 
-    const userId = userResult.recordset[0].userId;
+    const userId = userResult.recordset[0].id; // Access the 'id' field directly
 
     // Step 2: Create a new row in the closet table for this user
     await pool.request()
+      .input('Id', sql.Int, userId) // Explicitly provide the user's ID
       .query(`
-        INSERT INTO closet (Short_Sleeve, Long_Sleeve, Flannel, Tank_Top, Sweater, Sweatshirt, Jacket, Coat,
+        INSERT INTO closet (Id, Short_Sleeve, Long_Sleeve, Flannel, Tank_Top, Sweater, Sweatshirt, Jacket, Coat,
                             Jeans, Sweatpants, Dress_Pants, Shorts,
                             Tennis_Shoes, Boots, Flip_Flops, Sandals,
                             Sunglasses, Hat, Gloves, Scarf, Backpack, Purse, Umbrella)
-        VALUES (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        VALUES (@Id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
       `);
 
     res.status(201).json({ message: 'User registered successfully' });
