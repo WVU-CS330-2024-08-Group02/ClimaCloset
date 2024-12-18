@@ -146,13 +146,6 @@ export function Home() {
         const warmWeather = isWarmWeather();
         let hasEnoughItems = true; // Flag to track if we have enough items in each category
 
-        // Check if we have enough items for each category
-        products.forEach(category => {
-            if (category.images.length === 0) {
-                hasEnoughItems = false;
-            }
-        });
-
         // If not enough items, show error message
         if (!hasEnoughItems) {
             setErrorMessage("You don't have enough in your closet.");
