@@ -15,6 +15,7 @@ backend/
 ├── routes/                # API route definitions
 ├── config.js              # Configuration files, including database setup
 ├── index.js               # Main entry point for the Express server
+├── .env                   # Store sensitive configuartion data/environment variables 
 ├── package-lock.json      # Locks settings from package.json
 ├── package.json           # Settings for Node.js project
 └── README.md
@@ -34,7 +35,10 @@ backend/
 4. **`index.js`**
    - This file serves as the main entry point for the backend. It sets up the Express server, establishes a connection to the database, and configures routes and middleware.
 
-5. **`package-lock.json`**
+5. **`.env`**
+   - This file stores the sensitive configuration data and environment variables for our backend. The variables within the file represent the username and password for connecting to the database as well as the server address where our database is stored, the name of the database we are interacting with, and the secret key used to verify JSON Web Tokens (JWTs) in our application.
+
+6. **`package-lock.json`**
    - This file ensures that the dependencies for our project are installed with the correct versions specified to provide consistency across several environments. It encompasses the entire dependency tree, including nested dependencies, their specific versions, and their specific source URLs (prevents any potential compatibility issues by "locking" dependencies to a known state).
 
 6. **`package.json`**
