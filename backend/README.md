@@ -41,5 +41,5 @@ backend/
 6. **`package-lock.json`**
    - This file ensures that the dependencies for our project are installed with the correct versions specified to provide consistency across several environments. It encompasses the entire dependency tree, including nested dependencies, their specific versions, and their specific source URLs (prevents any potential compatibility issues by "locking" dependencies to a known state).
 
-6. **`package.json`**
+7. **`package.json`**
    - This file serves as the "manifest" for our project by specifying its name, version, main entry point, and other important metadata. It also defines the dependencies required by our project and their version ranges, which allows for automated installation and management of libraries. 
