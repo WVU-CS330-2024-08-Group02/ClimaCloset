@@ -1,7 +1,7 @@
 /**
  * This file defines the Login page. It communicates with the backend to log-in 
  * previous users, fetches the user's stored data, and creates the interactive elements 
- * the user uses on the page.  
+ * the user uses on the page like their username or password.  
  */
 
 // Import libraries and modules 
@@ -30,7 +30,7 @@ export function Login() {
         e.preventDefault();
 
         try {
-            // Send login request to server
+            // Send login request to server in the backend
             const response = await axios.post(`http://localhost:5001/auth/login`, 
                 { username, password }, 
                 { withCredentials: true });
@@ -51,7 +51,9 @@ export function Login() {
         }
     };
 
-    // Creation of Login page and redirects to Signup page if needed
+    // Creation of Login page and option to redirect to Signup page if needed
+    // Provides inputs for username and password to login to the website
+    // Sets the username and password based on what the user enters
     return (
         <>
             <h1>Login to ClimaCloset</h1>
