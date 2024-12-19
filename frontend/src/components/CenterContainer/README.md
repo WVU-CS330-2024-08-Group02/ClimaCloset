@@ -1,6 +1,6 @@
 # The `CenterContainer` Folder
 
-The `CenterContainer` folder contains the jsx and css that create, format, and modify CenterContainer. It creates a wrapper component the provides a centered container on the app for other componenets. 
+The `CenterContainer` folder contains the jsx and css that create, format, and modify CenterContainer. It creates a wrapper component that provides a centered container on the app for other componenets. 
 
 ## `CenterContainer` Folder/File Structure and Overview
 

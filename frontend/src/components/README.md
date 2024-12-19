@@ -18,7 +18,7 @@ frontend/
 │   │   ├── Shoes/                # Creates and formats the Shoes box
 │   │   ├── Throbber/             # Graphic indicating the something is loading
 │   │   ├── Tops/                 # Creates and formats the Tops box
-│   │   ├── TransparentBox/       # xxxx
+│   │   ├── TransparentBox/       # Creates and formats the TransparentBox
 │   │   ├── WeatherPreferences/   # xxxx
 │   │   ├── Layout.jsx            # Consistent layout for Navbar
 │   │   └── README.md
@@ -51,7 +51,7 @@ frontend/
    - This folder contains the jsx and css that create, format, and modify Tops. It displays the tops submission form where the user can input the tops they own. Upon submission of the form, the user's response will be stored in the closet.
 
 9. **`TransparentBox`**
-   - xxxx.
+   - This folder contains the jsx and css that create, format, and modify TransparentBox. It creates a wrapper component that provides a boxed area to hold other componenets. 
 
 10. **`WeatherPreferences`**
    - xxxx.
