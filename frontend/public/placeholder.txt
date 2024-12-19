@@ -1,0 +1,2 @@
+Place files intended for public access in this folder.
+- ClimaCLoset logo
