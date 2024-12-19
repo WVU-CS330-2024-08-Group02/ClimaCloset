@@ -1,51 +1,45 @@
-/**
- * auth.js
- * 
- * This file defines routes for user registration and login. It handles authentication 
- * by hashing passwords with bcrypt during registration and generating JWTs upon login.
- */
-
+// Import libraries and modules 
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { sql } = require('../config'); // Importing database configuration and connection
+const { sql } = require('../config');
 const router = express.Router();
 const axios = require('axios');
 
-/**
- * Authenticates a user by verifying the password and generates a JWT for session management.
- * @route POST /auth/login
- * @param {string} username - The username of the user.
- * @param {string} password - The password of the user (plain text).
- * @returns {JSON} Success message with JWT cookie or error message.
- */
+// Login route for authenticating users
 router.post('/login', async (req, res) => {
+
+  // Get the username & password from request body
   const { username, password } = req.body;
 
   try {
+    // Connect to database
     const pool = await sql.connect();
 
-    // Step 1: Retrieve user data from the database
+    // Retrieve user data
     const userResult = await pool.request()
       .input('username', sql.NVarChar, username)
       .query('SELECT * FROM users WHERE username = @username');
     const user = userResult.recordset[0];
 
+    // Validate that user exists and passwords match
     if (!user || !(await bcrypt.compare(password, user.password))) {
       console.log(`Invalid credentials for user: ${username}`);
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
+    // Extract user ID
     const userId = userResult.recordset[0].id;
 
-    // Step 2: Check if the user already has a closet row
+    // Check if the user has a closet row stored in database
     const closetResult = await pool.request()
       .input('Id', sql.Int, userId)
       .query('SELECT COUNT(*) AS count FROM closet WHERE Id = @Id');
     
+    // Create an object if user has a closet stored
     const closetExists = closetResult.recordset[0].count > 0;
 
-    // Step 3: Create a new closet row if it doesn't exist
+    // Create a new closet row if it doesn't exist
     if (!closetExists) {
       await pool.request()
         .query(`
@@ -55,14 +49,15 @@ router.post('/login', async (req, res) => {
                               Sunglasses, Hat, Gloves, Scarf, Backpack, Purse, Umbrella)
           VALUES (@Id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         `);
+      // Log the creation of a new closet
       console.log(`Closet created for user with ID: ${userId}`);
     }
 
-    // Step 4: Generate a JWT and set it as a cookie
+    // Generate a JWT and set it as a cookie
     const token = jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
     res.cookie('token', token, { httpOnly: true, sameSite: 'strict' });
 
-    // Step 5: Return success response with user details
+    // Return success response with user details
     res.json({
       message: 'Login successful',
       user: {
@@ -73,13 +68,14 @@ router.post('/login', async (req, res) => {
       }
     });
 
+  // Error handling message if login process fails
   } catch (error) {
     console.error('Error during login:', error);
     res.status(500).json({ error: 'Failed to login' });
   }
 });
 
-// Register user
+// Route for registering a new user
 router.post('/register', async (req, res) => {
   const { username, email, password, name } = req.body;
 
@@ -87,26 +83,28 @@ router.post('/register', async (req, res) => {
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Connect to database
     const pool = await sql.connect();
 
-    // Step 1: Insert the user into the users table
+    // Insert the user into the users table
     const userResult = await pool.request()
   .input('username', sql.NVarChar, username)
   .input('email', sql.NVarChar, email)
   .input('password', sql.NVarChar, hashedPassword)
   .input('name', sql.NVarChar, name)
-  .input('pfp', sql.NVarChar, null) // Pass NULL for pfp if no value is provided
+  .input('pfp', sql.NVarChar, null) 
   .query(`
     INSERT INTO users (username, email, password, name, pfp)
     OUTPUT INSERTED.id
     VALUES (@username, @email, @password, @name, @pfp)
   `);
 
-    const userId = userResult.recordset[0].id; // Access the 'id' field directly
+    // Get the new user's ID from the result
+    const userId = userResult.recordset[0].id; 
 
-    // Step 2: Create a new row in the closet table for this user
+    // Create a new row in the closet table for this user
     await pool.request()
-      .input('Id', sql.Int, userId) // Explicitly provide the user's ID
+      .input('Id', sql.Int, userId) 
       .query(`
         SET IDENTITY_INSERT closet ON;
         INSERT INTO closet (Id, Short_Sleeve, Long_Sleeve, Flannel, Tank_Top, Sweater, Sweatshirt, Jacket, Coat,
@@ -117,11 +115,15 @@ router.post('/register', async (req, res) => {
         SET IDENTITY_INSERT closet OFF;
       `);
 
+    // Return a successful response once registration is complete
     res.status(201).json({ message: 'User registered successfully' });
-  } catch (error) {
+
+    // Error handling message if registration process fails
+  } catch (error) { 
     console.error('Error during user registration:', error);
     res.status(500).json({ error: 'Failed to register user' });
   }
 });
 
+// Export the router instance for use in other files
 module.exports = router;
