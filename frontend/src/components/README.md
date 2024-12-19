@@ -12,7 +12,7 @@ frontend/
 │   ├── components/    # Non-page components of the app
 │   │   ├── Accessories/          # Creates and formats the Accessories box
 │   │   ├── Bottoms/              # Creates and formats the Bottoms box
-│   │   ├── CenterContainer/      # xxxx
+│   │   ├── CenterContainer/      # Creates and formats the CenterContainer
 │   │   ├── NavBar/               # Creates and formats the Navbar
 │   │   ├── Shelf/                # xxxx
 │   │   ├── Shoes/                # Creates and formats the Shoes box
@@ -33,7 +33,7 @@ frontend/
    - This folder contains the jsx and css that create, format, and modify Bottoms. It displays the bottoms submission form where the user can input the bottoms they own. Upon submission of the form, the user's response will be stored in the closet.
 
 3. **`CenterContainer`**
-   - xxxx.
+   - This folder contains the jsx and css that create, format, and modify CenterContainer. It creates a wrapper component the provides a centered container on the app for other componenets. 
 
 4. **`NavBar`**
    - This folder contains the jsx and css that create, format, and modify the Navbar. The user hs the ability to navigate to the app's different pages using the navbar component. 
