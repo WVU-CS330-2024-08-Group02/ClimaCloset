@@ -1,6 +1,6 @@
 # The `Navbar` Folder
 
-The `Navbar` folder contains the code that styles and then implements the navbar to appear at the top of our webapp. The user would then have the ability to navigate to our different pages using the navbar component. 
+The `Navbar` folder contains the code that styles and implements the navbar to appear at the top of our webapp. The user would then have the ability to navigate to our different pages using the navbar component. 
 
 ## `Navbar` Folder/File Structure and Overview
 

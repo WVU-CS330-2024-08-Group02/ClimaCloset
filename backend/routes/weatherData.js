@@ -1,3 +1,9 @@
+/**
+ * This file defines the routes for fetching weather data from the NWS API 
+ * and the user's IP address from the Ipify API. The weather data is simplified 
+ * before being sent to the frontend as a JSON response. 
+ */
+
 // Import libraries and modules 
 const express = require('express');
 const axios = require('axios');
@@ -56,7 +62,7 @@ router.get('/', async (req, res) => {
         // Send the weather data as a JSON response 
         res.json(weatherData);
 
-        // Error handling message if weather or IP request fails
+    // Error handling message if weather or IP request fails
     } catch (error) {
         console.error("Error in /weather/:", error.message);
         res.status(500).json({ error: "Failed to fetch weather data", details: error.message });

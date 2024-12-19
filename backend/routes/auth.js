@@ -1,3 +1,9 @@
+/**
+ * This file defines routes for user registration and login. It handles 
+ * authentication by hashing passwords with bcrypt during registration 
+ * and generating JWTs upon login. 
+ */
+
 // Import libraries and modules 
 const express = require('express');
 const bcrypt = require('bcryptjs');
@@ -8,7 +14,6 @@ const axios = require('axios');
 
 // Login route for authenticating users
 router.post('/login', async (req, res) => {
-
   // Get the username & password from request body
   const { username, password } = req.body;
 
@@ -57,7 +62,7 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ id: userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
     res.cookie('token', token, { httpOnly: true, sameSite: 'strict' });
 
-    // Return success response with user details
+    // Return successful response with user details
     res.json({
       message: 'Login successful',
       user: {
@@ -77,6 +82,7 @@ router.post('/login', async (req, res) => {
 
 // Route for registering a new user
 router.post('/register', async (req, res) => {
+  // Get username and password from request body
   const { username, email, password, name } = req.body;
 
   try {
@@ -118,7 +124,7 @@ router.post('/register', async (req, res) => {
     // Return a successful response once registration is complete
     res.status(201).json({ message: 'User registered successfully' });
 
-    // Error handling message if registration process fails
+  // Error handling message if registration process fails
   } catch (error) { 
     console.error('Error during user registration:', error);
     res.status(500).json({ error: 'Failed to register user' });
