@@ -10,7 +10,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { TransparentBox } from '../../components/TransparentBox/TransparentBox';
 import { CenterContainer } from '../../components/CenterContainer/CenterContainer';
 import { useState, useContext } from 'react';
-import { AuthContext } from "../../context/AuthContext"; // Import context
+import { AuthContext } from "../../context/AuthContext"; 
 import axios from 'axios';
 
 // Render login form and handle authentication
