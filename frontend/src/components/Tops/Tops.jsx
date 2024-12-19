@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import axios from 'axios';
 import './Tops.css'
+import { AuthContext } from "../../context/AuthContext";
 
 export function Tops() {
+  const { isLoggedIn, user } = useContext(AuthContext); // Use authentication context
   const [chosenOption, setChosenOption] = useState([]);
   const [hoveredOption, setHoveredOption] = useState(null); // State to track the hovered shirt
   // Store the types of tops and their respective desecriptions in an array
@@ -26,9 +29,30 @@ export function Tops() {
   };
 
   // Handle displaying the choices that the user checked
-  const handleChoice = (event) => {
+  const handleChoice = async (event) => {
     event.preventDefault();
-    alert(`You selected: ${chosenOption.join(", ")}`);
+    
+    const userId = user?.id;
+    
+    // Create dataToSend with default values for all accessories
+    const dataToSend = {
+        Id: userId,
+        ...tops.reduce((acc, top) => {
+            acc[top.name.replace(" ", "_")] = chosenOption.includes(top.name) ? 1 : 0;
+            return acc;
+        }, {}),
+    };
+
+    try {
+        const response = await axios.post('http://localhost:5001/closet/saveCloset', dataToSend, {
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        alert('Tops saved successfully');
+    } catch (error) {
+        console.error('Error submitting tops:', error);
+        alert('Failed to save tops: ' + (error.response?.statusText || 'An error occurred.'));
+    }
   };
 
   // Create a form that has checkboxes where the user can "choose all that apply"

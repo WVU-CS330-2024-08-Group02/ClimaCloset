@@ -1,20 +1,14 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Nav from 'react-bootstrap/Nav';
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import "./Navbar.css"; // Styles for navbar elements
 import closetIcon from "../../assets/ClosetIcon.ico";
-import profileImage from "../../assets/pfp/CamProfile.png"; // Change when login is functional
-import defaultProfileImage from "../../assets/pfp/DefaultProfile.png"
+import profileImage from "../../assets/pfp/DefaultProfile.png";
+import defaultProfileImage from "../../assets/pfp/DefaultProfile.png";
 
 export function Navbar() {
-    const { isLoggedIn, logout } = useContext(AuthContext); // Use correct state name
-    const navigate = useNavigate();
-
-    const handleLogout = () => {
-        logout(); // Clear authentication state
-        navigate("/Login"); // Redirect to the login page
-    };
+    const { isLoggedIn } = useContext(AuthContext); // Use correct state name
 
     return (
         <Nav className="navbar">
@@ -36,11 +30,6 @@ export function Navbar() {
             <Nav className="navbar-right">
                 {isLoggedIn ? (
                     <>
-                        {/* Logout Button */}
-                        <button className="login-button" onClick={handleLogout}>
-                            Logout
-                        </button>
-
                         {/* Profile Icon */}
                         <NavLink to="/Profile">
                             <img

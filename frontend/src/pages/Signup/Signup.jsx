@@ -26,9 +26,9 @@ export function Signup() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+    
         if (!emailRegex.test(email)) {
             alert("Email is not valid format.");
         } else if (password !== rePassword) {
@@ -37,6 +37,9 @@ export function Signup() {
             alert("Password does not meet requirements.");
         } else {
             try {
+                console.log("Submitting signup data:", { name, email, username, password });
+    
+                const response = await axios.post(`http://localhost:5001/auth/register`, 
                 console.log("Submitting signup data:", { name, email, username, password });
                 
                 const response = await axios.post(`http://135.237.82.214:5000/auth/register`, 
@@ -49,6 +52,7 @@ export function Signup() {
                 }
             } catch (error) {
                 console.error("Error signing up:", error);
+                console.log("Error details:", error.response?.data || error.message);
                 alert("Signup failed. Please try again.");
             }
         }

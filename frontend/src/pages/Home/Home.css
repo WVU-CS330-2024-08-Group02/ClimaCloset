@@ -1,32 +1,16 @@
 /* Home.css */
 
-/* Modal container */
-.modal-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* Dim background */
-    z-index: 2000;
-    overflow: hidden; /* Prevent container from scrolling */
-}
-
-/* Uniform modal size */
-.modal {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 600px;
-    max-width: 90vw; /* Responsive width */
-    max-height: 80vh; /* Limit height to viewport */
-    overflow-y: auto; /* Allow modal content to scroll if too tall */
-    box-sizing: border-box;
-    z-index: 3000;
+/* Center popup's content and style its background */
+.popup-content {
+    background: rgba(0, 0, 0, 0.6);
+    color: whitesmoke;
+    border-radius: 10px;
+    padding: 20px 30px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 0.3s ease-in-out;
 }
 
 /* Style for modal content */
@@ -44,10 +28,7 @@
     cursor: pointer;
 }
 
-
-/* Add any additional styling you need */
-
-
+/* Circle to display the current weather */
 .circle {
     width: 300px;
     height: 300px;
@@ -64,6 +45,7 @@
     border: 7.5px solid rgba(0, 0, 0, 0.4);
 }
 
+/* Style for the dropdown to choose an activity */
 .dropdown {
     position: relative;
     width: 12em;
@@ -72,6 +54,7 @@
     padding: 5px;
 }
 
+/* Style the individual labes in the dropdown */
 .dropdown-label {
     font-size: 24px;
     font-weight: bold;
@@ -113,7 +96,7 @@
     width: 100%;
 }
 
-.left-container, .right-container {
+.left-container {
   flex: 1;
   display: flex;
   align-items: center;
@@ -122,9 +105,15 @@
   flex-wrap: wrap;
   height: 1080px;
 }
-.left-container > * {
+.right-container {
+    flex: 1;
     display: flex;
-    width: 100%;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    flex: column;
+    height: 1080px;
 }
 
 .home-center-container {
@@ -134,7 +123,6 @@
 
 .right-container > .top-half,
 .right-container > .bottom-half {
-  flex: 1; /* Each takes half the container height */
   width: 100%;
   display: flex;
   align-items: center;

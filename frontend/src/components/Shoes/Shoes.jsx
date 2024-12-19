@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import axios from 'axios';
 import './Shoes.css'
+import { AuthContext } from "../../context/AuthContext";
 
 export function Shoes() {
+  const { isLoggedIn, user } = useContext(AuthContext); // Use authentication context
   const [chosenOption, setChosenOption] = useState([]);
   const [hoveredOption, setHoveredOption] = useState(null); // Track which shoe is hovered
   // Store the types of shoes and their respective desecriptions in an array
@@ -22,9 +25,30 @@ export function Shoes() {
   };
 
   // Handle displaying the choices that the user checked
-  const handleChoice = (event) => {
+  const handleChoice = async (event) => {
     event.preventDefault();
-    alert(`You selected: ${chosenOption.join(", ")}`);
+    
+    const userId = user?.id;
+    
+    // Create dataToSend with default values for all accessories
+    const dataToSend = {
+        Id: userId,
+        ...shoes.reduce((acc, shoe) => {
+            acc[shoe.name.replace(" ", "_")] = chosenOption.includes(shoe.name) ? 1 : 0;
+            return acc;
+        }, {}),
+    };
+
+    try {
+        const response = await axios.post('http://localhost:5001/closet/saveCloset', dataToSend, {
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        alert('Shoes saved successfully');
+    } catch (error) {
+        console.error('Error submitting shoes:', error);
+        alert('Failed to save shoes: ' + (error.response?.statusText || 'An error occurred.'));
+    }
   };
 
   // Create a form that has checkboxes where the user can "choose all that apply"

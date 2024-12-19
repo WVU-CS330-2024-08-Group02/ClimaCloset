@@ -391,7 +391,7 @@ export function Weather() {
 
                         {/* Centered progress bar displaying temperature range */}
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-                            <ProgressBar value={34} min={forecastDaily[1].temperature} max={forecastDaily[0].temperature} /> {/* NEEDS WORK */}
+                            <ProgressBar value={parseInt(forecastHourly[0].temperature)} min={Math.min(parseInt(forecastDaily[0].temperature), parseInt(forecastDaily[1].temperature))} max={Math.max(parseInt(forecastDaily[0].temperature), parseInt(forecastDaily[1].temperature))} /> {/* NEEDS WORK */}
                         </div>
 
 

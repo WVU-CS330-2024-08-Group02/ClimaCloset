@@ -1,10 +1,13 @@
-import { useState } from "react"
-import './Accessories.css'
+import { useState, useContext } from "react";
+import axios from "axios";
+import './Accessories.css';
+import { AuthContext } from "../../context/AuthContext";
 
 export function Accessories() {
+    const { isLoggedIn, user } = useContext(AuthContext); // Use authentication context
     const [chosenOption, setChosenOption] = useState([]);
 
-    // Store the types of shoes and their respective desecriptions in an array
+    // Store the types of accessories in an array
     const accessories = ["Sunglasses", "Hat", "Gloves", "Scarf", "Backpack", "Purse", "Umbrella"];
 
     // Handle the event when checkbox(es) are clicked by the user
@@ -17,9 +20,30 @@ export function Accessories() {
     };
 
     // Handle displaying the choices that the user checked
-    const handleChoice = (event) => {
+    const handleChoice = async (event) => {
         event.preventDefault();
-        alert(`You selected: ${chosenOption.join(", ")}`);
+    
+        const userId = user?.id;
+    
+        // Create dataToSend with default values for all accessories
+        const dataToSend = {
+            Id: userId,
+            ...accessories.reduce((acc, accessory) => {
+                acc[accessory] = chosenOption.includes(accessory) ? 1 : 0;
+                return acc;
+            }, {}),
+        };
+    
+        try {
+            const response = await axios.post('http://localhost:5001/closet/saveCloset', dataToSend, {
+                headers: { 'Content-Type': 'application/json' },
+            });
+
+            alert('Accessories saved successfully');
+        } catch (error) {
+            console.error('Error submitting accessories:', error);
+            alert('Failed to save accessories: ' + (error.response?.statusText || 'An error occurred.'));
+        }
     };
 
     // Create a form that has checkboxes where the user can "choose all that apply"

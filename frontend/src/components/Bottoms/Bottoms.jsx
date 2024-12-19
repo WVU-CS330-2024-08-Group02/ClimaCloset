@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import axios from 'axios';
 import './Bottoms.css'
+import { AuthContext } from "../../context/AuthContext";
 
 export function Bottoms() {
+  const { isLoggedIn, user } = useContext(AuthContext); // Use authentication context
   const [chosenOption, setChosenOption] = useState([]);
   const [hoveredOption, setHoveredOption] = useState(null); // State to track the hovered bottom
   // Store the types of bottoms and their respective desecriptions in an array
@@ -22,9 +25,30 @@ export function Bottoms() {
   };
 
   // Handle displaying the choices that the user checked
-  const handleChoice = (event) => {
+  const handleChoice = async (event) => {
     event.preventDefault();
-    alert(`You selected: ${chosenOption.join(", ")}`);
+    
+    const userId = user?.id;
+    
+    // Create dataToSend with default values for all bottoms
+    const dataToSend = {
+        Id: userId,
+        ...bottoms.reduce((acc, bottom) => {
+            acc[bottom.name.replace(" ", "_")] = chosenOption.includes(bottom.name) ? 1 : 0;
+            return acc;
+        }, {}),
+    };
+
+    try {
+        const response = await axios.post('http://localhost:5001/closet/saveCloset', dataToSend, {
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        alert('Bottoms saved successfully');
+    } catch (error) {
+        console.error('Error submitting bottoms:', error);
+        alert('Failed to save bottoms: ' + (error.response?.statusText || 'An error occurred.'));
+    }
   };
 
   // Create a form that has checkboxes where the user can "choose all that apply"
