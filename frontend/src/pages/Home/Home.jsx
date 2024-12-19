@@ -68,7 +68,7 @@ const predefinedOutfits = {
         }
         
         //retrieve weather data
-        axios.get('http://localhost:5001/weather/')  
+        axios.get('http://135.237.82.214:5000/weather/')  
             .then(response => {
                 const { geoData, forecastHourly } = response.data;
     
