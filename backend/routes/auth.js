@@ -36,7 +36,7 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
-    const userId = user.id;
+    const userId = userResult.recordset[0].id;
 
     // Step 2: Check if the user already has a closet row
     const closetResult = await pool.request()
@@ -53,7 +53,7 @@ router.post('/login', async (req, res) => {
                               Jeans, Sweatpants, Dress_Pants, Shorts,
                               Tennis_Shoes, Boots, Flip_Flops, Sandals,
                               Sunglasses, Hat, Gloves, Scarf, Backpack, Purse, Umbrella)
-          VALUES (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+          VALUES (@Id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
         `);
       console.log(`Closet created for user with ID: ${userId}`);
     }
@@ -108,11 +108,13 @@ router.post('/register', async (req, res) => {
     await pool.request()
       .input('Id', sql.Int, userId) // Explicitly provide the user's ID
       .query(`
+        SET IDENTITY_INSERT closet ON;
         INSERT INTO closet (Id, Short_Sleeve, Long_Sleeve, Flannel, Tank_Top, Sweater, Sweatshirt, Jacket, Coat,
                             Jeans, Sweatpants, Dress_Pants, Shorts,
                             Tennis_Shoes, Boots, Flip_Flops, Sandals,
                             Sunglasses, Hat, Gloves, Scarf, Backpack, Purse, Umbrella)
-        VALUES (@Id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        VALUES (@Id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+        SET IDENTITY_INSERT closet OFF;
       `);
 
     res.status(201).json({ message: 'User registered successfully' });

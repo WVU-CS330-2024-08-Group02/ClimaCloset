@@ -32,29 +32,49 @@ router.post('/PullCloset', async (req, res) => {
 
     try {
         const pool = await sql.connect();
-        const query = `
-        SELECT
-            Short_Sleeve, Long_Sleeve, Flannel, Tank_Top, Sweater, Sweatshirt, Jacket, Coat,
-            Jeans, Sweatpants, Dress_Pants, Shorts,
-            Tennis_Shoes, Boots, Flip_Flops, Sandals,
-            Sunglasses, Hat, Gloves, Scarf, Backpack, Purse, Umbrella
-        FROM closet 
-        WHERE Id = @Id
-        `;
 
-        const result = await pool.request()
+        const closetResult = await pool.request()
             .input('Id', sql.Int, Id)
-            .query(query);
+            .query(`
+                SELECT *
+                FROM closet
+                WHERE id = @Id
+            `);
 
-        if (result.recordset.length === 0) {
-            return res.status(404).json({ error: 'No items found in your closet' });
+        if (closetResult.recordset.length === 0) {
+            await pool.request()
+                .input('Id', sql.Int, Id)
+                .query(`
+                    SET IDENTITY_INSERT closet ON;
+                    INSERT INTO closet (Id, Short_Sleeve, Long_Sleeve, Flannel, Tank_Top, Sweater, Sweatshirt, Jacket, Coat,
+                                        Jeans, Sweatpants, Dress_Pants, Shorts,
+                                        Tennis_Shoes, Boots, Flip_Flops, Sandals,
+                                        Sunglasses, Hat, Gloves, Scarf, Backpack, Purse, Umbrella)
+                    VALUES (@Id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+                    SET IDENTITY_INSERT closet OFF;
+                `);
+            
+                console.log(`Closet created for user Id: ${Id}`);
         }
 
+        const updatedClosetResult = await pool.request()
+            .input('Id', sql.Int, Id)
+            .query(`
+                SELECT
+                    Short_Sleeve, Long_Sleeve, Flannel, Tank_Top, Sweater, Sweatshirt, Jacket, Coat,
+                    Jeans, Sweatpants, Dress_Pants, Shorts,
+                    Tennis_Shoes, Boots, Flip_Flops, Sandals,
+                    Sunglasses, Hat, Gloves, Scarf, Backpack, Purse, Umbrella
+                FROM closet 
+                WHERE Id = @Id
+            `);
+       
+
         const clothingData = {
-            tops: tops.map(item => result.recordset[0][item] || 0),
-            bottoms: bottoms.map(item => result.recordset[0][item] || 0),
-            shoes: shoes.map(item => result.recordset[0][item] || 0),
-            accessories: accessories.map(item => result.recordset[0][item] || 0)
+            tops: tops.map(item => updatedClosetResult.recordset[0][item] || 0),
+            bottoms: bottoms.map(item => updatedClosetResult.recordset[0][item] || 0),
+            shoes: shoes.map(item => updatedClosetResult.recordset[0][item] || 0),
+            accessories: accessories.map(item => updatedClosetResult.recordset[0][item] || 0)
         };
 
         res.status(200).json(clothingData);
