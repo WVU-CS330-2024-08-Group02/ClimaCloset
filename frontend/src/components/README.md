@@ -14,7 +14,7 @@ frontend/
 │   │   ├── Bottoms/              # Creates and formats the Bottoms box
 │   │   ├── CenterContainer/      # Creates and formats the CenterContainer
 │   │   ├── NavBar/               # Creates and formats the Navbar
-│   │   ├── Shelf/                # xxxx
+│   │   ├── Shelf/                # Creates and formats the Shelf
 │   │   ├── Shoes/                # Creates and formats the Shoes box
 │   │   ├── Throbber/             # Graphic indicating the something is loading
 │   │   ├── Tops/                 # Creates and formats the Tops box
@@ -39,7 +39,7 @@ frontend/
    - This folder contains the jsx and css that create, format, and modify the Navbar. The user hs the ability to navigate to the app's different pages using the navbar component. 
 
 5. **`Shelf`**
-   - xxxx.
+   - This folder contains the jsx and css that create, format, and modify Shelf. It creates the closet with the four different shelves for tops, bottoms, shoes, and accessories, and it displays the clothing icons within their respective shelf. 
 
 6. **`Shoes`**
    - This folder contains the jsx and css that create, format, and modify Shoes. It displays the shoes submission form where the user can input the shoes they own. Upon submission of the form, the user's response will be stored in the closet.
