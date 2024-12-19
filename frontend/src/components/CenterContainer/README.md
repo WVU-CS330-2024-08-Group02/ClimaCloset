@@ -9,7 +9,7 @@ The `CenterContainer` folder....
 ```
 frontend/
 ├── src/      # Modifies the UI design and handles user interactions
-│   ├── components/    # xxxx
+│   ├── components/    # Non-page components of the app
 │   │   ├── CenterContainer/       # xxxx
 │   │   │   ├── CenterContainer.css          # xxxx
 │   │   │   ├── CenterContainer.jsx          # xxxx

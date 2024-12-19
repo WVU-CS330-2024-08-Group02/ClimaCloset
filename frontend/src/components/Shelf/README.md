@@ -9,7 +9,7 @@ The `Shelf` folder....
 ```
 frontend/
 ├── src/      # Modifies the UI design and handles user interactions
-│   ├── components/    # xxxx
+│   ├── components/    # Non-page components of the app
 │   │   ├── Shelf/         # xxxx
 │   │   │   ├── Shelf.css         # xxxx
 │   │   │   ├── Shelf.jsx         # xxxx

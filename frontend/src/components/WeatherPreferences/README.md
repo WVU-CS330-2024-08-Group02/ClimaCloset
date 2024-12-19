@@ -9,7 +9,7 @@ The `WeatherPreferences` folder....
 ```
 frontend/
 ├── src/      # Modifies the UI design and handles user interactions
-│   ├── components/    # xxxx
+│   ├── components/    # Non-page components of the app
 │   │   ├── WeatherPreferences/       # xxxx
 │   │   │   ├── WeatherPreferences.css         # xxxx
 │   │   │   ├── WeatherPreferences.jsx         # xxxx

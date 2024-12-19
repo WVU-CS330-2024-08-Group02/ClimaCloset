@@ -9,7 +9,7 @@ The `TransparentBox` folder....
 ```
 frontend/
 ├── src/      # Modifies the UI design and handles user interactions
-│   ├── components/    # xxxx
+│   ├── components/    # Non-page components of the app
 │   │   ├── TransparentBox/       # xxxx
 │   │   │   ├── TransparentBox.css       # xxxx
 │   │   │   ├── TransparentBox.jsx       # xxxx
