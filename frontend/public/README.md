@@ -1,19 +1,12 @@
 # The `public` Folder
 
-The `public` folder...
+The `public` folder contains files intended for public access. 
 
 ## `public` Folder/File Structure and Overview
-
-### Structure
 
 ```
 frontend/
 ├── public/        # Contains files intended for public access
-│   ├── placeholder.txt  # xxxx
+│   ├── placeholder.txt  
 │   └── README.md
 ```
-
-### Overview
-
-1. **`xxxx`**
-   - xxxxx.

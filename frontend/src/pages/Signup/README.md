@@ -1,6 +1,6 @@
 # The `Signup` Folder
 
-The `Signup` folder.... 
+The `Signup` folder contains the jsx and css that create, format, and modify the Signup page. This page displays a submission form where the user is able to sign-up for the app, and it communicates this new profile to the server for storage.   
 
 ## `Signup` Folder/File Structure and Overview
 
@@ -9,11 +9,11 @@ The `Signup` folder....
 ```
 frontend/
 ├── src/      # Modifies the UI design and handles user interactions
-│   ├── pages/    # xxxx
-│   │   ├── Signup/       # xxxx
+│   ├── pages/    # All pages in the app 
+│   │   ├── Signup/       # Creates and formats Signup page
 │   │   │   ├── README.md          
-│   │   │   ├── Signup.css          # xxxx
-│   │   │   └── Signup.jsx          # xxxx
+│   │   │   ├── Signup.css          # Controls appearance and layout of Signup page
+│   │   │   └── Signup.jsx          # Adds all elements of the Profile page
 ```
 
 ### Overview

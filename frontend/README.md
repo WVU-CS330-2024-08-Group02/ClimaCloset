@@ -8,7 +8,7 @@ The `frontend` folder contains the user-side components of the project (a React-
 
 ```
 frontend/
-├── public/     # xxxx
+├── public/     # Contains files intended for public access
 ├── src/        # Modifies the UI design and handles user interactions
 └── README.md
 ```
@@ -16,7 +16,7 @@ frontend/
 ### Overview
 
 1. **`public`**
-   - xxxxx.
+   - This folder contains files intended for public access. .
 
 2. **`src`**
-   - The `src` folder contains all of the code that creates the UI design, user interactions, and API requests for the webapp.
+   - This folder contains all of the code that creates the UI design, user interactions, and API requests for the webapp.
