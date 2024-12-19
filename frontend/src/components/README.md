@@ -19,7 +19,7 @@ frontend/
 │   │   ├── Throbber/             # Graphic indicating the something is loading
 │   │   ├── Tops/                 # Creates and formats the Tops box
 │   │   ├── TransparentBox/       # Creates and formats the TransparentBox
-│   │   ├── WeatherPreferences/   # xxxx
+│   │   ├── WeatherPreferences/   # Creates and formats the WeatherPreferences
 │   │   ├── Layout.jsx            # Consistent layout for Navbar
 │   │   └── README.md
 ```
@@ -54,7 +54,7 @@ frontend/
    - This folder contains the jsx and css that create, format, and modify TransparentBox. It creates a wrapper component that provides a boxed area to hold other componenets. 
 
 10. **`WeatherPreferences`**
-   - xxxx.
+   - This folder contains the jsx and css that create, format, and modify WeatherPreferences. It displays the ideal temperature slide, handles the event of the slider moving, and stores the ideal temperature.
 
 11. **`Layout.jsx`**
    - This file renders the navbar component and provides a consistent structure for all of the pages. This file allows for the content to be rendered dynamically when moving between pages.
