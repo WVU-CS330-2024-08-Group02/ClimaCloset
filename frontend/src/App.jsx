@@ -1,3 +1,10 @@
+/**
+ * This file defines routing information for all pages that the user can interact with,
+ * and handles the user navigating between pages. With App exported, it will be able to 
+ * communicate with root component of the app. 
+ */
+
+// Import libraries and modules
 import './App.css'
 import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import { Layout } from './components/Layout'
@@ -9,6 +16,7 @@ import { About } from './pages/About/About'
 import { Login } from './pages/Login/Login'
 import { Signup } from './pages/Signup/Signup'
 
+// Defines routing and layout of app
 function App() {
   return (
     <>
@@ -29,4 +37,5 @@ function App() {
   )
 }
 
+// Make App default in all files
 export default App
