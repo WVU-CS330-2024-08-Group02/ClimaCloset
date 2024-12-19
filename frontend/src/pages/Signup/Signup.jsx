@@ -39,8 +39,6 @@ export function Signup() {
             try {
                 console.log("Submitting signup data:", { name, email, username, password });
     
-                const response = await axios.post(`http://localhost:5001/auth/register`, 
-                console.log("Submitting signup data:", { name, email, username, password });
                 
                 const response = await axios.post(`http://135.237.82.214:5000/auth/register`, 
                     { name, email, username, password });
