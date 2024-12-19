@@ -4,8 +4,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import "./navbar.css"; // Styles for navbar elements
 import closetIcon from "../../assets/ClosetIcon.ico";
-import profileImage from "../../assets/pfp/CamProfile.png"; // Change when login is functional
-import defaultProfileImage from "../../assets/pfp/DefaultProfile.png"
+import profileImage from "../../assets/pfp/DefaultProfile.png";
+import defaultProfileImage from "../../assets/pfp/DefaultProfile.png";
 
 export function Navbar() {
     const { isLoggedIn } = useContext(AuthContext); // Use correct state name

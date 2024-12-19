@@ -2,9 +2,10 @@ import React, {useState, useContext} from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Profile.css';
 import { CenterContainer } from '../../components/CenterContainer/CenterContainer';
-import profileImage from '../../assets/pfp/CamProfile.png'; // Change when login is functional
+import profileImage from "../../assets/pfp/DefaultProfile.png";
 import { AuthContext } from '../../context/AuthContext';
 import Throbber from '../../components/Throbber/Throbber';
+
 
 export function Profile() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
